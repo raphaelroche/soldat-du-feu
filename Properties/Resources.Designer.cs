@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAE_A21D21_pompiers1.Properties
+namespace SAE_A21D21_pompiers.Properties
 {
 
 

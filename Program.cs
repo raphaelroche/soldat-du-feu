@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SAE_A21D21_pompiers1
+namespace SAE_A21D21_pompiers
 {
     internal static class Program
     {
