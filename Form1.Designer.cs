@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlTableauDeBord = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // pnlTableauDeBord
+            // 
+            this.pnlTableauDeBord.AutoScroll = true;
+            this.pnlTableauDeBord.Location = new System.Drawing.Point(333, 12);
+            this.pnlTableauDeBord.Name = "pnlTableauDeBord";
+            this.pnlTableauDeBord.Size = new System.Drawing.Size(1045, 738);
+            this.pnlTableauDeBord.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1390, 762);
+            this.Controls.Add(this.pnlTableauDeBord);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -43,6 +53,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnlTableauDeBord;
     }
 }
 
