@@ -39,6 +39,25 @@ namespace SAE_A21D21_pompiers
         private void Form1_Load(object sender, EventArgs e)
         {
             SQLiteConnection cx = Connexion.Connec; //connexion a la base de données
+
+            DataTable dt = cx.GetSchema("Tables");
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                try
+                {
+                    string sql = "SELECT * FROM " + dr[2].ToString();
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(sql, cx);
+                    da.Fill(MesDatas.DsGlobal, dr[2].ToString());
+                }
+                catch (SQLiteException err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
+
+            AfficherDataSet(MesDatas.DsGlobal);
+
             int y = 110; // position de départ en Y
             int spacing = 10; // espace entre les contrôles
 
@@ -80,5 +99,42 @@ namespace SAE_A21D21_pompiers
         {
             Application.Exit();
         }
+
+        public void AfficherDataSet(DataSet ds)
+        {
+            if (ds == null || ds.Tables.Count == 0)
+            {
+                MessageBox.Show("Le DataSet est vide.");
+                return;
+            }
+
+            foreach (DataTable table in ds.Tables)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine($"--- Table: {table.TableName} ---");
+
+                // En-têtes des colonnes
+                foreach (DataColumn col in table.Columns)
+                {
+                    sb.Append(col.ColumnName + "\t");
+                }
+                sb.AppendLine();
+
+                // Lignes de données
+                foreach (DataRow row in table.Rows)
+                {
+                    foreach (var item in row.ItemArray)
+                    {
+                        sb.Append(item?.ToString() + "\t");
+                    }
+                    sb.AppendLine();
+                }
+
+                // Affichage dans une MessageBox (une par table)
+                MessageBox.Show(sb.ToString(), $"Contenu de {table.TableName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
     }
 }

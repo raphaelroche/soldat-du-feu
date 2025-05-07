@@ -27,8 +27,8 @@ namespace SAE_A21D21_pompiers
                 {
                     try
                     {
-						// Chaîne de connexion à votre base de données
-						string chaine = @"Data Source = ..\..\..\SDIS67.db";
+						// Chaîne de connexion à votre base de doznées
+						string chaine = @"Data Source = SDIS67.db";
                         connec = new SQLiteConnection(chaine);
                         connec.Open();
                     }
