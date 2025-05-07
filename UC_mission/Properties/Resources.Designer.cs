@@ -63,9 +63,9 @@ namespace UC_mission.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gyrophare {
+        internal static System.Drawing.Bitmap close {
             get {
-                object obj = ResourceManager.GetObject("gyrophare", resourceCulture);
+                object obj = ResourceManager.GetObject("close", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,19 @@ namespace UC_mission.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gyrophare1 {
+        internal static System.Drawing.Bitmap gyrophare2 {
             get {
-                object obj = ResourceManager.GetObject("gyrophare1", resourceCulture);
+                object obj = ResourceManager.GetObject("gyrophare2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rapport {
+            get {
+                object obj = ResourceManager.GetObject("rapport", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

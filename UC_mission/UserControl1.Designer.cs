@@ -28,24 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblIDMission = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCloture = new System.Windows.Forms.Button();
+            this.btnRapport = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::UC_mission.Properties.Resources.gyrophare1;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(123, 102);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // lblIDMission
             // 
@@ -97,21 +91,59 @@
             this.lblDescription.TabIndex = 6;
             this.lblDescription.Text = "-->";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lblDescription);
+            this.panel1.Controls.Add(this.lblCaserne);
+            this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.lblType);
+            this.panel1.Controls.Add(this.lblIDMission);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(853, 165);
+            this.panel1.TabIndex = 7;
+            // 
+            // btnCloture
+            // 
+            this.btnCloture.Location = new System.Drawing.Point(859, 2);
+            this.btnCloture.Name = "btnCloture";
+            this.btnCloture.Size = new System.Drawing.Size(91, 80);
+            this.btnCloture.TabIndex = 8;
+            this.btnCloture.UseVisualStyleBackColor = true;
+            // 
+            // btnRapport
+            // 
+            this.btnRapport.Location = new System.Drawing.Point(859, 83);
+            this.btnRapport.Name = "btnRapport";
+            this.btnRapport.Size = new System.Drawing.Size(91, 80);
+            this.btnRapport.TabIndex = 9;
+            this.btnRapport.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::UC_mission.Properties.Resources.gyrophare2;
+            this.pictureBox1.Location = new System.Drawing.Point(35, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(123, 102);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Mission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblDescription);
-            this.Controls.Add(this.lblCaserne);
-            this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.lblType);
-            this.Controls.Add(this.lblIDMission);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnRapport);
+            this.Controls.Add(this.btnCloture);
+            this.Controls.Add(this.panel1);
             this.Name = "Mission";
-            this.Size = new System.Drawing.Size(857, 165);
+            this.Size = new System.Drawing.Size(952, 165);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -123,5 +155,8 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnCloture;
+        private System.Windows.Forms.Button btnRapport;
     }
 }

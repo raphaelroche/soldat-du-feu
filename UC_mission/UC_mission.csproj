@@ -71,5 +71,14 @@
   <ItemGroup>
     <None Include="Resources\gyrophare.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\gyrophare.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\close.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\rapport.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
