@@ -7,3 +7,12 @@ C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\SAE_A21D21_pompiers\UC_missi
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.CoreCompileInputs.cache
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.dll
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.pdb
+U:\applications\SAE_A21D21_pompiers\UC_mission\bin\Debug\UC_mission.dll
+U:\applications\SAE_A21D21_pompiers\UC_mission\bin\Debug\UC_mission.pdb
+U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.AssemblyReference.cache
+U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.Properties.Resources.resources
+U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.Mission.resources
+U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.GenerateResource.cache
+U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.CoreCompileInputs.cache
+U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.dll
+U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.pdb
