@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_A21D21_pompiers1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -56,34 +57,7 @@ namespace SAE_A21D21_pompiers
                 }
             }
 
-            // Définition des clés primaires
-            DataColumn pkNatureSinistre = MesDatas.DsGlobal.Tables["NatureSinistre"].Columns["id"];
-            MesDatas.DsGlobal.Tables["NatureSinistre"].PrimaryKey = new DataColumn[] { pkNatureSinistre };
-
-            DataColumn pkTypeEngin = MesDatas.DsGlobal.Tables["TypeEngin"].Columns["code"];
-            MesDatas.DsGlobal.Tables["TypeEngin"].PrimaryKey = new DataColumn[] { pkTypeEngin };
-
-            DataColumn pk1 = MesDatas.DsGlobal.Tables["Necessiter"].Columns["idNatureSinistre"];
-            DataColumn pk2 = MesDatas.DsGlobal.Tables["Necessiter"].Columns["codeTypeEngin"];
-            MesDatas.DsGlobal.Tables["Necessiter"].PrimaryKey = new DataColumn[] { pk1, pk2 };
-
-            // Définition des contraintes de clé étrangère
-
-            // Clé étrangère de Necessiter vers NatureSinistre
-            ForeignKeyConstraint fkNature = new ForeignKeyConstraint(
-                "FK_Necessiter_NatureSinistre",
-                MesDatas.DsGlobal.Tables["NatureSinistre"].Columns["id"],               // Parent
-                MesDatas.DsGlobal.Tables["Necessiter"].Columns["idNatureSinistre"]      // Enfant
-            );
-            MesDatas.DsGlobal.Tables["Necessiter"].Constraints.Add(fkNature);
-
-            // Clé étrangère de Necessiter vers TypeEngin
-            ForeignKeyConstraint fkEngin = new ForeignKeyConstraint(
-                "FK_Necessiter_TypeEngin",
-                MesDatas.DsGlobal.Tables["TypeEngin"].Columns["code"],                  // Parent
-                MesDatas.DsGlobal.Tables["Necessiter"].Columns["codeTypeEngin"]         // Enfant
-            );
-            MesDatas.DsGlobal.Tables["Necessiter"].Constraints.Add(fkEngin);
+            
 
             //remplir le panel avec les missions présentes dans la table
             int y = 110; // position de départ en Y
@@ -150,6 +124,15 @@ namespace SAE_A21D21_pompiers
         private void button5_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            AjouterMission ajt = new AjouterMission(5, DateTime.Now.Date);
+            if (ajt.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }
