@@ -56,21 +56,73 @@ namespace SAE_A21D21_pompiers
                 }
             }
 
-            AfficherDataSet(MesDatas.DsGlobal);
+            // Définition des clés primaires
+            DataColumn pkNatureSinistre = MesDatas.DsGlobal.Tables["NatureSinistre"].Columns["id"];
+            MesDatas.DsGlobal.Tables["NatureSinistre"].PrimaryKey = new DataColumn[] { pkNatureSinistre };
 
+            DataColumn pkTypeEngin = MesDatas.DsGlobal.Tables["TypeEngin"].Columns["code"];
+            MesDatas.DsGlobal.Tables["TypeEngin"].PrimaryKey = new DataColumn[] { pkTypeEngin };
+
+            DataColumn pk1 = MesDatas.DsGlobal.Tables["Necessiter"].Columns["idNatureSinistre"];
+            DataColumn pk2 = MesDatas.DsGlobal.Tables["Necessiter"].Columns["codeTypeEngin"];
+            MesDatas.DsGlobal.Tables["Necessiter"].PrimaryKey = new DataColumn[] { pk1, pk2 };
+
+            // Définition des contraintes de clé étrangère
+
+            // Clé étrangère de Necessiter vers NatureSinistre
+            ForeignKeyConstraint fkNature = new ForeignKeyConstraint(
+                "FK_Necessiter_NatureSinistre",
+                MesDatas.DsGlobal.Tables["NatureSinistre"].Columns["id"],               // Parent
+                MesDatas.DsGlobal.Tables["Necessiter"].Columns["idNatureSinistre"]      // Enfant
+            );
+            MesDatas.DsGlobal.Tables["Necessiter"].Constraints.Add(fkNature);
+
+            // Clé étrangère de Necessiter vers TypeEngin
+            ForeignKeyConstraint fkEngin = new ForeignKeyConstraint(
+                "FK_Necessiter_TypeEngin",
+                MesDatas.DsGlobal.Tables["TypeEngin"].Columns["code"],                  // Parent
+                MesDatas.DsGlobal.Tables["Necessiter"].Columns["codeTypeEngin"]         // Enfant
+            );
+            MesDatas.DsGlobal.Tables["Necessiter"].Constraints.Add(fkEngin);
+
+            //remplir le panel avec les missions présentes dans la table
             int y = 110; // position de départ en Y
-            int spacing = 10; // espace entre les contrôles
+            int spacing = y + 30; // espace entre les contrôles
 
-            for (int i = 0; i < 5; i++)
+            foreach (DataRow drMission in MesDatas.DsGlobal.Tables["Mission"].Rows)     
             {
-                Mission mission = new Mission(i, "accident", DateTime.Now, $"caserne {i}", "feu déclaré");
-                mission.Location = new System.Drawing.Point(50, y);
-                pnlTableauDeBord.Controls.Add(mission);
+                int id = Convert.ToInt32(drMission["id"]);
 
-                y += mission.Height + spacing; // décale vers le bas pour la prochaine mission
+                String type = "";
+                foreach (DataRow drNatureSinistre in MesDatas.DsGlobal.Tables["NatureSinistre"].Rows)
+                {
+                    if (Convert.ToInt32(drNatureSinistre["id"])==id)
+                    {
+                        type = drNatureSinistre["libelle"].ToString();
+                    }
+                }
+
+                String date = drMission["dateHeureDepart"].ToString();
+
+                String caserne = "";
+                foreach (DataRow drCaserne in MesDatas.DsGlobal.Tables["Caserne"].Rows)
+                {
+                    if (Convert.ToInt32(drCaserne["id"]) == Convert.ToInt32(drMission["idCaserne"]));
+                    {
+                        caserne = drCaserne["nom"].ToString();
+                    }
+                }
+
+                String desc = drMission["motifAppel"].ToString();
+                Mission mission = new Mission(id, type, date, caserne, desc);
+                mission.Location = new System.Drawing.Point(50, y);
+                y += spacing;
+                pnlTableauDeBord.Controls.Add(mission);
             }
             pnlTableauDeBord.Show();
         }
+
+
         // Méthode pour dessiner un trait dégradé sur n'importe quel panel
         public void DrawGradientLine(Panel panel, Color startColor, Color endColor)
         {
@@ -99,42 +151,5 @@ namespace SAE_A21D21_pompiers
         {
             Application.Exit();
         }
-
-        public void AfficherDataSet(DataSet ds)
-        {
-            if (ds == null || ds.Tables.Count == 0)
-            {
-                MessageBox.Show("Le DataSet est vide.");
-                return;
-            }
-
-            foreach (DataTable table in ds.Tables)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"--- Table: {table.TableName} ---");
-
-                // En-têtes des colonnes
-                foreach (DataColumn col in table.Columns)
-                {
-                    sb.Append(col.ColumnName + "\t");
-                }
-                sb.AppendLine();
-
-                // Lignes de données
-                foreach (DataRow row in table.Rows)
-                {
-                    foreach (var item in row.ItemArray)
-                    {
-                        sb.Append(item?.ToString() + "\t");
-                    }
-                    sb.AppendLine();
-                }
-
-                // Affichage dans une MessageBox (une par table)
-                MessageBox.Show(sb.ToString(), $"Contenu de {table.TableName}", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-
     }
 }
