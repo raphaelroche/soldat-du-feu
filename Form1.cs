@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -17,6 +18,8 @@ namespace SAE_A21D21_pompiers
 {
     public partial class Form1 : Form
     {
+        private SQLiteConnection cx;
+        
         public Form1()
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace SAE_A21D21_pompiers
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SQLiteConnection cx = Connexion.Connec; //connexion a la base de données
+            cx = Connexion.Connec; //connexion a la base de données
 
             DataTable dt = cx.GetSchema("Tables");
 
@@ -56,21 +59,25 @@ namespace SAE_A21D21_pompiers
                     MessageBox.Show(err.Message);
                 }
             }
-
             
+            afficherMission();
+      
+        }
 
+        private void afficherMission()
+        {
             //remplir le panel avec les missions présentes dans la table
             int y = 110; // position de départ en Y
             int spacing = y + 30; // espace entre les contrôles
 
-            foreach (DataRow drMission in MesDatas.DsGlobal.Tables["Mission"].Rows)     
+            foreach (DataRow drMission in MesDatas.DsGlobal.Tables["Mission"].Rows)
             {
                 int id = Convert.ToInt32(drMission["id"]);
 
                 String type = "";
                 foreach (DataRow drNatureSinistre in MesDatas.DsGlobal.Tables["NatureSinistre"].Rows)
                 {
-                    if (Convert.ToInt32(drNatureSinistre["id"])==id)
+                    if (Convert.ToInt32(drNatureSinistre["id"]) == id)
                     {
                         type = drNatureSinistre["libelle"].ToString();
                     }
@@ -81,7 +88,7 @@ namespace SAE_A21D21_pompiers
                 String caserne = "";
                 foreach (DataRow drCaserne in MesDatas.DsGlobal.Tables["Caserne"].Rows)
                 {
-                    if (Convert.ToInt32(drCaserne["id"]) == Convert.ToInt32(drMission["idCaserne"]));
+                    if (Convert.ToInt32(drCaserne["id"]) == Convert.ToInt32(drMission["idCaserne"])) ;
                     {
                         caserne = drCaserne["nom"].ToString();
                     }
@@ -94,6 +101,22 @@ namespace SAE_A21D21_pompiers
                 pnlTableauDeBord.Controls.Add(mission);
             }
             pnlTableauDeBord.Show();
+        }
+        private void chargerMission()
+        {
+            try
+            {
+                MesDatas.DsGlobal.Tables["Mission"].Clear();
+                string sql = "select * from Mission";
+                SQLiteDataAdapter daMission = new SQLiteDataAdapter(sql, cx);
+                daMission.Fill(MesDatas.DsGlobal, "Mission");
+                
+            }
+            catch (SQLiteException err)
+            {
+                MessageBox.Show(err.Message);
+            }
+           
         }
 
 
@@ -128,10 +151,91 @@ namespace SAE_A21D21_pompiers
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            AjouterMission ajt = new AjouterMission(5, DateTime.Now.Date);
+            int id = 5;
+            AjouterMission ajt = new AjouterMission(id, DateTime.Now.ToString("dd/MM/yyyy"));
             if (ajt.ShowDialog() == DialogResult.OK)
             {
+                SQLiteTransaction majBase = cx.BeginTransaction();
 
+                try
+                {
+                    chargerMission();
+                    // === 1. Mission ===
+                    SQLiteDataAdapter daMission = new SQLiteDataAdapter("SELECT * FROM Mission", cx);
+                    daMission.SelectCommand.Transaction = majBase;
+                    SQLiteCommandBuilder cbMission = new SQLiteCommandBuilder(daMission);
+                    daMission.UpdateCommand = cbMission.GetUpdateCommand();
+                    daMission.InsertCommand = cbMission.GetInsertCommand();
+                    daMission.DeleteCommand = cbMission.GetDeleteCommand();
+
+                    daMission.Update(MesDatas.DsGlobal.Tables["Mission"]);
+
+                    // === 2. Pompier ===
+                    SQLiteDataAdapter daPompier = new SQLiteDataAdapter("SELECT * FROM Pompier", cx);
+                    daPompier.SelectCommand.Transaction = majBase;
+                    SQLiteCommandBuilder cbPompier = new SQLiteCommandBuilder(daPompier);
+                    daPompier.UpdateCommand = cbPompier.GetUpdateCommand();
+                    daPompier.InsertCommand = cbPompier.GetInsertCommand();
+                    daPompier.DeleteCommand = cbPompier.GetDeleteCommand();
+
+                    daPompier.Update(MesDatas.DsGlobal.Tables["Pompier"]);
+
+                    // === 3. Mobiliser ===
+                    SQLiteDataAdapter daMobiliser = new SQLiteDataAdapter("SELECT * FROM Mobiliser", cx);
+                    daMobiliser.SelectCommand.Transaction = majBase;
+                    SQLiteCommandBuilder cbMobiliser = new SQLiteCommandBuilder(daMobiliser);
+                    daMobiliser.UpdateCommand = cbMobiliser.GetUpdateCommand();
+                    daMobiliser.InsertCommand = cbMobiliser.GetInsertCommand();
+                    daMobiliser.DeleteCommand = cbMobiliser.GetDeleteCommand();
+
+                    daMobiliser.Update(MesDatas.DsGlobal.Tables["Mobiliser"]);
+
+                    // === 4. PartirAvec ===
+                    SQLiteDataAdapter daPartirAvec = new SQLiteDataAdapter("SELECT * FROM PartirAvec", cx);
+                    daPartirAvec.SelectCommand.Transaction = majBase;
+                    SQLiteCommandBuilder cbPartirAvec = new SQLiteCommandBuilder(daPartirAvec);
+                    daPartirAvec.UpdateCommand = cbPartirAvec.GetUpdateCommand();
+                    daPartirAvec.InsertCommand = cbPartirAvec.GetInsertCommand();
+                    daPartirAvec.DeleteCommand = cbPartirAvec.GetDeleteCommand();
+
+                    daPartirAvec.Update(MesDatas.DsGlobal.Tables["PartirAvec"]);
+
+                    SQLiteDataAdapter daCaserne = new SQLiteDataAdapter("select * from Caserne", cx);
+                    daCaserne.SelectCommand.Transaction = majBase;
+                    SQLiteCommandBuilder cbCaserne = new SQLiteCommandBuilder(daCaserne);
+                    daCaserne.UpdateCommand = cbCaserne.GetUpdateCommand();
+                    daCaserne.InsertCommand = cbCaserne.GetInsertCommand();
+                    daCaserne.DeleteCommand = cbCaserne.GetDeleteCommand();
+
+                    daCaserne.Update(MesDatas.DsGlobal.Tables["Caserne"]);
+
+                    SQLiteDataAdapter daNatureSinistre = new SQLiteDataAdapter("select * from NatureSinistre", cx);
+                    daNatureSinistre.SelectCommand.Transaction = majBase;
+                    SQLiteCommandBuilder cbNatureSinistre = new SQLiteCommandBuilder(daNatureSinistre);
+                    daNatureSinistre.UpdateCommand = cbNatureSinistre.GetUpdateCommand();
+                    daNatureSinistre.InsertCommand = cbNatureSinistre.GetInsertCommand();
+                    daNatureSinistre.DeleteCommand = cbNatureSinistre.GetDeleteCommand();
+
+                    daNatureSinistre.Update(MesDatas.DsGlobal.Tables["NatureSinistre"]);
+
+
+
+                    // ✅ Tout s'est bien passé : on valide
+                    majBase.Commit();
+                    MessageBox.Show("Toutes les données ont été mises à jour avec succès !");
+                    //enfin on met a jour les mission dans le dataset en ajoutant la nouvelle et en mettant a jour le panel
+                   
+                    afficherMission();
+                }
+                catch (Exception ex)
+                {
+                    // ❌ Une erreur : on annule tout
+                    majBase.Rollback();
+                    MessageBox.Show("Erreur lors de la mise à jour : " + ex.Message);
+                }
+
+                
+                
             }
         }
     }

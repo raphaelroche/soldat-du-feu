@@ -15,7 +15,7 @@ namespace SAE_A21D21_pompiers1
     public partial class AjouterMission : Form
     {
         private int numeroMission;
-        private DateTime date;
+        private string date;
         private DataTable dtSinistres;
         private DataTable dtCasernes;
         private DataTable dtTypeEngin;
@@ -26,9 +26,11 @@ namespace SAE_A21D21_pompiers1
         private DataTable dtPasser;
         private DataTable dtAffectation;
         private DataTable dtPompier;
+        private DataTable dtNatureSinistre;
+        private DataTable dtEngin;
 
 
-        public AjouterMission(int numeroMission, DateTime date)
+        public AjouterMission(int numeroMission, string date)
         {
             InitializeComponent();
 
@@ -64,6 +66,33 @@ namespace SAE_A21D21_pompiers1
 
 
 
+        }
+
+
+        public string getRue()
+        {
+            return txtRue.Text; 
+        }
+        public string getCodePostal()
+        {
+
+         return txtCodePostal.Text; 
+        }
+        public string getMotif()
+        {
+            return txtMotif.Text;
+        }
+        public string getVille()
+        {
+            return txtVille.Text;
+        }
+        public string getNature()
+        {
+            return cboNatureSinistre.SelectedValue.ToString();
+        }
+        public string getCaserne()
+        {
+            return cboCaserne.SelectedValue.ToString();
         }
 
         private void txtRue_KeyPress(object sender, KeyPressEventArgs e)
@@ -118,12 +147,25 @@ namespace SAE_A21D21_pompiers1
         private void btnFermer_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+            this.Close();
 
         }
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            DataRow nouvelleMission = dtMission.NewRow();
+            nouvelleMission["motifAppel"] = txtMotif.Text;
+            nouvelleMission["adresse"] = txtRue.Text;
+            nouvelleMission["cp"] = txtCodePostal.Text;
+            nouvelleMission["ville"] = txtVille.Text;
+            nouvelleMission["dateHeureDepart"] = date;
+            nouvelleMission["id"] = numeroMission;
+            dtMission.Rows.Add(nouvelleMission);
+
+            
+
             this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btnEquipe_Click(object sender, EventArgs e)
@@ -168,8 +210,42 @@ namespace SAE_A21D21_pompiers1
                 dtPasser = MesDatas.DsGlobal.Tables["Passer"];
                 dtAffectation = MesDatas.DsGlobal.Tables["Affectation"];
                 dtPompier = MesDatas.DsGlobal.Tables["Pompier"];
+                dtNatureSinistre = MesDatas.DsGlobal.Tables["NatureSinistre"];
+                dtEngin = MesDatas.DsGlobal.Tables["Engin"];
 
-                
+                int totalPompiersRequis = 0;
+                foreach (DataGridViewRow row in dgvEngin.Rows)
+                {
+                    if (row.Cells["equipage"].Value != DBNull.Value)
+                    {
+                        totalPompiersRequis += Convert.ToInt32(row.Cells["equipage"].Value);
+                    }
+                }
+                int idCaserne = Convert.ToInt32(cboCaserne.SelectedValue);
+                DataRow[] affectations = dtAffectation.Select($"idCaserne = {idCaserne}");
+
+                List<DataRow> pompiersDisponibles = new List<DataRow>();
+
+                foreach (DataRow aff in affectations)
+                {
+                    int matricule = Convert.ToInt32(aff["matriculePompier"]);
+                    DataRow[] pompier = dtPompier.Select($"matricule = {matricule} AND enMission = 0 AND enConge = 0");
+                    if (pompier.Length > 0)
+                        pompiersDisponibles.Add(pompier[0]);
+                }
+                DataTable dtPompiersAffectes = new DataTable();
+                dtPompiersAffectes.Columns.Add("Matricule", typeof(int));
+                dtPompiersAffectes.Columns.Add("Nom", typeof(string));
+                dtPompiersAffectes.Columns.Add("Prenom", typeof(string));
+                dtPompiersAffectes.Columns.Add("Grade", typeof(string));
+
+                for (int i = 0; i < Math.Min(totalPompiersRequis, pompiersDisponibles.Count); i++)
+                {
+                    DataRow p = pompiersDisponibles[i];
+                    dtPompiersAffectes.Rows.Add(p["matricule"], p["nom"], p["prenom"], p["codeGrade"]);
+                }
+
+                dgvPompiers.DataSource = dtPompiersAffectes;
 
 
             }
