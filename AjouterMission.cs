@@ -98,7 +98,7 @@ namespace SAE_A21D21_pompiers1
         private void txtRue_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar)))
+            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
             {
                 e.Handled = false;
             }
@@ -107,7 +107,7 @@ namespace SAE_A21D21_pompiers1
         private void txtCodePostal_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsDigit(e.KeyChar) || (char.IsControl(e.KeyChar)))
+            if (char.IsDigit(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
             {
                 e.Handled = false;
             }
@@ -116,7 +116,7 @@ namespace SAE_A21D21_pompiers1
         private void txtVille_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar)))
+            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
             {
                 e.Handled = false;
             }
@@ -125,7 +125,7 @@ namespace SAE_A21D21_pompiers1
         private void txtMotif_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar)))
+            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
             {
                 e.Handled = false;
             }
@@ -160,7 +160,11 @@ namespace SAE_A21D21_pompiers1
             nouvelleMission["ville"] = txtVille.Text;
             nouvelleMission["dateHeureDepart"] = date;
             nouvelleMission["id"] = numeroMission;
+            nouvelleMission["idCaserne"] = Convert.ToInt32(cboCaserne.SelectedValue);
+            nouvelleMission["idNatureSinistre"] = Convert.ToInt32(cboNatureSinistre.SelectedValue);
             dtMission.Rows.Add(nouvelleMission);
+            
+
 
             
 
