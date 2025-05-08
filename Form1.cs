@@ -77,10 +77,10 @@ namespace SAE_A21D21_pompiers
                 String type = "";
                 foreach (DataRow drNatureSinistre in MesDatas.DsGlobal.Tables["NatureSinistre"].Rows)
                 {
-                    if (Convert.ToInt32(drNatureSinistre["id"]) == id)
-                    {
+
+                    if (Convert.ToInt32(drNatureSinistre["id"]) == Convert.ToInt32(drMission["idNatureSinistre"]))
                         type = drNatureSinistre["libelle"].ToString();
-                    }
+                    
                 }
 
                 String date = drMission["dateHeureDepart"].ToString();
@@ -88,7 +88,7 @@ namespace SAE_A21D21_pompiers
                 String caserne = "";
                 foreach (DataRow drCaserne in MesDatas.DsGlobal.Tables["Caserne"].Rows)
                 {
-                    if (Convert.ToInt32(drCaserne["id"]) == Convert.ToInt32(drMission["idCaserne"])) ;
+                    if (Convert.ToInt32(drCaserne["id"]) == Convert.ToInt32(drMission["idCaserne"]))
                     {
                         caserne = drCaserne["nom"].ToString();
                     }
@@ -151,89 +151,20 @@ namespace SAE_A21D21_pompiers
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            int id = 5;
+            int maxId = 0;
+            foreach (DataRow row in MesDatas.DsGlobal.Tables["Mission"].Rows)
+            {
+                int currentId = Convert.ToInt32(row["id"]);
+                if (currentId > maxId)
+                    maxId = currentId;
+            }
+            int id = maxId + 1;
             AjouterMission ajt = new AjouterMission(id, DateTime.Now.ToString("dd/MM/yyyy"));
             if (ajt.ShowDialog() == DialogResult.OK)
             {
                 SQLiteTransaction majBase = cx.BeginTransaction();
-
-                try
-                {
-                    chargerMission();
-                    // === 1. Mission ===
-                    SQLiteDataAdapter daMission = new SQLiteDataAdapter("SELECT * FROM Mission", cx);
-                    daMission.SelectCommand.Transaction = majBase;
-                    SQLiteCommandBuilder cbMission = new SQLiteCommandBuilder(daMission);
-                    daMission.UpdateCommand = cbMission.GetUpdateCommand();
-                    daMission.InsertCommand = cbMission.GetInsertCommand();
-                    daMission.DeleteCommand = cbMission.GetDeleteCommand();
-
-                    daMission.Update(MesDatas.DsGlobal.Tables["Mission"]);
-
-                    // === 2. Pompier ===
-                    SQLiteDataAdapter daPompier = new SQLiteDataAdapter("SELECT * FROM Pompier", cx);
-                    daPompier.SelectCommand.Transaction = majBase;
-                    SQLiteCommandBuilder cbPompier = new SQLiteCommandBuilder(daPompier);
-                    daPompier.UpdateCommand = cbPompier.GetUpdateCommand();
-                    daPompier.InsertCommand = cbPompier.GetInsertCommand();
-                    daPompier.DeleteCommand = cbPompier.GetDeleteCommand();
-
-                    daPompier.Update(MesDatas.DsGlobal.Tables["Pompier"]);
-
-                    // === 3. Mobiliser ===
-                    SQLiteDataAdapter daMobiliser = new SQLiteDataAdapter("SELECT * FROM Mobiliser", cx);
-                    daMobiliser.SelectCommand.Transaction = majBase;
-                    SQLiteCommandBuilder cbMobiliser = new SQLiteCommandBuilder(daMobiliser);
-                    daMobiliser.UpdateCommand = cbMobiliser.GetUpdateCommand();
-                    daMobiliser.InsertCommand = cbMobiliser.GetInsertCommand();
-                    daMobiliser.DeleteCommand = cbMobiliser.GetDeleteCommand();
-
-                    daMobiliser.Update(MesDatas.DsGlobal.Tables["Mobiliser"]);
-
-                    // === 4. PartirAvec ===
-                    SQLiteDataAdapter daPartirAvec = new SQLiteDataAdapter("SELECT * FROM PartirAvec", cx);
-                    daPartirAvec.SelectCommand.Transaction = majBase;
-                    SQLiteCommandBuilder cbPartirAvec = new SQLiteCommandBuilder(daPartirAvec);
-                    daPartirAvec.UpdateCommand = cbPartirAvec.GetUpdateCommand();
-                    daPartirAvec.InsertCommand = cbPartirAvec.GetInsertCommand();
-                    daPartirAvec.DeleteCommand = cbPartirAvec.GetDeleteCommand();
-
-                    daPartirAvec.Update(MesDatas.DsGlobal.Tables["PartirAvec"]);
-
-                    SQLiteDataAdapter daCaserne = new SQLiteDataAdapter("select * from Caserne", cx);
-                    daCaserne.SelectCommand.Transaction = majBase;
-                    SQLiteCommandBuilder cbCaserne = new SQLiteCommandBuilder(daCaserne);
-                    daCaserne.UpdateCommand = cbCaserne.GetUpdateCommand();
-                    daCaserne.InsertCommand = cbCaserne.GetInsertCommand();
-                    daCaserne.DeleteCommand = cbCaserne.GetDeleteCommand();
-
-                    daCaserne.Update(MesDatas.DsGlobal.Tables["Caserne"]);
-
-                    SQLiteDataAdapter daNatureSinistre = new SQLiteDataAdapter("select * from NatureSinistre", cx);
-                    daNatureSinistre.SelectCommand.Transaction = majBase;
-                    SQLiteCommandBuilder cbNatureSinistre = new SQLiteCommandBuilder(daNatureSinistre);
-                    daNatureSinistre.UpdateCommand = cbNatureSinistre.GetUpdateCommand();
-                    daNatureSinistre.InsertCommand = cbNatureSinistre.GetInsertCommand();
-                    daNatureSinistre.DeleteCommand = cbNatureSinistre.GetDeleteCommand();
-
-                    daNatureSinistre.Update(MesDatas.DsGlobal.Tables["NatureSinistre"]);
-
-
-
-                    // ✅ Tout s'est bien passé : on valide
-                    majBase.Commit();
-                    MessageBox.Show("Toutes les données ont été mises à jour avec succès !");
-                    //enfin on met a jour les mission dans le dataset en ajoutant la nouvelle et en mettant a jour le panel
-                   
+                    
                     afficherMission();
-                }
-                catch (Exception ex)
-                {
-                    // ❌ Une erreur : on annule tout
-                    majBase.Rollback();
-                    MessageBox.Show("Erreur lors de la mise à jour : " + ex.Message);
-                }
-
                 
                 
             }
