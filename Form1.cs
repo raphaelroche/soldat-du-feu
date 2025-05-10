@@ -102,22 +102,7 @@ namespace SAE_A21D21_pompiers
             }
             pnlTableauDeBord.Show();
         }
-        private void chargerMission()
-        {
-            try
-            {
-                MesDatas.DsGlobal.Tables["Mission"].Clear();
-                string sql = "select * from Mission";
-                SQLiteDataAdapter daMission = new SQLiteDataAdapter(sql, cx);
-                daMission.Fill(MesDatas.DsGlobal, "Mission");
-                
-            }
-            catch (SQLiteException err)
-            {
-                MessageBox.Show(err.Message);
-            }
-           
-        }
+       
 
 
         // Méthode pour dessiner un trait dégradé sur n'importe quel panel
@@ -159,13 +144,11 @@ namespace SAE_A21D21_pompiers
                     maxId = currentId;
             }
             int id = maxId + 1;
-            AjouterMission ajt = new AjouterMission(id, DateTime.Now.ToString("dd/MM/yyyy"));
+            AjouterMission ajt = new AjouterMission(id, DateTime.Now.ToString());
             if (ajt.ShowDialog() == DialogResult.OK)
             {
-                SQLiteTransaction majBase = cx.BeginTransaction();
-                    
-                    afficherMission();
-                
+
+                afficherMission();
                 
             }
         }
