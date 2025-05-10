@@ -28,6 +28,7 @@ namespace SAE_A21D21_pompiers1
         private DataTable dtPompier;
         private DataTable dtNatureSinistre;
         private DataTable dtEngin;
+        private DataTable dtEmbarquer;
 
 
         public AjouterMission(int numeroMission, string date)
@@ -163,10 +164,38 @@ namespace SAE_A21D21_pompiers1
             nouvelleMission["idCaserne"] = Convert.ToInt32(cboCaserne.SelectedValue);
             nouvelleMission["idNatureSinistre"] = Convert.ToInt32(cboNatureSinistre.SelectedValue);
             dtMission.Rows.Add(nouvelleMission);
-            
+
+            //mettre les pompiers en mission dans le dataset
+            foreach (DataGridViewRow row in dgvPompiers.Rows)
+            {
+                if (row.Cells["Matricule"].Value != null)
+                {
+                    int matricule = Convert.ToInt32(row.Cells["Matricule"].Value);
+                    DataRow[] pompierRow = dtPompier.Select($"matricule = {matricule}");
+                    if (pompierRow.Length > 0)
+                    {
+                        pompierRow[0]["enMission"] = 1;
+                    }
+                }
+            }
+
+            //metre les engins en mission dans le dataset
+            foreach (DataGridViewRow row in dgvEngin.Rows)
+            {
+                if (row.Cells["code"].Value != null)
+                {
+                    string codeEngin = row.Cells["code"].Value.ToString();
+                    DataRow[] enginRow = dtEngin.Select($"codeTypeEngin = '{codeEngin}'");
+                    if (enginRow.Length > 0)
+                    {
+                        enginRow[0]["enMission"] = 1;
+                    }
+                }
+            }
 
 
-            
+
+
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -216,6 +245,7 @@ namespace SAE_A21D21_pompiers1
                 dtPompier = MesDatas.DsGlobal.Tables["Pompier"];
                 dtNatureSinistre = MesDatas.DsGlobal.Tables["NatureSinistre"];
                 dtEngin = MesDatas.DsGlobal.Tables["Engin"];
+                
 
                 int totalPompiersRequis = 0;
                 foreach (DataGridViewRow row in dgvEngin.Rows)
@@ -276,6 +306,7 @@ namespace SAE_A21D21_pompiers1
                 dtPompiersAffectes.Columns.Add("Nom", typeof(string));
                 dtPompiersAffectes.Columns.Add("Prenom", typeof(string));
                 dtPompiersAffectes.Columns.Add("Grade", typeof(string));
+               
 
                 for (int i = 0; i < Math.Min(totalPompiersRequis, pompierQualifies.Count); i++)
                 {

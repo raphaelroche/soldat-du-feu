@@ -28,4 +28,5 @@ U:\applications\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.csproj.Genera
 U:\applications\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.csproj.CoreCompileInputs.cache
 U:\applications\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.exe
 U:\applications\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.pdb
-U:\applications\SAE_A21D21_pompiers\obj\Debug\SAE_A21D.DF9E07F1.Up2Date
+U:\applications\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.csproj.SuggestedBindingRedirects.cache
+U:\applications\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.csproj.CopyComplete
