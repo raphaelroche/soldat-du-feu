@@ -1,4 +1,4 @@
-﻿using SAE_A21D21_pompiers;
+using SAE_A21D21_pompiers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -230,12 +230,46 @@ namespace SAE_A21D21_pompiers1
 
                 List<DataRow> pompiersDisponibles = new List<DataRow>();
 
+                dtEmbarquer = MesDatas.DsGlobal.Tables["Embarquer"];
+
+                List<DataRow> pompierQualifies = new List<DataRow>();
+
                 foreach (DataRow aff in affectations)
                 {
                     int matricule = Convert.ToInt32(aff["matriculePompier"]);
                     DataRow[] pompier = dtPompier.Select($"matricule = {matricule} AND enMission = 0 AND enConge = 0");
-                    if (pompier.Length > 0)
-                        pompiersDisponibles.Add(pompier[0]);
+                    if (pompier.Length == 0) continue;
+
+                    bool habilite = false;
+
+                    foreach (DataGridViewRow enginRow in dgvEngin.Rows)
+                    {
+                        if (enginRow.IsNewRow || enginRow.Cells["code"].Value == DBNull.Value) continue;
+
+                        string codeTypeEngin = enginRow.Cells["code"].Value.ToString();
+
+                        // Habilitations nécessaires à ce type d'engin
+                        DataRow[] habilitationsRequises = dtEmbarquer.Select($"codeTypeEngin = '{codeTypeEngin}'");
+
+                        foreach (DataRow h in habilitationsRequises)
+                        {
+                            int idHabilitation = Convert.ToInt32(h["idHabilitation"]);
+                            DataRow[] habilitationsPompier = dtPasser.Select($"matriculePompier = {matricule} AND idHabilitation={idHabilitation}");
+
+                            if (habilitationsPompier.Length > 0)
+                            {
+                                habilite = true;
+                                break;
+                            }
+                        }
+
+                        if (habilite) break;
+                    }
+
+                    if (habilite)
+                    {
+                        pompierQualifies.Add(pompier[0]);
+                    }
                 }
                 DataTable dtPompiersAffectes = new DataTable();
                 dtPompiersAffectes.Columns.Add("Matricule", typeof(int));
@@ -243,9 +277,9 @@ namespace SAE_A21D21_pompiers1
                 dtPompiersAffectes.Columns.Add("Prenom", typeof(string));
                 dtPompiersAffectes.Columns.Add("Grade", typeof(string));
 
-                for (int i = 0; i < Math.Min(totalPompiersRequis, pompiersDisponibles.Count); i++)
+                for (int i = 0; i < Math.Min(totalPompiersRequis, pompierQualifies.Count); i++)
                 {
-                    DataRow p = pompiersDisponibles[i];
+                    DataRow p = pompierQualifies[i];
                     dtPompiersAffectes.Rows.Add(p["matricule"], p["nom"], p["prenom"], p["codeGrade"]);
                 }
 
