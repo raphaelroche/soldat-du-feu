@@ -78,7 +78,7 @@ namespace SAE_A21D21_pompiers
             {
                 int id = Convert.ToInt32(drMission["id"]);
 
-                String type = "";
+                string type = "";
                 foreach (DataRow drNatureSinistre in MesDatas.DsGlobal.Tables["NatureSinistre"].Rows)
                 {
 
@@ -87,9 +87,11 @@ namespace SAE_A21D21_pompiers
                     
                 }
 
-                String date = drMission["dateHeureDepart"].ToString();
+                string dateDepart = drMission["dateHeureDepart"].ToString();
+                string dateRetour = drMission["dateHeureRetour"].ToString();
 
-                String caserne = "";
+
+                string caserne = "";
                 foreach (DataRow drCaserne in MesDatas.DsGlobal.Tables["Caserne"].Rows)
                 {
                     if (Convert.ToInt32(drCaserne["id"]) == Convert.ToInt32(drMission["idCaserne"]))
@@ -98,8 +100,13 @@ namespace SAE_A21D21_pompiers
                     }
                 }
 
-                String desc = drMission["motifAppel"].ToString();
-                Mission mission = new Mission(id, type, date, caserne, desc);
+                string adresse = drMission["adresse"].ToString() + " " + drMission["cp"].ToString() + " " + drMission["ville"].ToString();
+
+                string desc = drMission["motifAppel"].ToString();
+                string cr = drMission["compteRendu"].ToString();
+
+
+                Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse, cr);
                 mission.Location = new System.Drawing.Point(50, y);
                 y += spacing;
                 pnlTableauDeBord.Controls.Add(mission);
