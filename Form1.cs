@@ -38,6 +38,10 @@ namespace SAE_A21D21_pompiers
             Image imgExit = Image.FromFile("divers/exit.jpg");
             btnExit.BackgroundImage = new Bitmap(imgExit, new Size(btnExit.Width, btnExit.Height)); // redimensionne l'image à la taille du bouton btnExit
             btnExit.BackgroundImageLayout = ImageLayout.Stretch;
+
+            Image imgMission = Image.FromFile("divers/mission.jpg");
+            btnAjouter.BackgroundImage = new Bitmap(imgMission, new Size(btnAjouter.Width, btnAjouter.Height)); // redimensionne l'image à la taille du bouton btnExit
+            btnAjouter.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void Form1_Load(object sender, EventArgs e)
