@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAE_A21D21_pompiers1", "SAE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UC_mission", "UC_mission\UC_mission.csproj", "{1ACD5AD3-47DA-49BA-AF3C-97614F6FB953}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UC_EtatEngins", "..\UC_EtatEngins\UC_EtatEngins.csproj", "{92E036BA-93A2-4365-84A2-81BF1114444C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1ACD5AD3-47DA-49BA-AF3C-97614F6FB953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ACD5AD3-47DA-49BA-AF3C-97614F6FB953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ACD5AD3-47DA-49BA-AF3C-97614F6FB953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92E036BA-93A2-4365-84A2-81BF1114444C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E036BA-93A2-4365-84A2-81BF1114444C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E036BA-93A2-4365-84A2-81BF1114444C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E036BA-93A2-4365-84A2-81BF1114444C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

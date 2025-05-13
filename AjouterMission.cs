@@ -45,7 +45,6 @@ namespace SAE_A21D21_pompiers1
             dtPompier = MesDatas.DsGlobal.Tables["Pompier"];
             dtNatureSinistre = MesDatas.DsGlobal.Tables["NatureSinistre"];
             dtEngin = MesDatas.DsGlobal.Tables["Engin"];
-
         }
 
 

@@ -68,9 +68,11 @@
             this.grpDataGridView.Controls.Add(this.lblEngin);
             this.grpDataGridView.Controls.Add(this.lblPompiers);
             this.grpDataGridView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.grpDataGridView.Location = new System.Drawing.Point(81, 411);
+            this.grpDataGridView.Location = new System.Drawing.Point(108, 506);
+            this.grpDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpDataGridView.Name = "grpDataGridView";
-            this.grpDataGridView.Size = new System.Drawing.Size(760, 291);
+            this.grpDataGridView.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDataGridView.Size = new System.Drawing.Size(1013, 358);
             this.grpDataGridView.TabIndex = 21;
             this.grpDataGridView.TabStop = false;
             this.grpDataGridView.Text = "Mobilisation des engins et des pompiers";
@@ -78,26 +80,31 @@
             // dgvPompiers
             // 
             this.dgvPompiers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPompiers.Location = new System.Drawing.Point(397, 88);
+            this.dgvPompiers.Location = new System.Drawing.Point(529, 108);
+            this.dgvPompiers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvPompiers.Name = "dgvPompiers";
-            this.dgvPompiers.Size = new System.Drawing.Size(332, 183);
+            this.dgvPompiers.RowHeadersWidth = 51;
+            this.dgvPompiers.Size = new System.Drawing.Size(443, 225);
             this.dgvPompiers.TabIndex = 4;
             // 
             // dgvEngin
             // 
             this.dgvEngin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEngin.Location = new System.Drawing.Point(22, 88);
+            this.dgvEngin.Location = new System.Drawing.Point(29, 108);
+            this.dgvEngin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvEngin.Name = "dgvEngin";
-            this.dgvEngin.Size = new System.Drawing.Size(334, 183);
+            this.dgvEngin.RowHeadersWidth = 51;
+            this.dgvEngin.Size = new System.Drawing.Size(445, 225);
             this.dgvEngin.TabIndex = 3;
             // 
             // lblEngin
             // 
             this.lblEngin.AutoSize = true;
             this.lblEngin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblEngin.Location = new System.Drawing.Point(108, 58);
+            this.lblEngin.Location = new System.Drawing.Point(144, 71);
+            this.lblEngin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEngin.Name = "lblEngin";
-            this.lblEngin.Size = new System.Drawing.Size(113, 17);
+            this.lblEngin.Size = new System.Drawing.Size(136, 20);
             this.lblEngin.TabIndex = 2;
             this.lblEngin.Text = "Engins mobilisés";
             // 
@@ -105,9 +112,10 @@
             // 
             this.lblPompiers.AutoSize = true;
             this.lblPompiers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblPompiers.Location = new System.Drawing.Point(483, 49);
+            this.lblPompiers.Location = new System.Drawing.Point(644, 60);
+            this.lblPompiers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompiers.Name = "lblPompiers";
-            this.lblPompiers.Size = new System.Drawing.Size(129, 17);
+            this.lblPompiers.Size = new System.Drawing.Size(156, 20);
             this.lblPompiers.TabIndex = 1;
             this.lblPompiers.Text = "Pompiers mobilisés";
             // 
@@ -115,9 +123,10 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblDate.Location = new System.Drawing.Point(415, 36);
+            this.lblDate.Location = new System.Drawing.Point(553, 44);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(106, 17);
+            this.lblDate.Size = new System.Drawing.Size(126, 20);
             this.lblDate.TabIndex = 20;
             this.lblDate.Text = "Declenchée le :";
             // 
@@ -125,9 +134,10 @@
             // 
             this.lblIdMIssion.AutoSize = true;
             this.lblIdMIssion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblIdMIssion.Location = new System.Drawing.Point(100, 36);
+            this.lblIdMIssion.Location = new System.Drawing.Point(133, 44);
+            this.lblIdMIssion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIdMIssion.Name = "lblIdMIssion";
-            this.lblIdMIssion.Size = new System.Drawing.Size(85, 17);
+            this.lblIdMIssion.Size = new System.Drawing.Size(103, 20);
             this.lblIdMIssion.TabIndex = 19;
             this.lblIdMIssion.Text = "Mission n° : ";
             // 
@@ -140,9 +150,11 @@
             this.grpDecision.Controls.Add(this.lblCaserne);
             this.grpDecision.Controls.Add(this.lblNatureSinistre);
             this.grpDecision.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.grpDecision.Location = new System.Drawing.Point(81, 260);
+            this.grpDecision.Location = new System.Drawing.Point(108, 320);
+            this.grpDecision.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpDecision.Name = "grpDecision";
-            this.grpDecision.Size = new System.Drawing.Size(760, 129);
+            this.grpDecision.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDecision.Size = new System.Drawing.Size(1013, 159);
             this.grpDecision.TabIndex = 18;
             this.grpDecision.TabStop = false;
             this.grpDecision.Text = "Decision du regulateur";
@@ -151,25 +163,28 @@
             // 
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(521, 40);
+            this.cboCaserne.Location = new System.Drawing.Point(695, 49);
+            this.cboCaserne.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(208, 24);
+            this.cboCaserne.Size = new System.Drawing.Size(276, 28);
             this.cboCaserne.TabIndex = 15;
             // 
             // cboNatureSinistre
             // 
             this.cboNatureSinistre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNatureSinistre.FormattingEnabled = true;
-            this.cboNatureSinistre.Location = new System.Drawing.Point(145, 40);
+            this.cboNatureSinistre.Location = new System.Drawing.Point(193, 49);
+            this.cboNatureSinistre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboNatureSinistre.Name = "cboNatureSinistre";
-            this.cboNatureSinistre.Size = new System.Drawing.Size(193, 24);
+            this.cboNatureSinistre.Size = new System.Drawing.Size(256, 28);
             this.cboNatureSinistre.TabIndex = 14;
             // 
             // btnEquipe
             // 
-            this.btnEquipe.Location = new System.Drawing.Point(589, 90);
+            this.btnEquipe.Location = new System.Drawing.Point(785, 111);
+            this.btnEquipe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEquipe.Name = "btnEquipe";
-            this.btnEquipe.Size = new System.Drawing.Size(158, 23);
+            this.btnEquipe.Size = new System.Drawing.Size(211, 28);
             this.btnEquipe.TabIndex = 13;
             this.btnEquipe.Text = "Constituer l\'equipe";
             this.btnEquipe.UseVisualStyleBackColor = true;
@@ -177,9 +192,10 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(486, 90);
+            this.btnAnnuler.Location = new System.Drawing.Point(648, 111);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(97, 23);
+            this.btnAnnuler.Size = new System.Drawing.Size(129, 28);
             this.btnAnnuler.TabIndex = 12;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
@@ -189,9 +205,10 @@
             // 
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblCaserne.Location = new System.Drawing.Point(367, 43);
+            this.lblCaserne.Location = new System.Drawing.Point(489, 53);
+            this.lblCaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(133, 17);
+            this.lblCaserne.Size = new System.Drawing.Size(159, 20);
             this.lblCaserne.TabIndex = 11;
             this.lblCaserne.Text = "Caserne a mobiliser";
             // 
@@ -199,9 +216,10 @@
             // 
             this.lblNatureSinistre.AutoSize = true;
             this.lblNatureSinistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblNatureSinistre.Location = new System.Drawing.Point(19, 40);
+            this.lblNatureSinistre.Location = new System.Drawing.Point(25, 49);
+            this.lblNatureSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNatureSinistre.Name = "lblNatureSinistre";
-            this.lblNatureSinistre.Size = new System.Drawing.Size(120, 17);
+            this.lblNatureSinistre.Size = new System.Drawing.Size(142, 20);
             this.lblNatureSinistre.TabIndex = 9;
             this.lblNatureSinistre.Text = "Nature du sinistre";
             // 
@@ -217,9 +235,11 @@
             this.grpInfo.Controls.Add(this.txtMotif);
             this.grpInfo.Controls.Add(this.lblMotif);
             this.grpInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.grpInfo.Location = new System.Drawing.Point(81, 71);
+            this.grpInfo.Location = new System.Drawing.Point(108, 87);
+            this.grpInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpInfo.Name = "grpInfo";
-            this.grpInfo.Size = new System.Drawing.Size(760, 183);
+            this.grpInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpInfo.Size = new System.Drawing.Size(1013, 225);
             this.grpInfo.TabIndex = 17;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = "Informations usager";
@@ -228,9 +248,10 @@
             // 
             this.lblAddrSinistre.AutoSize = true;
             this.lblAddrSinistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblAddrSinistre.Location = new System.Drawing.Point(539, 19);
+            this.lblAddrSinistre.Location = new System.Drawing.Point(719, 23);
+            this.lblAddrSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddrSinistre.Name = "lblAddrSinistre";
-            this.lblAddrSinistre.Size = new System.Drawing.Size(111, 17);
+            this.lblAddrSinistre.Size = new System.Drawing.Size(133, 20);
             this.lblAddrSinistre.TabIndex = 8;
             this.lblAddrSinistre.Text = "Adresse Sinistre";
             // 
@@ -238,9 +259,10 @@
             // 
             this.lblVille.AutoSize = true;
             this.lblVille.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblVille.Location = new System.Drawing.Point(356, 122);
+            this.lblVille.Location = new System.Drawing.Point(475, 150);
+            this.lblVille.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVille.Name = "lblVille";
-            this.lblVille.Size = new System.Drawing.Size(34, 17);
+            this.lblVille.Size = new System.Drawing.Size(41, 20);
             this.lblVille.TabIndex = 7;
             this.lblVille.Text = "Ville";
             // 
@@ -248,9 +270,10 @@
             // 
             this.lblRue.AutoSize = true;
             this.lblRue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblRue.Location = new System.Drawing.Point(356, 51);
+            this.lblRue.Location = new System.Drawing.Point(475, 63);
+            this.lblRue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRue.Name = "lblRue";
-            this.lblRue.Size = new System.Drawing.Size(34, 17);
+            this.lblRue.Size = new System.Drawing.Size(39, 20);
             this.lblRue.TabIndex = 6;
             this.lblRue.Text = "Rue";
             // 
@@ -258,42 +281,47 @@
             // 
             this.lblCodePostal.AutoSize = true;
             this.lblCodePostal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblCodePostal.Location = new System.Drawing.Point(356, 83);
+            this.lblCodePostal.Location = new System.Drawing.Point(475, 102);
+            this.lblCodePostal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodePostal.Name = "lblCodePostal";
-            this.lblCodePostal.Size = new System.Drawing.Size(84, 17);
+            this.lblCodePostal.Size = new System.Drawing.Size(100, 20);
             this.lblCodePostal.TabIndex = 5;
             this.lblCodePostal.Text = "Code Postal";
             // 
             // txtCodePostal
             // 
-            this.txtCodePostal.Location = new System.Drawing.Point(450, 83);
+            this.txtCodePostal.Location = new System.Drawing.Point(600, 102);
+            this.txtCodePostal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCodePostal.Name = "txtCodePostal";
-            this.txtCodePostal.Size = new System.Drawing.Size(133, 23);
+            this.txtCodePostal.Size = new System.Drawing.Size(176, 26);
             this.txtCodePostal.TabIndex = 4;
             this.txtCodePostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodePostal_KeyPress);
             // 
             // txtRue
             // 
-            this.txtRue.Location = new System.Drawing.Point(450, 48);
+            this.txtRue.Location = new System.Drawing.Point(600, 59);
+            this.txtRue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRue.Name = "txtRue";
-            this.txtRue.Size = new System.Drawing.Size(239, 23);
+            this.txtRue.Size = new System.Drawing.Size(317, 26);
             this.txtRue.TabIndex = 3;
             this.txtRue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRue_KeyPress);
             // 
             // txtVille
             // 
-            this.txtVille.Location = new System.Drawing.Point(450, 122);
+            this.txtVille.Location = new System.Drawing.Point(600, 150);
+            this.txtVille.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtVille.Name = "txtVille";
-            this.txtVille.Size = new System.Drawing.Size(239, 23);
+            this.txtVille.Size = new System.Drawing.Size(317, 26);
             this.txtVille.TabIndex = 2;
             this.txtVille.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVille_KeyPress);
             // 
             // txtMotif
             // 
-            this.txtMotif.Location = new System.Drawing.Point(80, 38);
+            this.txtMotif.Location = new System.Drawing.Point(107, 47);
+            this.txtMotif.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMotif.Multiline = true;
             this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(184, 107);
+            this.txtMotif.Size = new System.Drawing.Size(244, 131);
             this.txtMotif.TabIndex = 1;
             this.txtMotif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMotif_KeyPress);
             // 
@@ -301,17 +329,19 @@
             // 
             this.lblMotif.AutoSize = true;
             this.lblMotif.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblMotif.Location = new System.Drawing.Point(19, 38);
+            this.lblMotif.Location = new System.Drawing.Point(25, 47);
+            this.lblMotif.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMotif.Name = "lblMotif";
-            this.lblMotif.Size = new System.Drawing.Size(38, 17);
+            this.lblMotif.Size = new System.Drawing.Size(46, 20);
             this.lblMotif.TabIndex = 0;
             this.lblMotif.Text = "Motif";
             // 
             // btnFermer
             // 
-            this.btnFermer.Location = new System.Drawing.Point(758, 723);
+            this.btnFermer.Location = new System.Drawing.Point(1011, 890);
+            this.btnFermer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFermer.Name = "btnFermer";
-            this.btnFermer.Size = new System.Drawing.Size(108, 23);
+            this.btnFermer.Size = new System.Drawing.Size(144, 28);
             this.btnFermer.TabIndex = 22;
             this.btnFermer.Text = "Fermer";
             this.btnFermer.UseVisualStyleBackColor = true;
@@ -319,9 +349,10 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(604, 723);
+            this.btnValider.Location = new System.Drawing.Point(805, 890);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(127, 23);
+            this.btnValider.Size = new System.Drawing.Size(169, 28);
             this.btnValider.TabIndex = 23;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
@@ -329,9 +360,11 @@
             // 
             // AjouterMission
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 805);
+            this.BackgroundImage = global::SAE_A21D21_pompiers1.Properties.Resources.caserne;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1231, 991);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnFermer);
             this.Controls.Add(this.grpDataGridView);
@@ -339,6 +372,7 @@
             this.Controls.Add(this.lblIdMIssion);
             this.Controls.Add(this.grpDecision);
             this.Controls.Add(this.grpInfo);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AjouterMission";
             this.Text = "AjouterMission";
             this.Load += new System.EventHandler(this.AjouterMission_Load);
