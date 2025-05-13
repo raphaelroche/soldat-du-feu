@@ -11,7 +11,6 @@ using System.IO;
 using PdfSharp.Drawing;
 using System.Diagnostics;
 using PdfSharp.Pdf;
-using PdfSharp.Drawing;
 
 namespace UC_mission
 {
@@ -75,6 +74,8 @@ namespace UC_mission
 
             y += 35;
 
+
+            MessageBox.Show(this.m_dateRetour);
             string dateDepart = this.m_dateDepart.Split(' ')[0];
             string heureDepart = this.m_dateDepart.Split(' ')[1];
 
@@ -83,10 +84,16 @@ namespace UC_mission
 
             y += 20;
 
-            string dateRetour = this.m_dateRetour.Split(' ')[0];
-            string heureRetour = this.m_dateRetour.Split(' ')[1];
-
-            gfx.DrawString("Retour le " + dateRetour + " à " + heureRetour, normalFont, XBrushes.Black, new XPoint(x, y));
+            if (m_dateRetour.Length == 0)
+            {
+                gfx.DrawString("Mission toujours en cours.", normalFont, XBrushes.Black, new XPoint(x, y));
+            }
+            else
+            {
+                string dateRetour = this.m_dateRetour.Split(' ')[0];
+                string heureRetour = this.m_dateRetour.Split(' ')[1];
+                gfx.DrawString("Retour le " + dateRetour + " à " + heureRetour, normalFont, XBrushes.Black, new XPoint(x, y));
+            }
 
             y += 20;
 
