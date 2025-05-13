@@ -158,9 +158,7 @@ namespace SAE_A21D21_pompiers
             AjouterMission ajt = new AjouterMission(id, DateTime.Now.ToString());
             if (ajt.ShowDialog() == DialogResult.OK)
             {
-
-                afficherMission();
-                
+                afficherMission();  
             }
         }
     }

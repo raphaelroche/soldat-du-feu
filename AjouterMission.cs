@@ -37,7 +37,6 @@ namespace SAE_A21D21_pompiers1
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // bloque le redisionnement
 
-            this.Size = this.PreferredSize;
 
 
 
@@ -335,6 +334,12 @@ namespace SAE_A21D21_pompiers1
                     }
                 }
             }
+        }
+
+        private void btnFermer_Click_1(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
