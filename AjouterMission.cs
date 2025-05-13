@@ -35,6 +35,12 @@ namespace SAE_A21D21_pompiers1
         {
             InitializeComponent();
 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; // bloque le redisionnement
+
+            this.Size = this.PreferredSize;
+
+
+
             this.numeroMission = numeroMission;
             this.date = date;
             dtMission = MesDatas.DsGlobal.Tables["Mission"];
@@ -52,8 +58,9 @@ namespace SAE_A21D21_pompiers1
         private void AjouterMission_Load(object sender, EventArgs e)
         {
             grpDataGridView.Visible = false;
-            lblIdMIssion.Text = "Mission numéro : " + numeroMission;
-            lblDate.Text = "Déclenchée le : " + date;
+            lblIdMIssion.Text = "Mission numéro : " + numeroMission + 
+                "        " +
+                "Déclenchée le : " + date.Split(' ')[0] + " à " + date.Split(' ')[1];
 
             dtSinistres = MesDatas.DsGlobal.Tables["NatureSinistre"];
 

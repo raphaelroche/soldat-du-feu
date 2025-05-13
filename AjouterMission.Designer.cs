@@ -33,7 +33,6 @@
             this.dgvEngin = new System.Windows.Forms.DataGridView();
             this.lblEngin = new System.Windows.Forms.Label();
             this.lblPompiers = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
             this.lblIdMIssion = new System.Windows.Forms.Label();
             this.grpDecision = new System.Windows.Forms.GroupBox();
             this.cboCaserne = new System.Windows.Forms.ComboBox();
@@ -69,9 +68,9 @@
             this.grpDataGridView.Controls.Add(this.lblPompiers);
             this.grpDataGridView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.grpDataGridView.Location = new System.Drawing.Point(108, 506);
-            this.grpDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.grpDataGridView.Name = "grpDataGridView";
-            this.grpDataGridView.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDataGridView.Padding = new System.Windows.Forms.Padding(4);
             this.grpDataGridView.Size = new System.Drawing.Size(1013, 358);
             this.grpDataGridView.TabIndex = 21;
             this.grpDataGridView.TabStop = false;
@@ -81,7 +80,7 @@
             // 
             this.dgvPompiers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPompiers.Location = new System.Drawing.Point(529, 108);
-            this.dgvPompiers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPompiers.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPompiers.Name = "dgvPompiers";
             this.dgvPompiers.RowHeadersWidth = 51;
             this.dgvPompiers.Size = new System.Drawing.Size(443, 225);
@@ -91,7 +90,7 @@
             // 
             this.dgvEngin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEngin.Location = new System.Drawing.Point(29, 108);
-            this.dgvEngin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEngin.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEngin.Name = "dgvEngin";
             this.dgvEngin.RowHeadersWidth = 51;
             this.dgvEngin.Size = new System.Drawing.Size(445, 225);
@@ -119,25 +118,14 @@
             this.lblPompiers.TabIndex = 1;
             this.lblPompiers.Text = "Pompiers mobilisés";
             // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblDate.Location = new System.Drawing.Point(553, 44);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(126, 20);
-            this.lblDate.TabIndex = 20;
-            this.lblDate.Text = "Declenchée le :";
-            // 
             // lblIdMIssion
             // 
             this.lblIdMIssion.AutoSize = true;
-            this.lblIdMIssion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblIdMIssion.Location = new System.Drawing.Point(133, 44);
+            this.lblIdMIssion.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdMIssion.Location = new System.Drawing.Point(108, 41);
             this.lblIdMIssion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIdMIssion.Name = "lblIdMIssion";
-            this.lblIdMIssion.Size = new System.Drawing.Size(103, 20);
+            this.lblIdMIssion.Size = new System.Drawing.Size(180, 32);
             this.lblIdMIssion.TabIndex = 19;
             this.lblIdMIssion.Text = "Mission n° : ";
             // 
@@ -151,9 +139,9 @@
             this.grpDecision.Controls.Add(this.lblNatureSinistre);
             this.grpDecision.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.grpDecision.Location = new System.Drawing.Point(108, 320);
-            this.grpDecision.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDecision.Margin = new System.Windows.Forms.Padding(4);
             this.grpDecision.Name = "grpDecision";
-            this.grpDecision.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDecision.Padding = new System.Windows.Forms.Padding(4);
             this.grpDecision.Size = new System.Drawing.Size(1013, 159);
             this.grpDecision.TabIndex = 18;
             this.grpDecision.TabStop = false;
@@ -164,7 +152,7 @@
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
             this.cboCaserne.Location = new System.Drawing.Point(695, 49);
-            this.cboCaserne.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCaserne.Margin = new System.Windows.Forms.Padding(4);
             this.cboCaserne.Name = "cboCaserne";
             this.cboCaserne.Size = new System.Drawing.Size(276, 28);
             this.cboCaserne.TabIndex = 15;
@@ -174,7 +162,7 @@
             this.cboNatureSinistre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNatureSinistre.FormattingEnabled = true;
             this.cboNatureSinistre.Location = new System.Drawing.Point(193, 49);
-            this.cboNatureSinistre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboNatureSinistre.Margin = new System.Windows.Forms.Padding(4);
             this.cboNatureSinistre.Name = "cboNatureSinistre";
             this.cboNatureSinistre.Size = new System.Drawing.Size(256, 28);
             this.cboNatureSinistre.TabIndex = 14;
@@ -182,7 +170,7 @@
             // btnEquipe
             // 
             this.btnEquipe.Location = new System.Drawing.Point(785, 111);
-            this.btnEquipe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEquipe.Margin = new System.Windows.Forms.Padding(4);
             this.btnEquipe.Name = "btnEquipe";
             this.btnEquipe.Size = new System.Drawing.Size(211, 28);
             this.btnEquipe.TabIndex = 13;
@@ -193,7 +181,7 @@
             // btnAnnuler
             // 
             this.btnAnnuler.Location = new System.Drawing.Point(648, 111);
-            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(129, 28);
             this.btnAnnuler.TabIndex = 12;
@@ -236,9 +224,9 @@
             this.grpInfo.Controls.Add(this.lblMotif);
             this.grpInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.grpInfo.Location = new System.Drawing.Point(108, 87);
-            this.grpInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpInfo.Margin = new System.Windows.Forms.Padding(4);
             this.grpInfo.Name = "grpInfo";
-            this.grpInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpInfo.Padding = new System.Windows.Forms.Padding(4);
             this.grpInfo.Size = new System.Drawing.Size(1013, 225);
             this.grpInfo.TabIndex = 17;
             this.grpInfo.TabStop = false;
@@ -291,7 +279,7 @@
             // txtCodePostal
             // 
             this.txtCodePostal.Location = new System.Drawing.Point(600, 102);
-            this.txtCodePostal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodePostal.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodePostal.Name = "txtCodePostal";
             this.txtCodePostal.Size = new System.Drawing.Size(176, 26);
             this.txtCodePostal.TabIndex = 4;
@@ -300,7 +288,7 @@
             // txtRue
             // 
             this.txtRue.Location = new System.Drawing.Point(600, 59);
-            this.txtRue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRue.Margin = new System.Windows.Forms.Padding(4);
             this.txtRue.Name = "txtRue";
             this.txtRue.Size = new System.Drawing.Size(317, 26);
             this.txtRue.TabIndex = 3;
@@ -309,7 +297,7 @@
             // txtVille
             // 
             this.txtVille.Location = new System.Drawing.Point(600, 150);
-            this.txtVille.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtVille.Margin = new System.Windows.Forms.Padding(4);
             this.txtVille.Name = "txtVille";
             this.txtVille.Size = new System.Drawing.Size(317, 26);
             this.txtVille.TabIndex = 2;
@@ -318,7 +306,7 @@
             // txtMotif
             // 
             this.txtMotif.Location = new System.Drawing.Point(107, 47);
-            this.txtMotif.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMotif.Margin = new System.Windows.Forms.Padding(4);
             this.txtMotif.Multiline = true;
             this.txtMotif.Name = "txtMotif";
             this.txtMotif.Size = new System.Drawing.Size(244, 131);
@@ -339,7 +327,7 @@
             // btnFermer
             // 
             this.btnFermer.Location = new System.Drawing.Point(1011, 890);
-            this.btnFermer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFermer.Margin = new System.Windows.Forms.Padding(4);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(144, 28);
             this.btnFermer.TabIndex = 22;
@@ -350,7 +338,7 @@
             // btnValider
             // 
             this.btnValider.Location = new System.Drawing.Point(805, 890);
-            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(169, 28);
             this.btnValider.TabIndex = 23;
@@ -362,17 +350,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackgroundImage = global::SAE_A21D21_pompiers1.Properties.Resources.caserne;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1231, 991);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.btnFermer);
             this.Controls.Add(this.grpDataGridView);
-            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblIdMIssion);
             this.Controls.Add(this.grpDecision);
             this.Controls.Add(this.grpInfo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "AjouterMission";
             this.Text = "AjouterMission";
             this.Load += new System.EventHandler(this.AjouterMission_Load);
@@ -396,7 +385,6 @@
         private System.Windows.Forms.DataGridView dgvEngin;
         private System.Windows.Forms.Label lblEngin;
         private System.Windows.Forms.Label lblPompiers;
-        private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblIdMIssion;
         private System.Windows.Forms.GroupBox grpDecision;
         private System.Windows.Forms.ComboBox cboCaserne;
