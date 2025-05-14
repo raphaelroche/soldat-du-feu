@@ -29,54 +29,109 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboMission = new System.Windows.Forms.CheckBox();
+            this.cboPanne = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
-            this.label1.Location = new System.Drawing.Point(122, 58);
+            this.label1.Location = new System.Drawing.Point(58, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 28);
+            this.label1.Size = new System.Drawing.Size(120, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Numero";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // lblNumero
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
-            this.label2.Location = new System.Drawing.Point(122, 111);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 28);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Numero";
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
+            this.lblNumero.Location = new System.Drawing.Point(218, 51);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(48, 33);
+            this.lblNumero.TabIndex = 1;
+            this.lblNumero.Text = "N°";
             // 
-            // label3
+            // lblDate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Schoolbook", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
-            this.label3.Location = new System.Drawing.Point(122, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 28);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Numero";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
+            this.lblDate.Location = new System.Drawing.Point(324, 117);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(78, 33);
+            this.lblDate.TabIndex = 3;
+            this.lblDate.Text = "Date";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
+            this.label4.Location = new System.Drawing.Point(58, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(243, 33);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Date de réception";
+            // 
+            // cboMission
+            // 
+            this.cboMission.AutoSize = true;
+            this.cboMission.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cboMission.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMission.Location = new System.Drawing.Point(64, 256);
+            this.cboMission.Name = "cboMission";
+            this.cboMission.Size = new System.Drawing.Size(206, 37);
+            this.cboMission.TabIndex = 4;
+            this.cboMission.Text = "En mission   ";
+            this.cboMission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboMission.UseVisualStyleBackColor = true;
+            // 
+            // cboPanne
+            // 
+            this.cboPanne.AutoSize = true;
+            this.cboPanne.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cboPanne.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPanne.Location = new System.Drawing.Point(64, 320);
+            this.cboPanne.Name = "cboPanne";
+            this.cboPanne.Size = new System.Drawing.Size(210, 37);
+            this.cboPanne.TabIndex = 5;
+            this.cboPanne.Text = "En panne      ";
+            this.cboPanne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboPanne.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(486, 51);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(264, 175);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.cboPanne);
+            this.Controls.Add(this.cboMission);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblNumero);
             this.Controls.Add(this.label1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(800, 450);
             this.Load += new System.EventHandler(this.UserControl1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,7 +140,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblNumero;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox cboMission;
+        private System.Windows.Forms.CheckBox cboPanne;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
