@@ -98,3 +98,4 @@ C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\obj\Debug\SAE_A21D21_pompier
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\obj\Debug\SAE_A21D.DF9E07F1.Up2Date
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\obj\Debug\SAE_A21D21_pompiers1.exe
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\obj\Debug\SAE_A21D21_pompiers1.pdb
+C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\obj\Debug\SAE_A21D21_pompiers1.GestionPersonnel.resources

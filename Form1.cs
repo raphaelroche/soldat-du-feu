@@ -25,10 +25,8 @@ namespace SAE_A21D21_pompiers
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle; // bloque le redisionnement
 
-            this.ControlBox = true;       // affiche les 3 boutons de la fenêtre windows
-            this.MinimizeBox = true;      // active le bouton minimiser
-            this.MaximizeBox = false;      // désactive le bouton plein ecran
-            pnlMenu.BackColor = Color.FromArgb(200, 0, 0, 255); //change l'opacité du menu            
+            pnlMenu.BackColor = Color.FromArgb(200, 139, 0, 0); //change l'opacité du menu            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,6 +60,10 @@ namespace SAE_A21D21_pompiers
             Image imgMission = Image.FromFile("divers/mission.jpg");
             btnAjouter.BackgroundImage = new Bitmap(imgMission, new Size(btnAjouter.Width, btnAjouter.Height)); // redimensionne l'image à la taille du bouton btnExit
             btnAjouter.BackgroundImageLayout = ImageLayout.Stretch;
+
+            Image imgPersonnel = Image.FromFile("divers/personnel.jpg");
+            btnGestionPersonnel.BackgroundImage = new Bitmap(imgPersonnel, new Size(btnGestionPersonnel.Width, btnGestionPersonnel.Height)); // redimensionne l'image à la taille du bouton btnGestionPersonnel
+            btnGestionPersonnel.BackgroundImageLayout = ImageLayout.Stretch;
 
             afficherMission();
       
@@ -157,6 +159,15 @@ namespace SAE_A21D21_pompiers
             if (ajt.ShowDialog() == DialogResult.OK)
             {
                 afficherMission();  
+            }
+        }
+
+        private void btnGestionPersonnel_Click(object sender, EventArgs e)
+        {
+            GestionPersonnel gp = new GestionPersonnel();
+            if (gp.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("OK");
             }
         }
     }
