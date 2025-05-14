@@ -36,10 +36,14 @@
             this.lblExit = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnGestionPersonnel = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnTDB = new System.Windows.Forms.Button();
+            this.lblTabDB = new System.Windows.Forms.Label();
+            this.lblAjtMission = new System.Windows.Forms.Label();
+            this.lblEtatEngin = new System.Windows.Forms.Label();
+            this.lblGestionPersonnel = new System.Windows.Forms.Label();
             this.pnlTableauDeBord.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
@@ -93,11 +97,15 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.Blue;
+            this.pnlMenu.BackColor = System.Drawing.Color.DarkRed;
+            this.pnlMenu.Controls.Add(this.lblGestionPersonnel);
+            this.pnlMenu.Controls.Add(this.lblEtatEngin);
+            this.pnlMenu.Controls.Add(this.lblAjtMission);
+            this.pnlMenu.Controls.Add(this.lblTabDB);
             this.pnlMenu.Controls.Add(this.lblExit);
             this.pnlMenu.Controls.Add(this.btnExit);
             this.pnlMenu.Controls.Add(this.btnAjouter);
-            this.pnlMenu.Controls.Add(this.button3);
+            this.pnlMenu.Controls.Add(this.btnGestionPersonnel);
             this.pnlMenu.Controls.Add(this.button2);
             this.pnlMenu.Controls.Add(this.button1);
             this.pnlMenu.Controls.Add(this.btnTDB);
@@ -140,14 +148,15 @@
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
-            // button3
+            // btnGestionPersonnel
             // 
-            this.button3.Location = new System.Drawing.Point(29, 359);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 100);
-            this.button3.TabIndex = 3;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnGestionPersonnel.Location = new System.Drawing.Point(29, 359);
+            this.btnGestionPersonnel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGestionPersonnel.Name = "btnGestionPersonnel";
+            this.btnGestionPersonnel.Size = new System.Drawing.Size(109, 100);
+            this.btnGestionPersonnel.TabIndex = 3;
+            this.btnGestionPersonnel.UseVisualStyleBackColor = true;
+            this.btnGestionPersonnel.Click += new System.EventHandler(this.btnGestionPersonnel_Click);
             // 
             // button2
             // 
@@ -176,6 +185,57 @@
             this.btnTDB.TabIndex = 0;
             this.btnTDB.UseVisualStyleBackColor = true;
             // 
+            // lblTabDB
+            // 
+            this.lblTabDB.AutoSize = true;
+            this.lblTabDB.BackColor = System.Drawing.Color.Transparent;
+            this.lblTabDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTabDB.ForeColor = System.Drawing.Color.White;
+            this.lblTabDB.Location = new System.Drawing.Point(144, 70);
+            this.lblTabDB.Name = "lblTabDB";
+            this.lblTabDB.Size = new System.Drawing.Size(157, 25);
+            this.lblTabDB.TabIndex = 7;
+            this.lblTabDB.Text = "Tableau de Bord";
+            // 
+            // lblAjtMission
+            // 
+            this.lblAjtMission.AutoSize = true;
+            this.lblAjtMission.BackColor = System.Drawing.Color.Transparent;
+            this.lblAjtMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAjtMission.ForeColor = System.Drawing.Color.White;
+            this.lblAjtMission.Location = new System.Drawing.Point(166, 162);
+            this.lblAjtMission.Name = "lblAjtMission";
+            this.lblAjtMission.Size = new System.Drawing.Size(112, 50);
+            this.lblAjtMission.TabIndex = 8;
+            this.lblAjtMission.Text = "Ajouter une\r\nmission";
+            this.lblAjtMission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblEtatEngin
+            // 
+            this.lblEtatEngin.AutoSize = true;
+            this.lblEtatEngin.BackColor = System.Drawing.Color.Transparent;
+            this.lblEtatEngin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEtatEngin.ForeColor = System.Drawing.Color.White;
+            this.lblEtatEngin.Location = new System.Drawing.Point(176, 260);
+            this.lblEtatEngin.Name = "lblEtatEngin";
+            this.lblEtatEngin.Size = new System.Drawing.Size(92, 75);
+            this.lblEtatEngin.TabIndex = 9;
+            this.lblEtatEngin.Text = "Voir l\'état\r\ndes\r\nengins";
+            this.lblEtatEngin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblGestionPersonnel
+            // 
+            this.lblGestionPersonnel.AutoSize = true;
+            this.lblGestionPersonnel.BackColor = System.Drawing.Color.Transparent;
+            this.lblGestionPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGestionPersonnel.ForeColor = System.Drawing.Color.White;
+            this.lblGestionPersonnel.Location = new System.Drawing.Point(173, 369);
+            this.lblGestionPersonnel.Name = "lblGestionPersonnel";
+            this.lblGestionPersonnel.Size = new System.Drawing.Size(98, 75);
+            this.lblGestionPersonnel.TabIndex = 10;
+            this.lblGestionPersonnel.Text = "Gestion\r\ndu\r\npersonnel";
+            this.lblGestionPersonnel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -187,6 +247,7 @@
             this.Controls.Add(this.pnlTableauDeBord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Les soldats du feu";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -208,10 +269,14 @@
         private System.Windows.Forms.Button btnTDB;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnGestionPersonnel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Label lblTabDB;
+        private System.Windows.Forms.Label lblAjtMission;
+        private System.Windows.Forms.Label lblGestionPersonnel;
+        private System.Windows.Forms.Label lblEtatEngin;
     }
 }
 
