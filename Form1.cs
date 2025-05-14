@@ -28,20 +28,7 @@ namespace SAE_A21D21_pompiers
             this.ControlBox = true;       // affiche les 3 boutons de la fenêtre windows
             this.MinimizeBox = true;      // active le bouton minimiser
             this.MaximizeBox = false;      // désactive le bouton plein ecran
-
-            pnlMenu.BackColor = Color.FromArgb(200, 0, 0, 255); //change l'opacité du menu
-
-            Image imgHome = Image.FromFile("divers/home.jpg");
-            btnTDB.BackgroundImage = new Bitmap(imgHome, new Size(btnTDB.Width, btnTDB.Height)); // redimensionne l'image à la taille du bouton btnTDB
-            btnTDB.BackgroundImageLayout = ImageLayout.Stretch;
-
-            Image imgExit = Image.FromFile("divers/exit.jpg");
-            btnExit.BackgroundImage = new Bitmap(imgExit, new Size(btnExit.Width, btnExit.Height)); // redimensionne l'image à la taille du bouton btnExit
-            btnExit.BackgroundImageLayout = ImageLayout.Stretch;
-
-            Image imgMission = Image.FromFile("divers/mission.jpg");
-            btnAjouter.BackgroundImage = new Bitmap(imgMission, new Size(btnAjouter.Width, btnAjouter.Height)); // redimensionne l'image à la taille du bouton btnExit
-            btnAjouter.BackgroundImageLayout = ImageLayout.Stretch;
+            pnlMenu.BackColor = Color.FromArgb(200, 0, 0, 255); //change l'opacité du menu            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -63,7 +50,19 @@ namespace SAE_A21D21_pompiers
                     MessageBox.Show(err.Message);
                 }
             }
-            
+
+            Image imgHome = Image.FromFile("divers/home.jpg");
+            btnTDB.BackgroundImage = new Bitmap(imgHome, new Size(btnTDB.Width, btnTDB.Height)); // redimensionne l'image à la taille du bouton btnTDB
+            btnTDB.BackgroundImageLayout = ImageLayout.Stretch;
+
+            Image imgExit = Image.FromFile("divers/exit.jpg");
+            btnExit.BackgroundImage = new Bitmap(imgExit, new Size(btnExit.Width, btnExit.Height)); // redimensionne l'image à la taille du bouton btnExit
+            btnExit.BackgroundImageLayout = ImageLayout.Stretch;
+
+            Image imgMission = Image.FromFile("divers/mission.jpg");
+            btnAjouter.BackgroundImage = new Bitmap(imgMission, new Size(btnAjouter.Width, btnAjouter.Height)); // redimensionne l'image à la taille du bouton btnExit
+            btnAjouter.BackgroundImageLayout = ImageLayout.Stretch;
+
             afficherMission();
       
         }
@@ -112,8 +111,7 @@ namespace SAE_A21D21_pompiers
                 pnlTableauDeBord.Controls.Add(mission);
             }
             pnlTableauDeBord.Show();
-        }
-       
+        }      
 
 
         // Méthode pour dessiner un trait dégradé sur n'importe quel panel
