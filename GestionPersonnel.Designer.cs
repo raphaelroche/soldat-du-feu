@@ -28,24 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.pbIconePers = new System.Windows.Forms.PictureBox();
-            this.lblCaserne = new System.Windows.Forms.Label();
-            this.cbCasernes = new System.Windows.Forms.ComboBox();
             this.cbPompiers = new System.Windows.Forms.ComboBox();
             this.lblPompier = new System.Windows.Forms.Label();
+            this.cbCasernes = new System.Windows.Forms.ComboBox();
+            this.lblCaserne = new System.Windows.Forms.Label();
+            this.pbIconePers = new System.Windows.Forms.PictureBox();
+            this.pnlAffichage = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIconePers)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(342, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 800);
-            this.panel1.TabIndex = 0;
             // 
             // pnlMenu
             // 
@@ -58,39 +50,8 @@
             this.pnlMenu.Location = new System.Drawing.Point(12, 11);
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(305, 800);
+            this.pnlMenu.Size = new System.Drawing.Size(305, 985);
             this.pnlMenu.TabIndex = 2;
-            // 
-            // pbIconePers
-            // 
-            this.pbIconePers.Image = global::SAE_A21D21_pompiers1.Properties.Resources.personnel;
-            this.pbIconePers.Location = new System.Drawing.Point(103, 15);
-            this.pbIconePers.Name = "pbIconePers";
-            this.pbIconePers.Size = new System.Drawing.Size(96, 89);
-            this.pbIconePers.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbIconePers.TabIndex = 0;
-            this.pbIconePers.TabStop = false;
-            // 
-            // lblCaserne
-            // 
-            this.lblCaserne.AutoSize = true;
-            this.lblCaserne.BackColor = System.Drawing.Color.Transparent;
-            this.lblCaserne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCaserne.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCaserne.Location = new System.Drawing.Point(31, 136);
-            this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(197, 25);
-            this.lblCaserne.TabIndex = 1;
-            this.lblCaserne.Text = "Choisir une caserne :";
-            // 
-            // cbCasernes
-            // 
-            this.cbCasernes.FormattingEnabled = true;
-            this.cbCasernes.Location = new System.Drawing.Point(35, 166);
-            this.cbCasernes.Name = "cbCasernes";
-            this.cbCasernes.Size = new System.Drawing.Size(243, 24);
-            this.cbCasernes.TabIndex = 2;
-            this.cbCasernes.SelectedIndexChanged += new System.EventHandler(this.cbCasernes_SelectedIndexChanged);
             // 
             // cbPompiers
             // 
@@ -99,6 +60,7 @@
             this.cbPompiers.Name = "cbPompiers";
             this.cbPompiers.Size = new System.Drawing.Size(243, 24);
             this.cbPompiers.TabIndex = 4;
+            this.cbPompiers.SelectedIndexChanged += new System.EventHandler(this.cbPompiers_SelectedIndexChanged);
             // 
             // lblPompier
             // 
@@ -112,6 +74,45 @@
             this.lblPompier.TabIndex = 3;
             this.lblPompier.Text = "Choisir un pompier :";
             // 
+            // cbCasernes
+            // 
+            this.cbCasernes.FormattingEnabled = true;
+            this.cbCasernes.Location = new System.Drawing.Point(35, 166);
+            this.cbCasernes.Name = "cbCasernes";
+            this.cbCasernes.Size = new System.Drawing.Size(243, 24);
+            this.cbCasernes.TabIndex = 2;
+            this.cbCasernes.SelectedIndexChanged += new System.EventHandler(this.cbCasernes_SelectedIndexChanged);
+            // 
+            // lblCaserne
+            // 
+            this.lblCaserne.AutoSize = true;
+            this.lblCaserne.BackColor = System.Drawing.Color.Transparent;
+            this.lblCaserne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCaserne.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblCaserne.Location = new System.Drawing.Point(31, 136);
+            this.lblCaserne.Name = "lblCaserne";
+            this.lblCaserne.Size = new System.Drawing.Size(197, 25);
+            this.lblCaserne.TabIndex = 1;
+            this.lblCaserne.Text = "Choisir une caserne :";
+            // 
+            // pbIconePers
+            // 
+            this.pbIconePers.Image = global::SAE_A21D21_pompiers1.Properties.Resources.personnel;
+            this.pbIconePers.Location = new System.Drawing.Point(103, 15);
+            this.pbIconePers.Name = "pbIconePers";
+            this.pbIconePers.Size = new System.Drawing.Size(96, 89);
+            this.pbIconePers.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIconePers.TabIndex = 0;
+            this.pbIconePers.TabStop = false;
+            // 
+            // pnlAffichage
+            // 
+            this.pnlAffichage.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlAffichage.Location = new System.Drawing.Point(342, 12);
+            this.pnlAffichage.Name = "pnlAffichage";
+            this.pnlAffichage.Size = new System.Drawing.Size(840, 985);
+            this.pnlAffichage.TabIndex = 0;
+            // 
             // GestionPersonnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -119,9 +120,9 @@
             this.AutoSize = true;
             this.BackgroundImage = global::SAE_A21D21_pompiers1.Properties.Resources.pompier_fond;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(987, 783);
+            this.ClientSize = new System.Drawing.Size(1204, 1007);
             this.Controls.Add(this.pnlMenu);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlAffichage);
             this.MaximizeBox = false;
             this.Name = "GestionPersonnel";
             this.Text = "Gestion du personnel";
@@ -134,13 +135,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.PictureBox pbIconePers;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.ComboBox cbCasernes;
         private System.Windows.Forms.ComboBox cbPompiers;
         private System.Windows.Forms.Label lblPompier;
+        private System.Windows.Forms.Panel pnlAffichage;
     }
 }

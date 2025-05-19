@@ -107,6 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UC_GestionPersonnel\UC_GestionPersonnel.csproj">
+      <Project>{F4683231-D9F8-4DA9-AE03-6935DE9AB0E1}</Project>
+      <Name>UC_GestionPersonnel</Name>
+    </ProjectReference>
     <ProjectReference Include="UC_mission\UC_mission.csproj">
       <Project>{1ACD5AD3-47DA-49BA-AF3C-97614F6FB953}</Project>
       <Name>UC_mission</Name>
