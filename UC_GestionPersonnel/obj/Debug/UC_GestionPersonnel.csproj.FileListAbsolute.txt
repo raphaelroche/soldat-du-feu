@@ -9,3 +9,4 @@ C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\UC_GestionPersonnel\obj\Debu
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\UC_GestionPersonnel\obj\Debug\UC_Gesti.34F2FB7B.Up2Date
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.dll
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.pdb
+C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\A21D21\UC_GestionPersonnel\obj\Debug\SAE_A21D21_pompiers1.frmLogin.resources

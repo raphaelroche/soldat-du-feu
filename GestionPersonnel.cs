@@ -49,8 +49,12 @@ namespace SAE_A21D21_pompiers1
 
         private void cbCasernes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //clear le cb
+            cbPompiers.Items.Clear();
+
             // Charger les pompiers
-            string sqlPompiers = "SELECT * FROM Pompier";
+            string sqlPompiers = "SELECT * FROM Pompier p JOIN Affectation a ON p.matricule = a.matriculePompier " +
+                "WHERE a.idCaserne = " + (cbCasernes.SelectedIndex + 1);
             SQLiteCommand comPompiers = new SQLiteCommand(sqlPompiers, cx);
             SQLiteDataReader drPompiers = comPompiers.ExecuteReader();
 
@@ -98,7 +102,7 @@ namespace SAE_A21D21_pompiers1
                     if (afficherPompier != null) // Vérification que la variable a été assignée
                     {
 
-                        afficherPompier.Location = new Point(10, 10); // Positionner le contrôle  
+                        afficherPompier.Location = new Point(10, 50); // Positionner le contrôle  
                         afficherPompier.Visible = true; // S'assurer qu'il est visible  
                         this.pnlAffichage.Controls.Add(afficherPompier);
                         afficherPompier.BringToFront();

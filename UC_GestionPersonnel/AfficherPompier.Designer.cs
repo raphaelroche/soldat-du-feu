@@ -55,12 +55,12 @@
             this.lblTelephone = new System.Windows.Forms.Label();
             this.lblGrade = new System.Windows.Forms.Label();
             this.lblBip = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbGrade = new System.Windows.Forms.PictureBox();
             this.pnlFichePompier = new System.Windows.Forms.Panel();
             this.pnlInformations.SuspendLayout();
             this.grpInfoCarriere.SuspendLayout();
             this.grpCarriere.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGrade)).BeginInit();
             this.pnlFichePompier.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +81,7 @@
             this.pnlInformations.Controls.Add(this.btnMaj);
             this.pnlInformations.Controls.Add(this.chkConge);
             this.pnlInformations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.pnlInformations.Location = new System.Drawing.Point(5, 534);
+            this.pnlInformations.Location = new System.Drawing.Point(4, 444);
             this.pnlInformations.Margin = new System.Windows.Forms.Padding(4);
             this.pnlInformations.Name = "pnlInformations";
             this.pnlInformations.Size = new System.Drawing.Size(831, 447);
@@ -211,7 +211,7 @@
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(40, 84);
+            this.lblNom.Location = new System.Drawing.Point(40, 39);
             this.lblNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(59, 20);
@@ -221,7 +221,7 @@
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(40, 119);
+            this.lblPrenom.Location = new System.Drawing.Point(40, 74);
             this.lblPrenom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrenom.Name = "lblPrenom";
             this.lblPrenom.Size = new System.Drawing.Size(82, 20);
@@ -231,7 +231,7 @@
             // lblNaissance
             // 
             this.lblNaissance.AutoSize = true;
-            this.lblNaissance.Location = new System.Drawing.Point(40, 151);
+            this.lblNaissance.Location = new System.Drawing.Point(40, 106);
             this.lblNaissance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNaissance.Name = "lblNaissance";
             this.lblNaissance.Size = new System.Drawing.Size(159, 20);
@@ -241,7 +241,7 @@
             // lblSexe
             // 
             this.lblSexe.AutoSize = true;
-            this.lblSexe.Location = new System.Drawing.Point(40, 188);
+            this.lblSexe.Location = new System.Drawing.Point(40, 143);
             this.lblSexe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSexe.Name = "lblSexe";
             this.lblSexe.Size = new System.Drawing.Size(56, 20);
@@ -251,7 +251,7 @@
             // lblEmbauche
             // 
             this.lblEmbauche.AutoSize = true;
-            this.lblEmbauche.Location = new System.Drawing.Point(44, 260);
+            this.lblEmbauche.Location = new System.Drawing.Point(44, 215);
             this.lblEmbauche.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmbauche.Name = "lblEmbauche";
             this.lblEmbauche.Size = new System.Drawing.Size(155, 20);
@@ -261,7 +261,7 @@
             // rdbProfessionnel
             // 
             this.rdbProfessionnel.AutoSize = true;
-            this.rdbProfessionnel.Location = new System.Drawing.Point(44, 213);
+            this.rdbProfessionnel.Location = new System.Drawing.Point(44, 168);
             this.rdbProfessionnel.Margin = new System.Windows.Forms.Padding(4);
             this.rdbProfessionnel.Name = "rdbProfessionnel";
             this.rdbProfessionnel.Size = new System.Drawing.Size(132, 24);
@@ -273,7 +273,7 @@
             // rdbVolontaire
             // 
             this.rdbVolontaire.AutoSize = true;
-            this.rdbVolontaire.Location = new System.Drawing.Point(201, 213);
+            this.rdbVolontaire.Location = new System.Drawing.Point(201, 168);
             this.rdbVolontaire.Margin = new System.Windows.Forms.Padding(4);
             this.rdbVolontaire.Name = "rdbVolontaire";
             this.rdbVolontaire.Size = new System.Drawing.Size(105, 24);
@@ -290,11 +290,11 @@
             this.grpCarriere.Controls.Add(this.lblTelephone);
             this.grpCarriere.Controls.Add(this.lblGrade);
             this.grpCarriere.Controls.Add(this.lblBip);
-            this.grpCarriere.Location = new System.Drawing.Point(48, 331);
+            this.grpCarriere.Location = new System.Drawing.Point(48, 286);
             this.grpCarriere.Margin = new System.Windows.Forms.Padding(4);
             this.grpCarriere.Name = "grpCarriere";
             this.grpCarriere.Padding = new System.Windows.Forms.Padding(4);
-            this.grpCarriere.Size = new System.Drawing.Size(656, 154);
+            this.grpCarriere.Size = new System.Drawing.Size(656, 128);
             this.grpCarriere.TabIndex = 11;
             this.grpCarriere.TabStop = false;
             this.grpCarriere.Text = "Carriere";
@@ -332,7 +332,7 @@
             // lblTelephone
             // 
             this.lblTelephone.AutoSize = true;
-            this.lblTelephone.Location = new System.Drawing.Point(48, 114);
+            this.lblTelephone.Location = new System.Drawing.Point(48, 95);
             this.lblTelephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelephone.Name = "lblTelephone";
             this.lblTelephone.Size = new System.Drawing.Size(101, 20);
@@ -352,25 +352,25 @@
             // lblBip
             // 
             this.lblBip.AutoSize = true;
-            this.lblBip.Location = new System.Drawing.Point(496, 114);
+            this.lblBip.Location = new System.Drawing.Point(496, 95);
             this.lblBip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBip.Name = "lblBip";
             this.lblBip.Size = new System.Drawing.Size(49, 20);
             this.lblBip.TabIndex = 8;
             this.lblBip.Text = "Bip : ";
             // 
-            // pictureBox1
+            // pbGrade
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(571, 111);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 98);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pbGrade.Location = new System.Drawing.Point(571, 66);
+            this.pbGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.pbGrade.Name = "pbGrade";
+            this.pbGrade.Size = new System.Drawing.Size(133, 98);
+            this.pbGrade.TabIndex = 12;
+            this.pbGrade.TabStop = false;
             // 
             // pnlFichePompier
             // 
-            this.pnlFichePompier.Controls.Add(this.pictureBox1);
+            this.pnlFichePompier.Controls.Add(this.pbGrade);
             this.pnlFichePompier.Controls.Add(this.grpCarriere);
             this.pnlFichePompier.Controls.Add(this.rdbVolontaire);
             this.pnlFichePompier.Controls.Add(this.rdbProfessionnel);
@@ -384,7 +384,7 @@
             this.pnlFichePompier.Location = new System.Drawing.Point(5, 5);
             this.pnlFichePompier.Margin = new System.Windows.Forms.Padding(4);
             this.pnlFichePompier.Name = "pnlFichePompier";
-            this.pnlFichePompier.Size = new System.Drawing.Size(831, 521);
+            this.pnlFichePompier.Size = new System.Drawing.Size(831, 431);
             this.pnlFichePompier.TabIndex = 0;
             this.pnlFichePompier.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlFichePompier_Paint);
             // 
@@ -397,7 +397,7 @@
             this.Controls.Add(this.pnlFichePompier);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AfficherPompier";
-            this.Size = new System.Drawing.Size(840, 985);
+            this.Size = new System.Drawing.Size(840, 893);
             this.Load += new System.EventHandler(this.UserControl1_Load);
             this.pnlInformations.ResumeLayout(false);
             this.pnlInformations.PerformLayout();
@@ -405,7 +405,7 @@
             this.grpInfoCarriere.PerformLayout();
             this.grpCarriere.ResumeLayout(false);
             this.grpCarriere.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGrade)).EndInit();
             this.pnlFichePompier.ResumeLayout(false);
             this.pnlFichePompier.PerformLayout();
             this.ResumeLayout(false);
@@ -439,7 +439,7 @@
         private System.Windows.Forms.Label lblTelephone;
         private System.Windows.Forms.Label lblGrade;
         private System.Windows.Forms.Label lblBip;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbGrade;
         private System.Windows.Forms.Panel pnlFichePompier;
         private System.Windows.Forms.Label lblAbrev;
     }
