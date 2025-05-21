@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UC_EtatEngin", "UC_EtatEngi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UC_GestionPersonnel", "UC_GestionPersonnel\UC_GestionPersonnel.csproj", "{F4683231-D9F8-4DA9-AE03-6935DE9AB0E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UC_login", "UC_login\UC_login.csproj", "{02821F88-AC0E-4C0A-90AB-C1044E420752}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{F4683231-D9F8-4DA9-AE03-6935DE9AB0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4683231-D9F8-4DA9-AE03-6935DE9AB0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4683231-D9F8-4DA9-AE03-6935DE9AB0E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02821F88-AC0E-4C0A-90AB-C1044E420752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02821F88-AC0E-4C0A-90AB-C1044E420752}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02821F88-AC0E-4C0A-90AB-C1044E420752}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02821F88-AC0E-4C0A-90AB-C1044E420752}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
