@@ -35,8 +35,10 @@
             this.lblCaserne = new System.Windows.Forms.Label();
             this.pbIconePers = new System.Windows.Forms.PictureBox();
             this.pnlAffichage = new System.Windows.Forms.Panel();
+            this.btnNouveau = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIconePers)).BeginInit();
+            this.pnlAffichage.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -108,10 +110,22 @@
             // pnlAffichage
             // 
             this.pnlAffichage.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlAffichage.Controls.Add(this.btnNouveau);
             this.pnlAffichage.Location = new System.Drawing.Point(342, 12);
             this.pnlAffichage.Name = "pnlAffichage";
             this.pnlAffichage.Size = new System.Drawing.Size(840, 985);
             this.pnlAffichage.TabIndex = 0;
+            // 
+            // btnNouveau
+            // 
+            this.btnNouveau.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnNouveau.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btnNouveau.Location = new System.Drawing.Point(25, 14);
+            this.btnNouveau.Name = "btnNouveau";
+            this.btnNouveau.Size = new System.Drawing.Size(801, 49);
+            this.btnNouveau.TabIndex = 0;
+            this.btnNouveau.Text = "Recruter un pompier";
+            this.btnNouveau.UseVisualStyleBackColor = true;
             // 
             // GestionPersonnel
             // 
@@ -130,6 +144,7 @@
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIconePers)).EndInit();
+            this.pnlAffichage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -142,5 +157,6 @@
         private System.Windows.Forms.ComboBox cbPompiers;
         private System.Windows.Forms.Label lblPompier;
         private System.Windows.Forms.Panel pnlAffichage;
+        private System.Windows.Forms.Button btnNouveau;
     }
 }

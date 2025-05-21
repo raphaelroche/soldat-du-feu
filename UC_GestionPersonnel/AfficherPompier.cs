@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
+using SAE_A21D21_pompiers1;
 
 namespace UC_GestionPersonnel
 {
@@ -25,7 +26,7 @@ namespace UC_GestionPersonnel
         private string dateNaissance = "";
         private string status = "V";
         private string dateEmbauche = "";
-        private int grade=12;
+        private int grade;
         private string telephone = "";
         private string bip = "";
         private int enconge;
@@ -67,6 +68,7 @@ namespace UC_GestionPersonnel
         private void UserControl1_Load(object sender, EventArgs e)
         {
             pnlInformations.Visible = false;
+            lblMatricule.Text = "Matricule : " + matricule.ToString();
             lblNom.Text = "Nom : " + nom;
             lblPrenom.Text = "Prenom : " + prenom;
             lblSexe.Text = "Sexe : " + sexe;
@@ -135,6 +137,8 @@ namespace UC_GestionPersonnel
             {
                 MessageBox.Show(ex.Message);
             }
+
+            pbGrade.ImageLocation = @"ImagesGrades/" + lblAbrev.Text + ".png";
 
         }
 
@@ -205,9 +209,10 @@ namespace UC_GestionPersonnel
             {
                 MessageBox.Show(ex.Message);
             }
+            pbGrade.ImageLocation = @"ImagesGrades/" + lblAbrev.Text + ".png";
         }
 
-     
+
         private void cboCaserne_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.changerCaserne = true;
@@ -227,49 +232,74 @@ namespace UC_GestionPersonnel
 
         private void btnChanger_Click_1(object sender, EventArgs e)
         {
-            SQLiteTransaction changerGrade = cx.BeginTransaction();
-            SQLiteCommand com = new SQLiteCommand();
-            com.Connection = cx;
-            com.CommandType = CommandType.Text;
-            com.Transaction = changerGrade;
+            frmLogin log = new frmLogin(this.cx);
+            if(log.ShowDialog() == DialogResult.OK)
+            {
+                SQLiteTransaction changerGrade = cx.BeginTransaction();
+                SQLiteCommand com = new SQLiteCommand();
+                com.Connection = cx;
+                com.CommandType = CommandType.Text;
+                com.Transaction = changerGrade;
 
-            try
-            {
-                com.CommandText = "update Pompier set codeGrade = '" + lblAbrev.Text + "' where matricule = " + matricule;
-                com.ExecuteNonQuery();
-                changerGrade.Commit();
+                try
+                {
+                    com.CommandText = "update Pompier set codeGrade = '" + lblAbrev.Text + "' where matricule = " + matricule;
+                    com.ExecuteNonQuery();
+                    changerGrade.Commit();
+                    MessageBox.Show("modifications efectuées !");
+                }
+                catch (SQLiteException ex)
+                {
+                    changerGrade.Rollback();
+                    MessageBox.Show("erreur, modification non-effectuées !");
+                }
             }
-            catch (SQLiteException ex)
+            else
             {
-                changerGrade.Rollback();
+                MessageBox.Show("vous n'avez pas le droit de modifié ce champs !");
             }
+           
         }
 
         private void btnMaj_Click_1(object sender, EventArgs e)
         {
-            SQLiteTransaction changerInfoPopmier = cx.BeginTransaction();
-            SQLiteCommand com = new SQLiteCommand();
-            com.Connection = cx;
-            com.CommandType = CommandType.Text;
-            com.Transaction = changerInfoPopmier;
-            try
+            frmLogin log = new frmLogin(this.cx);
+            if (log.ShowDialog() == DialogResult.OK)
             {
-                com.CommandText = "update Affectation set dateFin = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' where matriculePompier = " + this.matricule + " and dateFin is null";
-                com.ExecuteNonQuery();
-
-                com.CommandText = "insert into Affectation (matriculePompier, dateA, dateFin, idCaserne) values (" + this.matricule + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', NULL, " + (cboCaserne.SelectedIndex + 1) + ")";
-                com.ExecuteNonQuery();
-                changerInfoPopmier.Commit();
-
-                if (enconge != encongebase)
+                SQLiteTransaction changerInfoPopmier = cx.BeginTransaction();
+                SQLiteCommand com = new SQLiteCommand();
+                com.Connection = cx;
+                com.CommandType = CommandType.Text;
+                com.Transaction = changerInfoPopmier;
+                try
                 {
-                    com.CommandText = "update Pompier set enConge = " + enconge + " where matricule = " + this.matricule;
+                    com.CommandText = "update Affectation set dateFin = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' where matriculePompier = " + this.matricule + " and dateFin is null";
+                    com.ExecuteNonQuery();
+
+                    com.CommandText = "insert into Affectation (matriculePompier, dateA, dateFin, idCaserne) values (" + this.matricule + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', NULL, " + (cboCaserne.SelectedIndex + 1) + ")";
+                    com.ExecuteNonQuery();
+                    
+
+                    if (enconge != encongebase)
+                    {
+                        com.CommandText = "update Pompier set enConge = " + enconge + " where matricule = " + this.matricule;
+                    }
+                    com.ExecuteNonQuery();
+                    changerInfoPopmier.Commit();
+                    MessageBox.Show("Modifications effectuées !");
+
+                }
+                catch (SQLiteException ex)
+                {
+                    changerInfoPopmier.Rollback();
+                    MessageBox.Show("Erreur, modification non-effectuée !");
                 }
             }
-            catch (SQLiteException ex)
+            else
             {
-                changerInfoPopmier.Rollback();
+                MessageBox.Show("Vous n'avez pas le droit de modifier ce champ !");
             }
+               
         }
     }
 }
