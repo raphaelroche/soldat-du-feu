@@ -321,6 +321,7 @@
             // cboGrade
             // 
             this.cboGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGrade.Enabled = false;
             this.cboGrade.FormattingEnabled = true;
             this.cboGrade.Location = new System.Drawing.Point(196, 50);
             this.cboGrade.Margin = new System.Windows.Forms.Padding(4);
