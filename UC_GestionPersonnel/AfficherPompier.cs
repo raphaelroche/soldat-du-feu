@@ -24,15 +24,17 @@ namespace UC_GestionPersonnel
         private string caserne = "";
         private string sexe = "";
         private string dateNaissance = "";
-        private string status = "V";
+        private string status = "";
         private string dateEmbauche = "";
         private int grade;
         private string telephone = "";
         private string bip = "";
         private int enconge;
-
+        private int gradeBase;
         private bool changerCaserne;
         private int encongebase;
+        private string statusBase;
+
 
 
 
@@ -59,14 +61,17 @@ namespace UC_GestionPersonnel
             this.bip = bip;
             this.enconge = enconge;
             this.encongebase = enconge;
-
+            this.gradeBase = grade;
             this.changerCaserne = false;
+            this.statusBase = status;
+
 
 
         }
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
+            cboCaserne.Enabled = false;
             pnlInformations.Visible = false;
             lblMatricule.Text = "Matricule : " + matricule.ToString();
             lblNom.Text = "Nom : " + nom;
@@ -215,7 +220,7 @@ namespace UC_GestionPersonnel
                 SQLiteCommand a = new SQLiteCommand(sql, this.cx);
                 string code = a.ExecuteScalar().ToString();
                 lblAbrev.Text = code;
-
+                grade = cboCaserne.SelectedIndex;
 
             }
             catch (SQLiteException ex)
@@ -230,32 +235,7 @@ namespace UC_GestionPersonnel
 
         private void btnChanger_Click_1(object sender, EventArgs e)
         {
-            frmLogin log = new frmLogin(this.cx);
-            if (log.ShowDialog() == DialogResult.OK)
-            {
-                SQLiteTransaction changerGrade = cx.BeginTransaction();
-                SQLiteCommand com = new SQLiteCommand();
-                com.Connection = cx;
-                com.CommandType = CommandType.Text;
-                com.Transaction = changerGrade;
-
-                try
-                {
-                    com.CommandText = "update Pompier set codeGrade = '" + lblAbrev.Text + "' where matricule = " + matricule;
-                    com.ExecuteNonQuery();
-                    changerGrade.Commit();
-                    MessageBox.Show("modifications efectuées !");
-                }
-                catch (SQLiteException ex)
-                {
-                    changerGrade.Rollback();
-                    MessageBox.Show("erreur, modification non-effectuées !");
-                }
-            }
-            else
-            {
-                MessageBox.Show("vous n'avez pas le droit de modifié ce champs !");
-            }
+            cboCaserne.Enabled = false;
 
         }
 
@@ -277,6 +257,17 @@ namespace UC_GestionPersonnel
                     com.CommandText = "insert into Affectation (matriculePompier, dateA, dateFin, idCaserne) values (" + this.matricule + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', NULL, " + (cboCaserne.SelectedIndex + 1) + ")";
                     com.ExecuteNonQuery();
 
+                    if (grade != gradeBase)
+                    {
+                        com.CommandText = "update Pompier set codeGrade = '" + lblAbrev.Text + "' where matricule = " + matricule;
+                        com.ExecuteNonQuery();
+                    }
+
+                    if (status != statusBase)
+                    {
+                        com.CommandText = "update Pompier set type = '" + status + "' where matricule = " + matricule;
+                        com.ExecuteNonQuery();
+                    }
 
 
 
@@ -285,6 +276,7 @@ namespace UC_GestionPersonnel
                         com.CommandText = "update Pompier set enConge = " + enconge + " where matricule = " + this.matricule;
                         com.ExecuteNonQuery();
                     }
+
 
                     changerInfoPopmier.Commit();
                     MessageBox.Show("Modifications effectuées !");
@@ -320,6 +312,16 @@ namespace UC_GestionPersonnel
         private void cboCaserne_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.changerCaserne = true;
+        }
+
+        private void rdbVolontaire_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "v";
+        }
+
+        private void rdbProfessionnel_CheckedChanged(object sender, EventArgs e)
+        {
+            status = "p";
         }
     }
 }

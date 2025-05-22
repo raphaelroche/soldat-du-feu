@@ -48,7 +48,6 @@
             this.label1.Size = new System.Drawing.Size(120, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Numero";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblNumero
             // 
@@ -132,7 +131,6 @@
             this.Controls.Add(this.label1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(800, 450);
-            this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
