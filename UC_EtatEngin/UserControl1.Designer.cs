@@ -88,6 +88,7 @@
             this.cboMission.AutoSize = true;
             this.cboMission.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cboMission.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
             this.cboMission.Location = new System.Drawing.Point(64, 256);
             this.cboMission.Name = "cboMission";
             this.cboMission.Size = new System.Drawing.Size(206, 37);
@@ -101,6 +102,7 @@
             this.cboPanne.AutoSize = true;
             this.cboPanne.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cboPanne.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPanne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(0)))), ((int)(((byte)(4)))));
             this.cboPanne.Location = new System.Drawing.Point(64, 320);
             this.cboPanne.Name = "cboPanne";
             this.cboPanne.Size = new System.Drawing.Size(210, 37);

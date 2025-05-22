@@ -64,6 +64,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Engin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Engin.Designer.cs">
+      <DependentUpon>Frm_Engin.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionPersonnel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Engin.resx">
+      <DependentUpon>Frm_Engin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionPersonnel.resx">
       <DependentUpon>GestionPersonnel.cs</DependentUpon>
@@ -107,6 +116,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UC_EtatEngin\UC_EtatEngin.csproj">
+      <Project>{2CA04A4F-7E82-4E3D-935E-1AC6E7DC944C}</Project>
+      <Name>UC_EtatEngin</Name>
+    </ProjectReference>
     <ProjectReference Include="UC_GestionPersonnel\UC_GestionPersonnel.csproj">
       <Project>{F4683231-D9F8-4DA9-AE03-6935DE9AB0E1}</Project>
       <Name>UC_GestionPersonnel</Name>
@@ -133,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\divers\pompier_fond.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engins-SDIS04.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
