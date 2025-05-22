@@ -16,6 +16,7 @@ namespace UC_mission
 {
     public partial class Mission : UserControl
     {
+        private DataSet m_ds;
         private int m_idMission;
         private string m_dateDepart;
         private string m_dateRetour;
@@ -25,10 +26,11 @@ namespace UC_mission
         private string m_cr;
         private string m_caserne;
 
-        public Mission(int idMission, string type, string dateDepart, string dateRetour, 
-            string caserne, string desc, string adresse, string cr)
+        public Mission(int idMission, string type, string dateDepart, string dateRetour,
+            string caserne, string desc, string adresse, string cr, DataSet ds)
         {
             InitializeComponent();
+            this.m_ds = ds;
             this.m_idMission = idMission;
             this.m_dateDepart = dateDepart;
             this.m_dateRetour = dateRetour;
@@ -56,14 +58,14 @@ namespace UC_mission
 
         private void btnRapport_Click(object sender, EventArgs e)
         {
-            // Créer le document PDF
+            // Créer le document PDF  
             PdfDocument document = new PdfDocument();
             document.Info.Title = "Compte rendu";
 
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            // Polices
+            // Polices  
             XFont normalFont = new XFont("Verdana", 12);
             XFont boldFont = new XFont("Verdana", 20);
 
@@ -74,11 +76,9 @@ namespace UC_mission
 
             y += 35;
 
-
             MessageBox.Show(this.m_dateRetour);
             string dateDepart = this.m_dateDepart.Split(' ')[0];
             string heureDepart = this.m_dateDepart.Split(' ')[1];
-
 
             gfx.DrawString("Déclenchée le " + dateDepart + " à " + heureDepart, normalFont, XBrushes.Black, new XPoint(x, y));
 
@@ -97,7 +97,7 @@ namespace UC_mission
 
             y += 20;
 
-            // Ligne pointillée
+            // Ligne pointillée  
             XPen dottedPen = new XPen(XColors.Black, 0.5);
             dottedPen.DashStyle = XDashStyle.Dot;
             gfx.DrawLine(dottedPen, x, y, page.Width - x, y);
@@ -120,14 +120,74 @@ namespace UC_mission
 
             y += 20;
 
-            // Ligne pointillée
+            // Ligne pointillée  
             gfx.DrawLine(dottedPen, x, y, page.Width - x, y);
 
             y += 35;
 
             gfx.DrawString("Caserne : " + this.m_caserne, boldFont, XBrushes.Black, new XPoint(x, y));
 
-            // Sauvegarder le document
+            y += 30;
+
+            gfx.DrawString("Pompiers afféctés : ", boldFont, XBrushes.Black, new XPoint(x, y));
+
+            y += 20;
+
+            int nbPompier = 0;
+            int columnThreshold = 7;
+            double columnX = x;
+            double columnY = y;
+            bool secondColumn = false;
+
+            foreach (DataRow row in m_ds.Tables["Mobiliser"].Rows)
+            {
+                if (Convert.ToInt32(row["idMission"]) == this.m_idMission)
+                {
+                    int idPompier = Convert.ToInt32(row["matriculePompier"]);
+                    int idHabilitation = Convert.ToInt32(row["idHabilitation"]);
+                    DataRow[] pompierRows = m_ds.Tables["Pompier"].Select("matricule = " + idPompier);
+                    if (pompierRows.Length > 0)
+                    {
+                        DataRow pompier = pompierRows[0];
+                        string gradeCode = pompier["codeGrade"].ToString();
+                        DataRow[] gradeRows = m_ds.Tables["Grade"].Select("code = '" + gradeCode + "'");
+                        string gradeLabel = gradeRows.Length > 0 ? gradeRows[0]["libelle"].ToString() : "Inconnu";
+                        string prenom = pompier["prenom"].ToString();
+                        string nom = pompier["nom"].ToString();
+
+                        DataRow[] habilitationRows = m_ds.Tables["Habilitation"].Select("id = " + idHabilitation);
+                        string habilitationLabel = habilitationRows.Length > 0 ? habilitationRows[0]["libelle"].ToString() : "Inconnu";
+
+                        gfx.DrawString($" ==> {gradeLabel} {nom} {prenom}", normalFont, XBrushes.Black, new XPoint(columnX, columnY));
+                        columnY += 20;
+
+                        // Vérifier si l'habilitation dépasse la moitié de la page  
+                        if (gfx.MeasureString($"Habilitation: {habilitationLabel}", normalFont).Width > (page.Width - 2 * x) / 2)
+                        {
+                            gfx.DrawString($"     Habilitation: {habilitationLabel.Substring(0, habilitationLabel.Length / 2)}", normalFont, XBrushes.Black, new XPoint(columnX, columnY));
+                            columnY += 20;
+                            gfx.DrawString($"     {habilitationLabel.Substring(habilitationLabel.Length / 2)}", normalFont, XBrushes.Black, new XPoint(columnX, columnY));
+                        }
+                        else
+                        {
+                            gfx.DrawString($"     Habilitation: {habilitationLabel}", normalFont, XBrushes.Black, new XPoint(columnX, columnY));
+                        }
+                        columnY += 20;
+
+                        nbPompier++;
+
+                        if (nbPompier == columnThreshold && !secondColumn)
+                        {
+                            // Passer à la deuxième colonne  
+                            columnX = page.Width / 2 + 20;
+                            columnY = y;
+                            secondColumn = true;
+                        }
+                    }
+                }
+            }
+
+            // Sauvegarder le document  
             string filename = "Rapports/mission" + this.m_idMission + ".pdf";
             document.Save(filename);
         }
