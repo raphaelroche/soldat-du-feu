@@ -98,7 +98,7 @@ namespace UC_GestionPersonnel
 
 
             string sql = "select libelle from Grade";
-            string sql3 = "select code from Grade where chaine = '" + this.grade.ToString()+"'";
+            string sql3 = "select code from Grade where chaine = '" + this.grade.ToString() + "'";
             try
             {
                 SQLiteCommand a = new SQLiteCommand(sql3, this.cx);
@@ -129,7 +129,7 @@ namespace UC_GestionPersonnel
 
                 cboGrade.SelectedIndex = this.grade;
 
-                
+
 
 
             }
@@ -142,6 +142,31 @@ namespace UC_GestionPersonnel
 
         }
 
+        private void chargerlstHabilitation()
+        {
+            string sql3 = "select h.libelle from Pompier p  join Passer pa on p.matricule = pa.matriculePompier join Habilitation h on pa.idHabilitation = h.id where upper(p.nom) = '" + this.nom.ToUpper() + "'";
+            SQLiteCommand co = new SQLiteCommand(sql3, this.cx);
+            SQLiteDataReader d = co.ExecuteReader();
+            while (d.Read())
+            {
+                lstHabilitations.Items.Add(d.GetString(0));
+            }
+        }
+
+        private void chargerAffectation()
+        {
+
+            string sql4 = "select c.nom from Caserne c join Affectation a  on c.id = a.idCaserne where a.matriculePompier = " + this.matricule;
+            SQLiteCommand comm = new SQLiteCommand(sql4, this.cx);
+            SQLiteDataReader da = comm.ExecuteReader();
+            lstAffectations.Items.Clear();
+            while (da.Read())
+            {
+                lstAffectations.Items.Add(da.GetString(0));
+            }
+
+        }
+
         private void btnInfo_Click(object sender, EventArgs e)
         {
             pnlInformations.Visible = true;
@@ -149,8 +174,7 @@ namespace UC_GestionPersonnel
 
             string sql = "select nom from Caserne";
             string sql2 = "select id from Caserne where nom = '" + this.caserne + "'";
-            string sql3 = "select h.libelle from Pompier p  join Passer pa on p.matricule = pa.matriculePompier join Habilitation h on pa.idHabilitation = h.id where upper(p.nom) = '" + this.nom.ToUpper() + "'";
-            string sql4 = "select c.nom from Caserne c join Affectation a  on c.id = a.idCaserne where a.matriculePompier = " + this.matricule;
+
             try
             {
                 SQLiteCommand com = new SQLiteCommand(sql, this.cx);
@@ -162,23 +186,12 @@ namespace UC_GestionPersonnel
 
                 SQLiteCommand c = new SQLiteCommand(sql2, this.cx);
                 int caserne = Convert.ToInt32(c.ExecuteScalar());
-                cboCaserne.SelectedIndex = caserne-1;
+                cboCaserne.SelectedIndex = caserne - 1;
 
 
-                SQLiteCommand co = new SQLiteCommand(sql3, this.cx);
-                SQLiteDataReader d = co.ExecuteReader();
-                while (d.Read())
-                {
-                    lstHabilitations.Items.Add(d.GetString(0));
-                }
+                chargerlstHabilitation();
+                chargerAffectation();
 
-
-                SQLiteCommand comm = new SQLiteCommand(sql4, this.cx);
-                SQLiteDataReader da = comm.ExecuteReader();
-                while (da.Read())
-                {
-                    lstAffectations.Items.Add(da.GetString(0));
-                }
 
             }
             catch (SQLiteException ex)
@@ -213,27 +226,12 @@ namespace UC_GestionPersonnel
         }
 
 
-        private void cboCaserne_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.changerCaserne = true;
-        }
 
-        private void chkConge_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkConge.Checked)
-            {
-                enconge = 1;
-            }
-            else
-            {
-                enconge = 0;
-            }
-        }
 
         private void btnChanger_Click_1(object sender, EventArgs e)
         {
             frmLogin log = new frmLogin(this.cx);
-            if(log.ShowDialog() == DialogResult.OK)
+            if (log.ShowDialog() == DialogResult.OK)
             {
                 SQLiteTransaction changerGrade = cx.BeginTransaction();
                 SQLiteCommand com = new SQLiteCommand();
@@ -258,7 +256,7 @@ namespace UC_GestionPersonnel
             {
                 MessageBox.Show("vous n'avez pas le droit de modifié ce champs !");
             }
-           
+
         }
 
         private void btnMaj_Click_1(object sender, EventArgs e)
@@ -278,28 +276,50 @@ namespace UC_GestionPersonnel
 
                     com.CommandText = "insert into Affectation (matriculePompier, dateA, dateFin, idCaserne) values (" + this.matricule + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', NULL, " + (cboCaserne.SelectedIndex + 1) + ")";
                     com.ExecuteNonQuery();
-                    
+
+
+
 
                     if (enconge != encongebase)
                     {
                         com.CommandText = "update Pompier set enConge = " + enconge + " where matricule = " + this.matricule;
+                        com.ExecuteNonQuery();
                     }
-                    com.ExecuteNonQuery();
+
                     changerInfoPopmier.Commit();
                     MessageBox.Show("Modifications effectuées !");
+                    chargerAffectation();
 
                 }
                 catch (SQLiteException ex)
                 {
                     changerInfoPopmier.Rollback();
                     MessageBox.Show("Erreur, modification non-effectuée !");
+
                 }
             }
             else
             {
                 MessageBox.Show("Vous n'avez pas le droit de modifier ce champ !");
             }
-               
+
+        }
+
+        private void chkConge_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (chkConge.Checked)
+            {
+                enconge = 1;
+            }
+            else
+            {
+                enconge = 0;
+            }
+        }
+
+        private void cboCaserne_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.changerCaserne = true;
         }
     }
 }

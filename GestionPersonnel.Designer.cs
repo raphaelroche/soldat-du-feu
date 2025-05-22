@@ -57,6 +57,7 @@
             // 
             // cbPompiers
             // 
+            this.cbPompiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPompiers.FormattingEnabled = true;
             this.cbPompiers.Location = new System.Drawing.Point(35, 258);
             this.cbPompiers.Name = "cbPompiers";
@@ -78,6 +79,7 @@
             // 
             // cbCasernes
             // 
+            this.cbCasernes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCasernes.FormattingEnabled = true;
             this.cbCasernes.Location = new System.Drawing.Point(35, 166);
             this.cbCasernes.Name = "cbCasernes";
