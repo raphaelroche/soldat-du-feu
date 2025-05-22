@@ -107,7 +107,7 @@ namespace SAE_A21D21_pompiers
                 string cr = drMission["compteRendu"].ToString();
 
 
-                Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse, cr);
+                Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse, cr, MesDatas.DsGlobal);
                 mission.Location = new System.Drawing.Point(50, y);
                 y += spacing;
                 pnlTableauDeBord.Controls.Add(mission);
