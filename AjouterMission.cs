@@ -28,7 +28,6 @@ namespace SAE_A21D21_pompiers1
         private DataTable dtPompier;
         private DataTable dtNatureSinistre;
         private DataTable dtEngin;
-        private DataTable dtEmbarquer;
 
 
         public AjouterMission(int numeroMission, string date)

@@ -19,20 +19,19 @@ namespace SAE_A21D21_pompiers1
         public Frm_Engin()
         {
             InitializeComponent();
-            userControl11.Ds = MesDatas.DsGlobal;
+            UC_etatengin.Ds = MesDatas.DsGlobal;
         }
 
-        private void Frm_Engin_Load(object sender, EventArgs e)
+        private void Frm_Engin_Load_1(object sender, EventArgs e)
         {
             DataTable dtCaserne = MesDatas.DsGlobal.Tables["Caserne"];
 
             cboCaserne.DataSource = dtCaserne;
             cboCaserne.DisplayMember = "nom"; // Ce qui est affiché
             cboCaserne.ValueMember = "id";
-
         }
 
-        private void cboCaserne_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboCaserne_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cboCaserne.SelectedItem == null) return;
 
@@ -55,7 +54,7 @@ namespace SAE_A21D21_pompiers1
             }
             else
             {
-                userControl11.Clear();
+                UC_etatengin.Clear();
             }
         }
 
@@ -96,7 +95,7 @@ namespace SAE_A21D21_pompiers1
         }
         private void AfficherEngin(DataRow engin)
         {
-            userControl11.AfficherEngin(engin);
+            UC_etatengin.AfficherEngin(engin);
         }
     }
 }

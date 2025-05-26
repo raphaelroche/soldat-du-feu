@@ -33,6 +33,10 @@
             this.cbEnCours = new System.Windows.Forms.CheckBox();
             this.lblTDB = new System.Windows.Forms.Label();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lblGestionPersonnel = new System.Windows.Forms.Label();
+            this.lblEtatEngin = new System.Windows.Forms.Label();
+            this.lblAjtMission = new System.Windows.Forms.Label();
+            this.lblTabDB = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
@@ -40,10 +44,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnTDB = new System.Windows.Forms.Button();
-            this.lblTabDB = new System.Windows.Forms.Label();
-            this.lblAjtMission = new System.Windows.Forms.Label();
-            this.lblEtatEngin = new System.Windows.Forms.Label();
-            this.lblGestionPersonnel = new System.Windows.Forms.Label();
             this.pnlTableauDeBord.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +115,57 @@
             this.pnlMenu.Size = new System.Drawing.Size(305, 738);
             this.pnlMenu.TabIndex = 1;
             // 
+            // lblGestionPersonnel
+            // 
+            this.lblGestionPersonnel.AutoSize = true;
+            this.lblGestionPersonnel.BackColor = System.Drawing.Color.Transparent;
+            this.lblGestionPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGestionPersonnel.ForeColor = System.Drawing.Color.White;
+            this.lblGestionPersonnel.Location = new System.Drawing.Point(173, 369);
+            this.lblGestionPersonnel.Name = "lblGestionPersonnel";
+            this.lblGestionPersonnel.Size = new System.Drawing.Size(98, 75);
+            this.lblGestionPersonnel.TabIndex = 10;
+            this.lblGestionPersonnel.Text = "Gestion\r\ndu\r\npersonnel";
+            this.lblGestionPersonnel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblEtatEngin
+            // 
+            this.lblEtatEngin.AutoSize = true;
+            this.lblEtatEngin.BackColor = System.Drawing.Color.Transparent;
+            this.lblEtatEngin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEtatEngin.ForeColor = System.Drawing.Color.White;
+            this.lblEtatEngin.Location = new System.Drawing.Point(176, 260);
+            this.lblEtatEngin.Name = "lblEtatEngin";
+            this.lblEtatEngin.Size = new System.Drawing.Size(92, 75);
+            this.lblEtatEngin.TabIndex = 9;
+            this.lblEtatEngin.Text = "Voir l\'état\r\ndes\r\nengins";
+            this.lblEtatEngin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAjtMission
+            // 
+            this.lblAjtMission.AutoSize = true;
+            this.lblAjtMission.BackColor = System.Drawing.Color.Transparent;
+            this.lblAjtMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAjtMission.ForeColor = System.Drawing.Color.White;
+            this.lblAjtMission.Location = new System.Drawing.Point(166, 162);
+            this.lblAjtMission.Name = "lblAjtMission";
+            this.lblAjtMission.Size = new System.Drawing.Size(112, 50);
+            this.lblAjtMission.TabIndex = 8;
+            this.lblAjtMission.Text = "Ajouter une\r\nmission";
+            this.lblAjtMission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTabDB
+            // 
+            this.lblTabDB.AutoSize = true;
+            this.lblTabDB.BackColor = System.Drawing.Color.Transparent;
+            this.lblTabDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTabDB.ForeColor = System.Drawing.Color.White;
+            this.lblTabDB.Location = new System.Drawing.Point(144, 70);
+            this.lblTabDB.Name = "lblTabDB";
+            this.lblTabDB.Size = new System.Drawing.Size(157, 25);
+            this.lblTabDB.TabIndex = 7;
+            this.lblTabDB.Text = "Tableau de Bord";
+            // 
             // lblExit
             // 
             this.lblExit.AutoSize = true;
@@ -175,6 +226,7 @@
             this.button1.Size = new System.Drawing.Size(109, 100);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnTDB
             // 
@@ -184,57 +236,6 @@
             this.btnTDB.Size = new System.Drawing.Size(109, 100);
             this.btnTDB.TabIndex = 0;
             this.btnTDB.UseVisualStyleBackColor = true;
-            // 
-            // lblTabDB
-            // 
-            this.lblTabDB.AutoSize = true;
-            this.lblTabDB.BackColor = System.Drawing.Color.Transparent;
-            this.lblTabDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTabDB.ForeColor = System.Drawing.Color.White;
-            this.lblTabDB.Location = new System.Drawing.Point(144, 70);
-            this.lblTabDB.Name = "lblTabDB";
-            this.lblTabDB.Size = new System.Drawing.Size(157, 25);
-            this.lblTabDB.TabIndex = 7;
-            this.lblTabDB.Text = "Tableau de Bord";
-            // 
-            // lblAjtMission
-            // 
-            this.lblAjtMission.AutoSize = true;
-            this.lblAjtMission.BackColor = System.Drawing.Color.Transparent;
-            this.lblAjtMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAjtMission.ForeColor = System.Drawing.Color.White;
-            this.lblAjtMission.Location = new System.Drawing.Point(166, 162);
-            this.lblAjtMission.Name = "lblAjtMission";
-            this.lblAjtMission.Size = new System.Drawing.Size(112, 50);
-            this.lblAjtMission.TabIndex = 8;
-            this.lblAjtMission.Text = "Ajouter une\r\nmission";
-            this.lblAjtMission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblEtatEngin
-            // 
-            this.lblEtatEngin.AutoSize = true;
-            this.lblEtatEngin.BackColor = System.Drawing.Color.Transparent;
-            this.lblEtatEngin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEtatEngin.ForeColor = System.Drawing.Color.White;
-            this.lblEtatEngin.Location = new System.Drawing.Point(176, 260);
-            this.lblEtatEngin.Name = "lblEtatEngin";
-            this.lblEtatEngin.Size = new System.Drawing.Size(92, 75);
-            this.lblEtatEngin.TabIndex = 9;
-            this.lblEtatEngin.Text = "Voir l\'état\r\ndes\r\nengins";
-            this.lblEtatEngin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblGestionPersonnel
-            // 
-            this.lblGestionPersonnel.AutoSize = true;
-            this.lblGestionPersonnel.BackColor = System.Drawing.Color.Transparent;
-            this.lblGestionPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGestionPersonnel.ForeColor = System.Drawing.Color.White;
-            this.lblGestionPersonnel.Location = new System.Drawing.Point(173, 369);
-            this.lblGestionPersonnel.Name = "lblGestionPersonnel";
-            this.lblGestionPersonnel.Size = new System.Drawing.Size(98, 75);
-            this.lblGestionPersonnel.TabIndex = 10;
-            this.lblGestionPersonnel.Text = "Gestion\r\ndu\r\npersonnel";
-            this.lblGestionPersonnel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
