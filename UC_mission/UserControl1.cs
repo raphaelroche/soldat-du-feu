@@ -187,7 +187,38 @@ namespace UC_mission
                 }
             }
 
-            // Sauvegarder le document  
+
+            // Ajouter une nouvelle page au document PDF  
+            PdfPage secondPage = document.AddPage();
+            XGraphics gfxSecondPage = XGraphics.FromPdfPage(secondPage);
+
+            // Réinitialiser les coordonnées pour la nouvelle page  
+            x = 40;
+            y = 50;
+
+            gfxSecondPage.DrawString("Suite du rapport de mission", boldFont, XBrushes.Black, new XPoint(x, y));
+
+            y += 35;
+
+            gfxSecondPage.DrawString("Engins utilisés :", boldFont, XBrushes.Black, new XPoint(x, y));
+            y += 20;
+
+            foreach (DataRow row in m_ds.Tables["PartirAvec"].Rows)
+            {
+                if (Convert.ToInt32(row["idMission"]) == this.m_idMission)
+                {
+                    String codeEngin = row["codeTypeEngin"].ToString();
+                    DataRow[] enginRows = m_ds.Tables["TypeEngin"].Select($"code = '{codeEngin}'");
+                    if (enginRows.Length > 0)
+                    {
+                        string nomEngin = enginRows[0]["nom"].ToString();
+                        gfxSecondPage.DrawString($" ==> {nomEngin}", normalFont, XBrushes.Black, new XPoint(x, y));
+                        y += 20;
+                    }
+                }
+            }
+
+            // sauvegarder le document  
             string filename = "Rapports/mission" + this.m_idMission + ".pdf";
             document.Save(filename);
         }

@@ -134,6 +134,7 @@
             this.cboCaserne.Name = "cboCaserne";
             this.cboCaserne.Size = new System.Drawing.Size(349, 28);
             this.cboCaserne.TabIndex = 4;
+            this.cboCaserne.SelectedIndexChanged += new System.EventHandler(this.cboCaserne_SelectedIndexChanged_1);
             // 
             // lblAffectations
             // 
@@ -196,6 +197,7 @@
             this.chkConge.TabIndex = 0;
             this.chkConge.Text = "En congé";
             this.chkConge.UseVisualStyleBackColor = true;
+            this.chkConge.CheckedChanged += new System.EventHandler(this.chkConge_CheckedChanged_1);
             // 
             // lblMatricule
             // 
@@ -269,6 +271,7 @@
             this.rdbProfessionnel.TabStop = true;
             this.rdbProfessionnel.Text = "Professionnel";
             this.rdbProfessionnel.UseVisualStyleBackColor = true;
+            this.rdbProfessionnel.CheckedChanged += new System.EventHandler(this.rdbProfessionnel_CheckedChanged_1);
             // 
             // rdbVolontaire
             // 
@@ -281,6 +284,7 @@
             this.rdbVolontaire.TabStop = true;
             this.rdbVolontaire.Text = "Volontaire";
             this.rdbVolontaire.UseVisualStyleBackColor = true;
+            this.rdbVolontaire.CheckedChanged += new System.EventHandler(this.rdbVolontaire_CheckedChanged_1);
             // 
             // grpCarriere
             // 

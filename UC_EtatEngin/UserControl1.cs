@@ -45,35 +45,5 @@ namespace UC_EtatEngin
             cboPanne.Checked = false;
             // Vider l’image si tu en as une
         }
-
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboMission_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboPanne_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblNumero_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

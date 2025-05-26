@@ -31,9 +31,9 @@ namespace UC_GestionPersonnel
         private string bip = "";
         private int enconge;
         private int gradeBase;
-        private bool changerCaserne;
         private int encongebase;
         private string statusBase;
+        private string caserneBase;
 
 
 
@@ -62,7 +62,7 @@ namespace UC_GestionPersonnel
             this.enconge = enconge;
             this.encongebase = enconge;
             this.gradeBase = grade;
-            this.changerCaserne = false;
+            this.caserneBase = caserne;
             this.statusBase = status;
 
 
@@ -71,7 +71,7 @@ namespace UC_GestionPersonnel
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
-            cboCaserne.Enabled = false;
+            cboGrade.Enabled = false;
             pnlInformations.Visible = false;
             lblMatricule.Text = "Matricule : " + matricule.ToString();
             lblNom.Text = "Nom : " + nom;
@@ -235,7 +235,7 @@ namespace UC_GestionPersonnel
 
         private void btnChanger_Click_1(object sender, EventArgs e)
         {
-            cboCaserne.Enabled = false;
+            cboGrade.Enabled = true;
 
         }
 
@@ -251,11 +251,15 @@ namespace UC_GestionPersonnel
                 com.Transaction = changerInfoPopmier;
                 try
                 {
-                    com.CommandText = "update Affectation set dateFin = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' where matriculePompier = " + this.matricule + " and dateFin is null";
-                    com.ExecuteNonQuery();
+                    if (caserne != caserneBase)
+                    {
+                        com.CommandText = "update Affectation set dateFin = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' where matriculePompier = " + this.matricule + " and dateFin is null";
+                        com.ExecuteNonQuery();
 
-                    com.CommandText = "insert into Affectation (matriculePompier, dateA, dateFin, idCaserne) values (" + this.matricule + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', NULL, " + (cboCaserne.SelectedIndex + 1) + ")";
-                    com.ExecuteNonQuery();
+                        com.CommandText = "insert into Affectation (matriculePompier, dateA, dateFin, idCaserne) values (" + this.matricule + ", '" + DateTime.Now.ToString("yyyy-MM-dd") + "', NULL, " + (cboCaserne.SelectedIndex + 1) + ")";
+                        com.ExecuteNonQuery();
+                    }
+
 
                     if (grade != gradeBase)
                     {
@@ -297,6 +301,24 @@ namespace UC_GestionPersonnel
 
         }
 
+        private void cboCaserne_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            this.caserneBase = cboCaserne.SelectedItem.ToString();
+
+        }
+
+        private void rdbProfessionnel_CheckedChanged_1(object sender, EventArgs e)
+        {
+            status = "p";
+
+        }
+
+        private void rdbVolontaire_CheckedChanged_1(object sender, EventArgs e)
+        {
+            status = "v";
+
+        }
+
         private void chkConge_CheckedChanged_1(object sender, EventArgs e)
         {
             if (chkConge.Checked)
@@ -307,21 +329,6 @@ namespace UC_GestionPersonnel
             {
                 enconge = 0;
             }
-        }
-
-        private void cboCaserne_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.changerCaserne = true;
-        }
-
-        private void rdbVolontaire_CheckedChanged(object sender, EventArgs e)
-        {
-            status = "v";
-        }
-
-        private void rdbProfessionnel_CheckedChanged(object sender, EventArgs e)
-        {
-            status = "p";
         }
     }
 }
