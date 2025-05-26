@@ -208,11 +208,18 @@ namespace UC_mission
                 if (Convert.ToInt32(row["idMission"]) == this.m_idMission)
                 {
                     String codeEngin = row["codeTypeEngin"].ToString();
+                    String reparationEngin = row["reparationsEventuelles"].ToString();
                     DataRow[] enginRows = m_ds.Tables["TypeEngin"].Select($"code = '{codeEngin}'");
                     if (enginRows.Length > 0)
                     {
                         string nomEngin = enginRows[0]["nom"].ToString();
+                        if (reparationEngin.Length == 0)
+                        {
+                            reparationEngin = "Pas de réparations à prévoir.";
+                        }
                         gfxSecondPage.DrawString($" ==> {nomEngin}", normalFont, XBrushes.Black, new XPoint(x, y));
+                        y += 15;
+                        gfxSecondPage.DrawString($"      {reparationEngin}", normalFont, XBrushes.Black, new XPoint(x, y));
                         y += 20;
                     }
                 }

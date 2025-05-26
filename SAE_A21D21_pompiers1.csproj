@@ -64,6 +64,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreerPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreerPompier.Designer.cs">
+      <DependentUpon>FrmCreerPompier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Engin.cs">
       <SubType>Form</SubType>
     </Compile>
