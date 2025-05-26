@@ -111,5 +111,13 @@ namespace SAE_A21D21_pompiers1
             }
         }
 
+        private void btnNouveau_Click(object sender, EventArgs e)
+        {
+            FrmCreerPompier creer = new FrmCreerPompier();
+            if (creer.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

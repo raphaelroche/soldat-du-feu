@@ -128,6 +128,7 @@
             this.btnNouveau.TabIndex = 0;
             this.btnNouveau.Text = "Recruter un pompier";
             this.btnNouveau.UseVisualStyleBackColor = true;
+            this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
             // GestionPersonnel
             // 
