@@ -91,6 +91,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreerPompier.resx">
+      <DependentUpon>FrmCreerPompier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Engin.resx">
       <DependentUpon>Frm_Engin.cs</DependentUpon>
     </EmbeddedResource>
