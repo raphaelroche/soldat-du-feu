@@ -113,10 +113,14 @@ namespace SAE_A21D21_pompiers1
 
         private void btnNouveau_Click(object sender, EventArgs e)
         {
-            FrmCreerPompier creer = new FrmCreerPompier();
+            FrmCreerPompier creer = new FrmCreerPompier(cx);
             if (creer.ShowDialog() == DialogResult.OK)
             {
-
+                MessageBox.Show("Pompier ajouter avec succès !", "ajout validé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Aucun Pompier ajouté !", "", MessageBoxButtons.OK);
             }
         }
     }
