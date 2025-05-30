@@ -235,6 +235,7 @@
             this.dtpNaissance.Name = "dtpNaissance";
             this.dtpNaissance.Size = new System.Drawing.Size(200, 23);
             this.dtpNaissance.TabIndex = 5;
+            this.dtpNaissance.Value = new System.DateTime(2006, 5, 30, 20, 28, 0, 0);
             // 
             // lblStatus
             // 

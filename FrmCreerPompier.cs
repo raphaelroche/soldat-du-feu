@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SAE_A21D21_pompiers1
 {
@@ -73,14 +75,77 @@ namespace SAE_A21D21_pompiers1
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            Application.Exit();
+          
         }
 
         private void btnValider_Click(object sender, EventArgs e)
         {
             if (cboCaserne.SelectedIndex != -1 && cboGrade.SelectedIndex != -1 && cboSexe.SelectedIndex != -1 && cboStatus.SelectedIndex != -1 && txtBip.Text != String.Empty && txtMatricule.Text != String.Empty && txtNom.Text != String.Empty && txtPrenom.Text != String.Empty && txtTel.Text != String.Empty) 
-            { 
-            
+            {
+                SQLiteTransaction ajtPompier = cx.BeginTransaction();
+                SQLiteCommand com = new SQLiteCommand();
+                com.Connection = cx;
+                com.CommandType = CommandType.Text;
+                com.Transaction = ajtPompier;
+
+                string prenom = txtPrenom.Text;
+                string nom = txtNom.Text;
+                int matricule = Convert.ToInt32(txtMatricule.Text);
+                string sexe;
+                string status;
+                string dateNaissance = dtpNaissance.Text;
+                string portable = txtTel.Text;
+                int bip = Convert.ToInt32(txtBip.Text);
+                string codeGrade = "";
+                string sql = "select code from grade where libelle = '" + cboGrade.SelectedItem + "'";
+                string datEmbauche = DateTime.Now.ToString("yyyy-MM-dd");
+                int idCaserne = cboCaserne.SelectedIndex+1;
+
+                try
+                {
+                    SQLiteCommand c = new SQLiteCommand(sql, this.cx);
+                    string code = c.ExecuteScalar().ToString();
+                    codeGrade = code;
+
+                }
+                catch (SQLiteException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                sexe = cboSexe.SelectedIndex == 0 ? "m" : "f";
+                status = cboStatus.SelectedIndex == 0 ? "p" : "v";
+
+
+                try
+                {
+                    com.CommandText = "insert into Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche)" +
+                       $"values ({matricule},'{nom}','{prenom}','{sexe}','{dateNaissance}','{status}','{portable}',{bip},0,0,'{codeGrade}','{datEmbauche}')";
+                    com.ExecuteNonQuery();
+
+                    com.CommandText = "insert into Affectation (matriculePompier, dateA, dateFin, idCaserne) values" +
+                        $"({matricule}, '{datEmbauche}', NULL,{idCaserne})";
+                    com.ExecuteNonQuery();
+
+                    ajtPompier.Commit();
+                    this.DialogResult = DialogResult.OK;
+                  
+
+
+                }
+                catch (SQLiteException ex)
+                {
+                    ajtPompier.Rollback();
+                    MessageBox.Show("Erreur, ajout du pompier impossible, penser a revérifier les informations que vous avez entré !");
+                    MessageBox.Show(ex.Message);
+                }
+
+
+
+                
+            }
+            else
+            {
+                MessageBox.Show("Tout les champs doivent etre rempi ! ", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
