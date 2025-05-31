@@ -24,26 +24,38 @@ namespace SAE_A21D21_pompiers1
         private void btnValider_Click_1(object sender, EventArgs e)
         {
             string sqlmdp = "select mdp from Admin where login ='" + txtId.Text + "'";
+            string mdp = "";
             try
             {
                 SQLiteCommand c = new SQLiteCommand(sqlmdp, cx);
-                string mdp = c.ExecuteScalar().ToString();
-                if (mdp == txtMdp.Text)
+                object result = c.ExecuteScalar();
+                if (result == null)
                 {
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("mot de passe incorrect");
+                    MessageBox.Show("identifiant incorrect");
                     txtMdp.Text = string.Empty;
                     txtId.Text = string.Empty;
                 }
-
+                else
+                {
+                    mdp = result.ToString();
+                    if (mdp == txtMdp.Text)
+                    {
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("mot de passe incorrect");
+                        txtMdp.Text = string.Empty;
+                        txtId.Text = string.Empty;
+                    }
+                }
+               
+             
 
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show("mot de passe ou identifiant incorrect");
+                MessageBox.Show(ex.Message);
                 txtMdp.Text = string.Empty;
                 txtId.Text = string.Empty;
             }
