@@ -61,6 +61,7 @@
             // 
             // cboCaserne
             // 
+            this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
             this.cboCaserne.Location = new System.Drawing.Point(299, 65);
             this.cboCaserne.Name = "cboCaserne";

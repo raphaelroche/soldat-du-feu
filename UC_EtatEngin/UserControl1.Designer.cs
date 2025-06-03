@@ -95,6 +95,7 @@
             this.cboMission.Text = "En mission   ";
             this.cboMission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cboMission.UseVisualStyleBackColor = true;
+            this.cboMission.Click += new System.EventHandler(this.cboMission_Click);
             // 
             // cboPanne
             // 

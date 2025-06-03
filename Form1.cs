@@ -30,6 +30,8 @@ namespace SAE_A21D21_pompiers
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+
             cx = Connexion.Connec; //connexion a la base de données
 
             DataTable dt = cx.GetSchema("Tables");
@@ -53,8 +55,8 @@ namespace SAE_A21D21_pompiers
             btnTDB.BackgroundImageLayout = ImageLayout.Stretch;
 
             Image imgExit = Image.FromFile("divers/exit.jpg");
-            btnExit.BackgroundImage = new Bitmap(imgExit, new Size(btnExit.Width, btnExit.Height)); // redimensionne l'image à la taille du bouton btnExit
-            btnExit.BackgroundImageLayout = ImageLayout.Stretch;
+            btn_Exit.BackgroundImage = new Bitmap(imgExit, new Size(btn_Exit.Width, btn_Exit.Height)); // redimensionne l'image à la taille du bouton btnExit
+            btn_Exit.BackgroundImageLayout = ImageLayout.Stretch;
 
             Image imgMission = Image.FromFile("divers/mission.jpg");
             btnAjouter.BackgroundImage = new Bitmap(imgMission, new Size(btnAjouter.Width, btnAjouter.Height)); // redimensionne l'image à la taille du bouton btnExit
@@ -188,7 +190,7 @@ namespace SAE_A21D21_pompiers
             DrawGradientLine(pnlTrait, Color.Blue, Color.Red);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnExit(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -219,7 +221,7 @@ namespace SAE_A21D21_pompiers
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEngin_Click(object sender, EventArgs e)
         {
             Frm_Engin engin = new Frm_Engin();
             if (engin.ShowDialog() == DialogResult.OK)
@@ -247,6 +249,17 @@ namespace SAE_A21D21_pompiers
                 afficherMission();
             }
             
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            this.Icon = new Icon("divers/fireops.ico"); // Set the taskbar icon  
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
