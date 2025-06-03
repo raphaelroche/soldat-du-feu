@@ -76,7 +76,6 @@ namespace UC_mission
 
             y += 35;
 
-            MessageBox.Show(this.m_dateRetour);
             string dateDepart = this.m_dateDepart.Split(' ')[0];
             string heureDepart = this.m_dateDepart.Split(' ')[1];
 
@@ -228,6 +227,8 @@ namespace UC_mission
             // sauvegarder le document  
             string filename = "Rapports/mission" + this.m_idMission + ".pdf";
             document.Save(filename);
+
+            MessageBox.Show("Rapport crée", "Rapport PDF");
         }
     }
 }

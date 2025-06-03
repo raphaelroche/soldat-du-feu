@@ -345,3 +345,5 @@ U:\applications\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.ValueTuple.xml
 U:\applications\SAE_A21D21_pompiers\UC_mission\bin\Debug\de\PdfSharp.resources.dll
 U:\applications\SAE_A21D21_pompiers\UC_mission\bin\Debug\de\PdfSharp.Charting.resources.dll
 U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.Up2Date
+C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.Data.SQLite.dll
+C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.Data.SQLite.xml

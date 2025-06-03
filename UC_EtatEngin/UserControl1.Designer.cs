@@ -34,8 +34,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboMission = new System.Windows.Forms.CheckBox();
             this.cboPanne = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pbEngin = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEngin)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,19 +110,20 @@
             this.cboPanne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cboPanne.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // pbEngin
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(486, 51);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(264, 175);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.pbEngin.Location = new System.Drawing.Point(486, 51);
+            this.pbEngin.Name = "pbEngin";
+            this.pbEngin.Size = new System.Drawing.Size(264, 175);
+            this.pbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEngin.TabIndex = 6;
+            this.pbEngin.TabStop = false;
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbEngin);
             this.Controls.Add(this.cboPanne);
             this.Controls.Add(this.cboMission);
             this.Controls.Add(this.lblDate);
@@ -131,7 +132,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(800, 450);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEngin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,6 +146,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox cboMission;
         private System.Windows.Forms.CheckBox cboPanne;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbEngin;
     }
 }

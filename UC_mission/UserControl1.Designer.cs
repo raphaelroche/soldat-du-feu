@@ -103,7 +103,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(853, 165);
+            this.panel1.Size = new System.Drawing.Size(1038, 165);
             this.panel1.TabIndex = 7;
             // 
             // pictureBox1
@@ -118,7 +118,7 @@
             // 
             // btnCloture
             // 
-            this.btnCloture.Location = new System.Drawing.Point(859, 2);
+            this.btnCloture.Location = new System.Drawing.Point(1056, 43);
             this.btnCloture.Name = "btnCloture";
             this.btnCloture.Size = new System.Drawing.Size(91, 80);
             this.btnCloture.TabIndex = 8;
@@ -126,7 +126,7 @@
             // 
             // btnRapport
             // 
-            this.btnRapport.Location = new System.Drawing.Point(859, 83);
+            this.btnRapport.Location = new System.Drawing.Point(1171, 43);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(91, 80);
             this.btnRapport.TabIndex = 9;
@@ -141,7 +141,7 @@
             this.Controls.Add(this.btnCloture);
             this.Controls.Add(this.panel1);
             this.Name = "Mission";
-            this.Size = new System.Drawing.Size(952, 165);
+            this.Size = new System.Drawing.Size(1307, 172);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

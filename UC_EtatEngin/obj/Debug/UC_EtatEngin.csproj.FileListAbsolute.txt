@@ -33,3 +33,6 @@ U:\applications\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatEngin.csproj.C
 U:\applications\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatE.3CCCF7D1.Up2Date
 U:\applications\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatEngin.dll
 U:\applications\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatEngin.pdb
+C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\UC_EtatEngin\bin\Debug\System.Data.SQLite.dll
+C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\UC_EtatEngin\bin\Debug\System.Data.SQLite.xml
+C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatE.3CCCF7D1.Up2Date

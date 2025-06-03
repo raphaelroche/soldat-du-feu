@@ -34,6 +34,10 @@ namespace UC_EtatEngin
             lblDate.Text = Convert.ToDateTime(engin["dateReception"]).ToString("yyyy-MM-dd");
             cboMission.Checked = Convert.ToBoolean(engin["enMission"]);
             cboPanne.Checked = Convert.ToBoolean(engin["enPanne"]);
+
+            //Images
+            //MessageBox.Show("divers/" + typeEngin + ".png");
+            pbEngin.Image = Image.FromFile("ImagesEngins/" + typeEngin.ToLower() + ".jpg");
         }
 
 
