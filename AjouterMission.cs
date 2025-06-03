@@ -56,7 +56,7 @@ namespace SAE_A21D21_pompiers1
         private void AjouterMission_Load(object sender, EventArgs e)
         {
             grpDataGridView.Visible = false;
-            lblIdMIssion.Text = "Mission numéro : " + numeroMission + 
+            lblIdMIssion.Text = "Mission numéro : " + numeroMission +
                 "        " +
                 "Déclenchée le : " + date.Split(' ')[0] + " à " + date.Split(' ')[1];
 
@@ -112,7 +112,7 @@ namespace SAE_A21D21_pompiers1
         private void txtRue_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
+            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar)) || (e.KeyChar == ' ') || char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -121,7 +121,7 @@ namespace SAE_A21D21_pompiers1
         private void txtCodePostal_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsDigit(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
+            if (char.IsDigit(e.KeyChar) || (char.IsControl(e.KeyChar)) || (e.KeyChar == ' '))
             {
                 e.Handled = false;
             }
@@ -130,7 +130,7 @@ namespace SAE_A21D21_pompiers1
         private void txtVille_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
+            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar)) || (e.KeyChar == ' '))
             {
                 e.Handled = false;
             }
@@ -139,7 +139,7 @@ namespace SAE_A21D21_pompiers1
         private void txtMotif_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar) || (e.KeyChar == ' ')))
+            if (char.IsLetter(e.KeyChar) || (char.IsControl(e.KeyChar)) || (e.KeyChar == ' '))
             {
                 e.Handled = false;
             }
@@ -235,7 +235,7 @@ namespace SAE_A21D21_pompiers1
                     string type = row["codeTypeEngin"].ToString();
                     int nb = Convert.ToInt32(row["nombre"]);
 
-                    var enginsDispoDansCaserne = MesDatas.DsGlobal.Tables["Engin"].Select(
+                    DataRow[] enginsDispoDansCaserne = MesDatas.DsGlobal.Tables["Engin"].Select(
                         $"codeTypeEngin = '{type}' AND idCaserne = {idCaserne} AND enMission = 0 AND enPanne = 0"
                     );
 
@@ -290,7 +290,7 @@ namespace SAE_A21D21_pompiers1
 
                     foreach (int idHab in habilitations)
                     {
-                        var rowsPasser = MesDatas.DsGlobal.Tables["Passer"]
+                        DataRow[] rowsPasser = MesDatas.DsGlobal.Tables["Passer"]
                             .Select($"idHabilitation = {idHab}");
 
                         foreach (var passerRow in rowsPasser)
@@ -299,7 +299,11 @@ namespace SAE_A21D21_pompiers1
                             DataRow pompier = MesDatas.DsGlobal.Tables["Pompier"]
                                 .Select($"matricule = {matricule}")
                                 .FirstOrDefault();
-                            if (pompier != null)
+
+                            DataRow affectation = MesDatas.DsGlobal.Tables["Affectation"]
+                                .Select($"matriculePompier = {matricule} and idCaserne = {idCaserne}")
+                                .FirstOrDefault();
+                            if (affectation != null)
                             {
                                 bool enMission = Convert.ToInt32(pompier["enMission"]) == 1;
                                 bool enConge = Convert.ToInt32(pompier["enConge"]) == 1;
@@ -333,12 +337,6 @@ namespace SAE_A21D21_pompiers1
                     }
                 }
             }
-        }
-
-        private void btnFermer_Click_1(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
         }
     }
 }
