@@ -118,6 +118,7 @@
             // 
             // btnCloture
             // 
+            this.btnCloture.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCloture.Location = new System.Drawing.Point(1056, 43);
             this.btnCloture.Name = "btnCloture";
             this.btnCloture.Size = new System.Drawing.Size(91, 80);
@@ -126,6 +127,7 @@
             // 
             // btnRapport
             // 
+            this.btnRapport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRapport.Location = new System.Drawing.Point(1171, 43);
             this.btnRapport.Name = "btnRapport";
             this.btnRapport.Size = new System.Drawing.Size(91, 80);

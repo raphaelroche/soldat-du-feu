@@ -184,6 +184,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnExit.Location = new System.Drawing.Point(30, 602);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -195,6 +196,7 @@
             // 
             // btnAjouter
             // 
+            this.btnAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjouter.Location = new System.Drawing.Point(30, 140);
             this.btnAjouter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAjouter.Name = "btnAjouter";
@@ -205,6 +207,7 @@
             // 
             // btnGestionPersonnel
             // 
+            this.btnGestionPersonnel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGestionPersonnel.Location = new System.Drawing.Point(30, 360);
             this.btnGestionPersonnel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGestionPersonnel.Name = "btnGestionPersonnel";
@@ -215,6 +218,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Location = new System.Drawing.Point(30, 470);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
@@ -224,6 +228,7 @@
             // 
             // btnEngin
             // 
+            this.btnEngin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEngin.Location = new System.Drawing.Point(30, 250);
             this.btnEngin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEngin.Name = "btnEngin";
@@ -234,6 +239,7 @@
             // 
             // btnTDB
             // 
+            this.btnTDB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTDB.Location = new System.Drawing.Point(30, 30);
             this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTDB.Name = "btnTDB";
