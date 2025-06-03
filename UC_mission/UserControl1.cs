@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,16 @@ using System.IO;
 using PdfSharp.Drawing;
 using System.Diagnostics;
 using PdfSharp.Pdf;
+using static iText.Kernel.Pdf.Colorspace.PdfDeviceCs;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace UC_mission
 {
+    
     public partial class Mission : UserControl
     {
+        private SQLiteConnection cx;
         private DataSet m_ds;
         private int m_idMission;
         private string m_dateDepart;
@@ -27,7 +33,7 @@ namespace UC_mission
         private string m_caserne;
 
         public Mission(int idMission, string type, string dateDepart, string dateRetour,
-            string caserne, string desc, string adresse, string cr, DataSet ds)
+            string caserne, string desc, string adresse, string cr, DataSet ds, SQLiteConnection cx)
         {
             InitializeComponent();
             this.m_ds = ds;
@@ -44,6 +50,7 @@ namespace UC_mission
             lblCaserne.Text = "Caserne : " + caserne;
             lblType.Text = type;
             lblDescription.Text = "--> " + desc;
+            this.cx = cx;
 
             //images des boutons
             System.Drawing.Image imgClose = UC_mission.Properties.Resources.close;
@@ -229,6 +236,32 @@ namespace UC_mission
             document.Save(filename);
 
             MessageBox.Show("Rapport crée", "Rapport PDF");
+        }
+
+        private void btnCloture_Click(object sender, EventArgs e)
+        {
+            SQLiteTransaction FermerMission = cx.BeginTransaction();
+            SQLiteCommand com = new SQLiteCommand();
+            com.Connection = cx;
+            com.CommandType = CommandType.Text;
+            com.Transaction = FermerMission;
+            try
+            {
+                com.CommandText = ;
+                com.ExecuteNonQuery();
+
+
+
+                FermerMission.Commit();
+                MessageBox.Show("Mission fermée !");
+
+            }
+            catch (SQLiteException ex)
+            {
+                FermerMission.Rollback();
+                MessageBox.Show("Erreur lors de la fermeture de la mission !");
+
+            }
         }
     }
 }

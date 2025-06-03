@@ -83,31 +83,7 @@ namespace SAE_A21D21_pompiers1
         }
 
 
-        public string getRue()
-        {
-            return txtRue.Text;
-        }
-        public string getCodePostal()
-        {
-
-            return txtCodePostal.Text;
-        }
-        public string getMotif()
-        {
-            return txtMotif.Text;
-        }
-        public string getVille()
-        {
-            return txtVille.Text;
-        }
-        public string getNature()
-        {
-            return cboNatureSinistre.SelectedValue.ToString();
-        }
-        public string getCaserne()
-        {
-            return cboCaserne.SelectedValue.ToString();
-        }
+      
 
         private void txtRue_KeyPress(object sender, KeyPressEventArgs e)
         {
