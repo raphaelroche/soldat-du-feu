@@ -46,3 +46,15 @@ U:\applications\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPers
 U:\applications\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.dll
 U:\applications\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.pdb
 U:\applications\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.csproj.CopyComplete
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\bin\Debug\UC_GestionPersonnel.dll
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\bin\Debug\UC_GestionPersonnel.pdb
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\bin\Debug\System.Data.SQLite.dll
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\bin\Debug\System.Data.SQLite.xml
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.csproj.AssemblyReference.cache
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.AfficherPompier.resources
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\SAE_A21D21_pompiers1.frmLogin.resources
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.csproj.GenerateResource.cache
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.csproj.CoreCompileInputs.cache
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_Gesti.34F2FB7B.Up2Date
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.dll
+C:\Users\raphi\SAE_A21D21_pompiers\UC_GestionPersonnel\obj\Debug\UC_GestionPersonnel.pdb

@@ -14,6 +14,7 @@ using System.Diagnostics;
 using PdfSharp.Pdf;
 using static iText.Kernel.Pdf.Colorspace.PdfDeviceCs;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using SAE_A21D21_pompiers1;
 
 
 namespace UC_mission
@@ -240,28 +241,59 @@ namespace UC_mission
 
         private void btnCloture_Click(object sender, EventArgs e)
         {
-            SQLiteTransaction FermerMission = cx.BeginTransaction();
-            SQLiteCommand com = new SQLiteCommand();
-            com.Connection = cx;
-            com.CommandType = CommandType.Text;
-            com.Transaction = FermerMission;
-            try
-            {
-                com.CommandText = ;
-                com.ExecuteNonQuery();
+           frmCompteRendu compteRendu = new frmCompteRendu();
+           if(compteRendu.ShowDialog() == DialogResult.OK)
+           {
+                string compteR = compteRendu.getCompteRendu();
+                if(compteR.Length == 0)
+                {
+                    compteR = "NULL";
+                }
+                DataRow[] Mission = m_ds.Tables["Mission"].Select($" id = '{m_idMission}'");
+                DataRow[] Mobiliser = m_ds.Tables["Mobiliser"].Select($" idMission = '{m_idMission}'");
 
 
 
-                FermerMission.Commit();
-                MessageBox.Show("Mission fermée !");
+                string sql = "select id from Caserne where nom = '"+this.m_caserne+"'";
+                string sql2 = "select id from NatureSinistre where libelle = '" + this.m_type + "'";
+                SQLiteCommand a = new SQLiteCommand(sql, this.cx);
+                SQLiteCommand b = new SQLiteCommand(sql2, this.cx);
+                SQLiteTransaction FermerMission = cx.BeginTransaction();
+                SQLiteCommand com = new SQLiteCommand();
+                com.Connection = cx;
+                com.CommandType = CommandType.Text;
+                com.Transaction = FermerMission;
+                try
+                {
 
-            }
-            catch (SQLiteException ex)
-            {
-                FermerMission.Rollback();
-                MessageBox.Show("Erreur lors de la fermeture de la mission !");
+                    int idCaserne = Convert.ToInt32(a.ExecuteScalar());
+                    int idNatureSinistre = Convert.ToInt32(b.ExecuteScalar());
+                    com.CommandText = "insert into mission(id,dateHeureDepart,dateHeureRetour,motifAppel, adresse,cp,ville,terminee, compteRendu,idNatureSinistre,idCaserne)" +
+                        $"values ({m_idMission},'{m_dateDepart}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}', '{m_motif}','{m_adresse}','{Mission[0]["cp"]}','{Mission[0]["ville"]}',1,'{compteR}',{idNatureSinistre},{idCaserne})";
+                    com.ExecuteNonQuery();
 
-            }
+                    foreach (DataRow dr in Mobiliser) 
+                    {
+                        int idPompier = Convert.ToInt32(dr["matriculePompier"]);
+                        int idMission = Convert.ToInt32(dr["idMission"]);
+                        int idHabilitation = Convert.ToInt32(dr["idHabilitation"]);
+                        com.CommandText = "insert into Mobiliser(matriculePompier, idMission,idHabilitation) " +
+                            $"values ({idPompier},{idMission},{idHabilitation})";
+                        com.ExecuteNonQuery();
+                    }
+
+
+                    FermerMission.Commit();
+                    MessageBox.Show("Mission fermée !");
+
+                }
+                catch (SQLiteException ex)
+                {
+                    FermerMission.Rollback();
+                    MessageBox.Show("Erreur lors de la fermeture de la mission !");
+
+                }
+           }
         }
     }
 }
