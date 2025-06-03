@@ -59,5 +59,10 @@ namespace UC_EtatEngin
         {
             ((CheckBox)sender).Checked = !((CheckBox)sender).Checked;
         }
+
+        private void UserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
