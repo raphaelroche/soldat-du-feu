@@ -42,7 +42,7 @@
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnGestionPersonnel = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEngin = new System.Windows.Forms.Button();
             this.btnTDB = new System.Windows.Forms.Button();
             this.pnlTableauDeBord.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -50,26 +50,27 @@
             // 
             // pnlTableauDeBord
             // 
+            this.pnlTableauDeBord.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTableauDeBord.AutoScroll = true;
-            this.pnlTableauDeBord.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlTableauDeBord.BackColor = System.Drawing.SystemColors.Control;
             this.pnlTableauDeBord.Controls.Add(this.pnlTrait);
             this.pnlTableauDeBord.Controls.Add(this.cbEnCours);
             this.pnlTableauDeBord.Controls.Add(this.lblTDB);
-            this.pnlTableauDeBord.Location = new System.Drawing.Point(333, 12);
+            this.pnlTableauDeBord.Location = new System.Drawing.Point(346, 12);
             this.pnlTableauDeBord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTableauDeBord.Name = "pnlTableauDeBord";
-            this.pnlTableauDeBord.Size = new System.Drawing.Size(1051, 740);
+            this.pnlTableauDeBord.Size = new System.Drawing.Size(1164, 805);
             this.pnlTableauDeBord.TabIndex = 0;
             this.pnlTableauDeBord.Visible = false;
             // 
             // pnlTrait
             // 
             this.pnlTrait.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlTrait.Location = new System.Drawing.Point(32, 100);
+            this.pnlTrait.Location = new System.Drawing.Point(27, 94);
             this.pnlTrait.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTrait.Name = "pnlTrait";
-            this.pnlTrait.Size = new System.Drawing.Size(973, 14);
+            this.pnlTrait.Size = new System.Drawing.Size(1110, 17);
             this.pnlTrait.TabIndex = 2;
             this.pnlTrait.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTrait_Paint);
             // 
@@ -77,19 +78,20 @@
             // 
             this.cbEnCours.AutoSize = true;
             this.cbEnCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEnCours.Location = new System.Drawing.Point(460, 62);
+            this.cbEnCours.Location = new System.Drawing.Point(504, 61);
             this.cbEnCours.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbEnCours.Name = "cbEnCours";
             this.cbEnCours.Size = new System.Drawing.Size(129, 33);
             this.cbEnCours.TabIndex = 1;
             this.cbEnCours.Text = "En cours";
             this.cbEnCours.UseVisualStyleBackColor = true;
+            this.cbEnCours.CheckedChanged += new System.EventHandler(this.cbEnCours_CheckedChanged);
             // 
             // lblTDB
             // 
             this.lblTDB.AutoSize = true;
             this.lblTDB.Font = new System.Drawing.Font("Arial Rounded MT Bold", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTDB.Location = new System.Drawing.Point(373, 20);
+            this.lblTDB.Location = new System.Drawing.Point(413, 19);
             this.lblTDB.Name = "lblTDB";
             this.lblTDB.Size = new System.Drawing.Size(310, 43);
             this.lblTDB.TabIndex = 0;
@@ -97,6 +99,8 @@
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlMenu.BackColor = System.Drawing.Color.DarkRed;
             this.pnlMenu.Controls.Add(this.lblGestionPersonnel);
             this.pnlMenu.Controls.Add(this.lblEtatEngin);
@@ -107,12 +111,12 @@
             this.pnlMenu.Controls.Add(this.btnAjouter);
             this.pnlMenu.Controls.Add(this.btnGestionPersonnel);
             this.pnlMenu.Controls.Add(this.button2);
-            this.pnlMenu.Controls.Add(this.button1);
+            this.pnlMenu.Controls.Add(this.btnEngin);
             this.pnlMenu.Controls.Add(this.btnTDB);
             this.pnlMenu.Location = new System.Drawing.Point(12, 12);
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(305, 738);
+            this.pnlMenu.Size = new System.Drawing.Size(328, 805);
             this.pnlMenu.TabIndex = 1;
             // 
             // lblGestionPersonnel
@@ -181,76 +185,77 @@
             // btnExit
             // 
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExit.Location = new System.Drawing.Point(29, 615);
+            this.btnExit.Location = new System.Drawing.Point(30, 602);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(109, 100);
+            this.btnExit.Size = new System.Drawing.Size(109, 109);
             this.btnExit.TabIndex = 5;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button5_Click);
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(29, 140);
+            this.btnAjouter.Location = new System.Drawing.Point(30, 140);
             this.btnAjouter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(109, 100);
+            this.btnAjouter.Size = new System.Drawing.Size(109, 109);
             this.btnAjouter.TabIndex = 4;
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // btnGestionPersonnel
             // 
-            this.btnGestionPersonnel.Location = new System.Drawing.Point(29, 359);
+            this.btnGestionPersonnel.Location = new System.Drawing.Point(30, 360);
             this.btnGestionPersonnel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGestionPersonnel.Name = "btnGestionPersonnel";
-            this.btnGestionPersonnel.Size = new System.Drawing.Size(109, 100);
+            this.btnGestionPersonnel.Size = new System.Drawing.Size(109, 109);
             this.btnGestionPersonnel.TabIndex = 3;
             this.btnGestionPersonnel.UseVisualStyleBackColor = true;
             this.btnGestionPersonnel.Click += new System.EventHandler(this.btnGestionPersonnel_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(29, 470);
+            this.button2.Location = new System.Drawing.Point(30, 470);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 100);
+            this.button2.Size = new System.Drawing.Size(109, 109);
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnEngin
             // 
-            this.button1.Location = new System.Drawing.Point(29, 250);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 100);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnEngin.Location = new System.Drawing.Point(30, 250);
+            this.btnEngin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEngin.Name = "btnEngin";
+            this.btnEngin.Size = new System.Drawing.Size(109, 109);
+            this.btnEngin.TabIndex = 1;
+            this.btnEngin.UseVisualStyleBackColor = true;
+            this.btnEngin.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnTDB
             // 
-            this.btnTDB.Location = new System.Drawing.Point(29, 30);
+            this.btnTDB.Location = new System.Drawing.Point(30, 30);
             this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTDB.Name = "btnTDB";
-            this.btnTDB.Size = new System.Drawing.Size(109, 100);
+            this.btnTDB.Size = new System.Drawing.Size(109, 109);
             this.btnTDB.TabIndex = 0;
             this.btnTDB.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::SAE_A21D21_pompiers1.Properties.Resources.caserne;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1389, 762);
+            this.ClientSize = new System.Drawing.Size(1531, 834);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlTableauDeBord);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Les soldats du feu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlTableauDeBord.ResumeLayout(false);
             this.pnlTableauDeBord.PerformLayout();
@@ -271,7 +276,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Button btnGestionPersonnel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEngin;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Label lblTabDB;

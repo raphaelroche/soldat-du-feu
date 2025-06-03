@@ -23,7 +23,6 @@ namespace SAE_A21D21_pompiers
         public Form1()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; // bloque le redisionnement
 
             pnlMenu.BackColor = Color.FromArgb(200, 139, 0, 0); //change l'opacité du menu            
 
@@ -65,6 +64,10 @@ namespace SAE_A21D21_pompiers
             btnGestionPersonnel.BackgroundImage = new Bitmap(imgPersonnel, new Size(btnGestionPersonnel.Width, btnGestionPersonnel.Height)); // redimensionne l'image à la taille du bouton btnGestionPersonnel
             btnGestionPersonnel.BackgroundImageLayout = ImageLayout.Stretch;
 
+            Image imgEngin = Image.FromFile("divers/engin.png");
+            btnEngin.BackgroundImage = new Bitmap(imgEngin, new Size(btnGestionPersonnel.Width, btnGestionPersonnel.Height)); // redimensionne l'image à la taille du bouton btnGestionPersonnel
+            btnEngin.BackgroundImageLayout = ImageLayout.Stretch;
+
             afficherMission();
       
         }
@@ -72,7 +75,7 @@ namespace SAE_A21D21_pompiers
         private void afficherMission()
         {
             //remplir le panel avec les missions présentes dans la table
-            int y = 110; // position de départ en Y
+            int y = 115; // position de départ en Y
             int spacing = y + 30; // espace entre les contrôles
 
             foreach (DataRow drMission in MesDatas.DsGlobal.Tables["Mission"].Rows)
@@ -108,12 +111,57 @@ namespace SAE_A21D21_pompiers
 
 
                 Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse, cr, MesDatas.DsGlobal);
-                mission.Location = new System.Drawing.Point(50, y);
+                mission.Location = new System.Drawing.Point(100, y);
                 y += spacing;
                 pnlTableauDeBord.Controls.Add(mission);
             }
             pnlTableauDeBord.Show();
-        }      
+        }
+
+        private void afficherMissionEnCours()
+        {
+            // Remplir le panel avec les missions en cours (colonne "terminee" égale à 1)  
+            int y = 115; // Position de départ en Y  
+            int spacing = y + 30; // Espace entre les contrôles  
+
+            foreach (DataRow drMission in MesDatas.DsGlobal.Tables["Mission"].Rows)
+            {
+                if (Convert.ToInt32(drMission["terminee"]) == 0) // Vérifie si la mission est terminée  
+                {
+                    int id = Convert.ToInt32(drMission["id"]);
+
+                    string type = "";
+                    foreach (DataRow drNatureSinistre in MesDatas.DsGlobal.Tables["NatureSinistre"].Rows)
+                    {
+                        if (Convert.ToInt32(drNatureSinistre["id"]) == Convert.ToInt32(drMission["idNatureSinistre"]))
+                            type = drNatureSinistre["libelle"].ToString();
+                    }
+
+                    string dateDepart = drMission["dateHeureDepart"].ToString();
+                    string dateRetour = drMission["dateHeureRetour"].ToString();
+
+                    string caserne = "";
+                    foreach (DataRow drCaserne in MesDatas.DsGlobal.Tables["Caserne"].Rows)
+                    {
+                        if (Convert.ToInt32(drCaserne["id"]) == Convert.ToInt32(drMission["idCaserne"]))
+                        {
+                            caserne = drCaserne["nom"].ToString();
+                        }
+                    }
+
+                    string adresse = drMission["adresse"].ToString() + " " + drMission["cp"].ToString() + " " + drMission["ville"].ToString();
+
+                    string desc = drMission["motifAppel"].ToString();
+                    string cr = drMission["compteRendu"].ToString();
+
+                    Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse, cr, MesDatas.DsGlobal);
+                    mission.Location = new System.Drawing.Point(100, y);
+                    y += spacing;
+                    pnlTableauDeBord.Controls.Add(mission);
+                }
+            }
+            pnlTableauDeBord.Show();
+        }
 
 
         // Méthode pour dessiner un trait dégradé sur n'importe quel panel
@@ -178,6 +226,27 @@ namespace SAE_A21D21_pompiers
             {
                 
             }
+        }
+
+        private void cbEnCours_CheckedChanged(object sender, EventArgs e)
+        {
+            //enlève les missions
+            List<UserControl> controlsToRemove = pnlTableauDeBord.Controls.OfType<UserControl>().ToList();
+            foreach (Control c in controlsToRemove)
+            {
+                pnlTableauDeBord.Controls.Remove(c);
+            }
+
+            //mets que les missions concernées
+            if (cbEnCours.Checked)
+            {
+                afficherMissionEnCours();
+            }
+            else
+            {
+                afficherMission();
+            }
+            
         }
     }
 }
