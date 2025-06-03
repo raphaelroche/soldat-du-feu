@@ -28,6 +28,7 @@ namespace SAE_A21D21_pompiers1
         private DataTable dtPompier;
         private DataTable dtNatureSinistre;
         private DataTable dtEngin;
+        private int[] idHabilitation;
 
 
         public AjouterMission(int numeroMission, string date)
@@ -155,6 +156,9 @@ namespace SAE_A21D21_pompiers1
             nouvelleMission["terminee"] = 0;
             dtMission.Rows.Add(nouvelleMission);
 
+
+
+            int i = 0;
             //mettre les pompiers en mission dans le dataset
             foreach (DataGridViewRow row in dgvPompiers.Rows)
             {
@@ -166,7 +170,12 @@ namespace SAE_A21D21_pompiers1
                     {
                         pompierRow[0]["enMission"] = 1;
                     }
+                    DataRow nouveauMobiliser = dtMobiliser.NewRow();
+                    nouveauMobiliser["matriculePompier"] = matricule;
+                    nouveauMobiliser["idMission"] = numeroMission;
+                    nouveauMobiliser["idHabilitation"] = idHabilitation[i];
                 }
+                i++;
             }
 
             //metre les engins en mission dans le dataset
@@ -278,7 +287,7 @@ namespace SAE_A21D21_pompiers1
                     dgvPompiers.Columns.Add("pourEngin", "Type Engin");
                 }
 
-
+                int i = 0;
                 foreach ((string typeEngin, int nombre) in enginsNecessaires)
                 {
                     IEnumerable<int> habilitations = MesDatas.DsGlobal.Tables["Embarquer"]
@@ -292,6 +301,7 @@ namespace SAE_A21D21_pompiers1
                     {
                         DataRow[] rowsPasser = MesDatas.DsGlobal.Tables["Passer"]
                             .Select($"idHabilitation = {idHab}");
+                        
 
                         foreach (DataRow passerRow in rowsPasser)
                         {
@@ -313,6 +323,8 @@ namespace SAE_A21D21_pompiers1
                                 {
                                     if (!pompiersEligibles.Contains(pompier))
                                         pompiersEligibles.Add(pompier);
+                                    idHabilitation[i]= idHab;
+                                    i++;
                                 }
                             }
                         }

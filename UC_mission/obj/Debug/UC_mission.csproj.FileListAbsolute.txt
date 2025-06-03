@@ -347,3 +347,11 @@ U:\applications\SAE_A21D21_pompiers\UC_mission\bin\Debug\de\PdfSharp.Charting.re
 U:\applications\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.Up2Date
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.Data.SQLite.dll
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.Data.SQLite.xml
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.AssemblyReference.cache
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.Properties.Resources.resources
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.Mission.resources
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.GenerateResource.cache
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.CoreCompileInputs.cache
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.dll
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.pdb
+C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\SAE_A21D21_pompiers1.frmCompteRendu.resources
