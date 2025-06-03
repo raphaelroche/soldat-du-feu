@@ -49,5 +49,15 @@ namespace UC_EtatEngin
             cboPanne.Checked = false;
             // Vider l’image si tu en as une
         }
+
+        private void cboMission_Click(object sender, EventArgs e)
+        {
+            ((CheckBox)sender).Checked = !((CheckBox)sender).Checked;
+        }
+
+        private void cboPanne_Click(object sender, EventArgs e)
+        {
+            ((CheckBox)sender).Checked = !((CheckBox)sender).Checked;
+        }
     }
 }
