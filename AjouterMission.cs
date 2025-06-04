@@ -29,6 +29,7 @@ namespace SAE_A21D21_pompiers1
         private DataTable dtNatureSinistre;
         private DataTable dtEngin;
         private int[] idHabilitation;
+        private int[] idHabi;
 
 
         public AjouterMission(int numeroMission, string date)
@@ -78,7 +79,7 @@ namespace SAE_A21D21_pompiers1
             cboNatureSinistre.SelectedIndex = -1;
             cboCaserne.SelectedIndex = -1;
 
-
+            idHabilitation = new int[100];
 
 
         }
@@ -151,8 +152,8 @@ namespace SAE_A21D21_pompiers1
             nouvelleMission["ville"] = txtVille.Text;
             nouvelleMission["dateHeureDepart"] = date;
             nouvelleMission["id"] = numeroMission;
-            nouvelleMission["idCaserne"] = Convert.ToInt32(cboCaserne.SelectedValue);
-            nouvelleMission["idNatureSinistre"] = Convert.ToInt32(cboNatureSinistre.SelectedValue);
+            nouvelleMission["idCaserne"] = Convert.ToInt32(cboCaserne.SelectedIndex + 1);
+            nouvelleMission["idNatureSinistre"] = Convert.ToInt32(cboNatureSinistre.SelectedIndex + 1);
             nouvelleMission["terminee"] = 0;
             dtMission.Rows.Add(nouvelleMission);
 
@@ -173,9 +174,10 @@ namespace SAE_A21D21_pompiers1
                     DataRow nouveauMobiliser = dtMobiliser.NewRow();
                     nouveauMobiliser["matriculePompier"] = matricule;
                     nouveauMobiliser["idMission"] = numeroMission;
-                    nouveauMobiliser["idHabilitation"] = idHabilitation[i];
+                    nouveauMobiliser["idHabilitation"] = idHabi[i];
+                    i++;
                 }
-                i++;
+                
             }
 
             //metre les engins en mission dans le dataset
@@ -266,9 +268,9 @@ namespace SAE_A21D21_pompiers1
                     );
 
                     // On ne garde que le nombre demandé
-                    for (int i = 0; i < nb && i < enginsDispoDansCaserne.Length; i++)
+                    for (int f = 0; f < nb && f < enginsDispoDansCaserne.Length; f++)
                     {
-                        DataRow engin = enginsDispoDansCaserne[i];
+                        DataRow engin = enginsDispoDansCaserne[f];
                         string codeTypeEngin = engin["codeTypeEngin"].ToString();
                         int numero = Convert.ToInt32(engin["numero"]);
                         int idCaserneEngin = Convert.ToInt32(engin["idCaserne"]);
@@ -288,6 +290,7 @@ namespace SAE_A21D21_pompiers1
                 }
 
                 int i = 0;
+                idHabi = new int[20];
                 foreach ((string typeEngin, int nombre) in enginsNecessaires)
                 {
                     IEnumerable<int> habilitations = MesDatas.DsGlobal.Tables["Embarquer"]
@@ -322,9 +325,13 @@ namespace SAE_A21D21_pompiers1
                                 if (!enMission && !enConge)
                                 {
                                     if (!pompiersEligibles.Contains(pompier))
+                                    {
                                         pompiersEligibles.Add(pompier);
-                                    idHabilitation[i]= idHab;
-                                    i++;
+                                        idHabilitation[i] = idHab;
+                                        i++;
+                                    }
+                                       
+
                                 }
                             }
                         }
@@ -340,8 +347,13 @@ namespace SAE_A21D21_pompiers1
 
                     // nombre total de pompiers à prendre = nombre d'engins * équipage
                     int totalPompiers = equipage * nombre;
+                    
 
                     List<DataRow> selection = pompiersEligibles.Take(totalPompiers).ToList();
+                    
+                    for (int j = 0; j < totalPompiers; j++) {
+                        idHabi[j] = idHabilitation[j];
+                    }
 
                     foreach (DataRow p in selection)
                     {
