@@ -254,7 +254,7 @@ namespace UC_mission
                     compteR = "NULL";
                 }
               
-                DataRow[] Mobiliser = m_ds.Tables["Mobiliser"].Select($" idMission = '{m_idMission}'");
+                DataRow[] Mobiliser = m_ds.Tables["Mobiliser"].Select($"idMission = {m_idMission}");
 
 
 
