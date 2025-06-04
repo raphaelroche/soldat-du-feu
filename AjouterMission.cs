@@ -161,23 +161,34 @@ namespace SAE_A21D21_pompiers1
 
             int i = 0;
             //mettre les pompiers en mission dans le dataset
+            HashSet<int> matriculesDejaAjoutes = new HashSet<int>();
+
             foreach (DataGridViewRow row in dgvPompiers.Rows)
             {
                 if (row.Cells["Matricule"].Value != null)
                 {
                     int matricule = Convert.ToInt32(row.Cells["Matricule"].Value);
-                    DataRow[] pompierRow = dtPompier.Select($"matricule = {matricule}");
-                    if (pompierRow.Length > 0)
+
+                    if (!matriculesDejaAjoutes.Contains(matricule))
                     {
-                        pompierRow[0]["enMission"] = 1;
+                        // Marquer le pompier comme étant en mission
+                        DataRow[] pompierRow = dtPompier.Select($"matricule = {matricule}");
+                        if (pompierRow.Length > 0)
+                        {
+                            pompierRow[0]["enMission"] = 1;
+                        }
+
+                        // Ajouter dans dtMobiliser
+                        DataRow nouveauMobiliser = dtMobiliser.NewRow();
+                        nouveauMobiliser["matriculePompier"] = matricule;
+                        nouveauMobiliser["idMission"] = numeroMission;
+                        nouveauMobiliser["idHabilitation"] = idHabi[i];
+                        dtMobiliser.Rows.Add(nouveauMobiliser);
+
+                        matriculesDejaAjoutes.Add(matricule);
+                        i++;
                     }
-                    DataRow nouveauMobiliser = dtMobiliser.NewRow();
-                    nouveauMobiliser["matriculePompier"] = matricule;
-                    nouveauMobiliser["idMission"] = numeroMission;
-                    nouveauMobiliser["idHabilitation"] = idHabi[i];
-                    i++;
                 }
-                
             }
 
             //metre les engins en mission dans le dataset
