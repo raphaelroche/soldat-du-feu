@@ -106,13 +106,15 @@ namespace SAE_A21D21_pompiers
                     }
                 }
 
-                string adresse = drMission["adresse"].ToString() + " " + drMission["cp"].ToString() + " " + drMission["ville"].ToString();
+                string adresse = drMission["adresse"].ToString();
+                string cp = drMission["cp"].ToString();
+                string ville = drMission["ville"].ToString();
 
                 string desc = drMission["motifAppel"].ToString();
                 string cr = drMission["compteRendu"].ToString();
 
 
-                Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse, cr, MesDatas.DsGlobal, cx);
+                Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse,cp, ville, cr, MesDatas.DsGlobal, cx);
                 mission.Location = new System.Drawing.Point(100, y);
                 y += spacing;
                 pnlTableauDeBord.Controls.Add(mission);
@@ -122,7 +124,7 @@ namespace SAE_A21D21_pompiers
 
         private void afficherMissionEnCours()
         {
-            // Remplir le panel avec les missions en cours (colonne "terminee" égale à 1)  
+            // Remplir le panel avec les missions en cours (colonne "terminee" égale à 0)  
             int y = 115; // Position de départ en Y  
             int spacing = y + 30; // Espace entre les contrôles  
 
@@ -150,13 +152,14 @@ namespace SAE_A21D21_pompiers
                             caserne = drCaserne["nom"].ToString();
                         }
                     }
-
-                    string adresse = drMission["adresse"].ToString() + " " + drMission["cp"].ToString() + " " + drMission["ville"].ToString();
+                    string adresse = drMission["adresse"].ToString();
+                    string cp = drMission["cp"].ToString();
+                    string ville = drMission["ville"].ToString();
 
                     string desc = drMission["motifAppel"].ToString();
                     string cr = drMission["compteRendu"].ToString();
 
-                    Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse, cr, MesDatas.DsGlobal,cx);
+                    Mission mission = new Mission(id, type, dateDepart, dateRetour, caserne, desc, adresse,cp,ville, cr, MesDatas.DsGlobal,cx);
                     mission.Location = new System.Drawing.Point(100, y);
                     y += spacing;
                     pnlTableauDeBord.Controls.Add(mission);
