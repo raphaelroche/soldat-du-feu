@@ -34,6 +34,7 @@ namespace UC_GestionPersonnel
         private int encongebase;
         private string statusBase;
         private string caserneBase;
+        private int nbHabilajt;
 
 
 
@@ -64,7 +65,9 @@ namespace UC_GestionPersonnel
             this.gradeBase = grade;
             this.caserneBase = caserne;
             this.statusBase = status;
-
+            this.nbHabilajt = 0;
+            
+            
 
 
         }
@@ -104,6 +107,7 @@ namespace UC_GestionPersonnel
 
             string sql = "select libelle from Grade";
             string sql3 = "select code from Grade where chaine = '" + this.grade.ToString() + "'";
+            string sqlHabil = "select libelle from Habilitation";
             try
             {
                 SQLiteCommand a = new SQLiteCommand(sql3, this.cx);
@@ -134,6 +138,13 @@ namespace UC_GestionPersonnel
 
                 cboGrade.SelectedIndex = this.grade;
 
+                SQLiteCommand h = new SQLiteCommand(sqlHabil, cx);
+                SQLiteDataReader dr2 = h.ExecuteReader();
+                while (dr2.Read())
+                {
+                    cboHabil.Items.Add(dr2.GetString(0));
+                }
+
 
 
 
@@ -156,6 +167,7 @@ namespace UC_GestionPersonnel
             {
                 lstHabilitations.Items.Add(d.GetString(0));
             }
+            
         }
 
         private void chargerAffectation()
@@ -281,6 +293,20 @@ namespace UC_GestionPersonnel
                         com.ExecuteNonQuery();
                     }
 
+                    if (nbHabilajt != 0)
+                    {
+                        foreach(Object Habil in lstHabilitations.Items)
+                        {
+                            string id = "select id from Habilitation where libelle = \""+Habil.ToString()+"\"";
+                            SQLiteCommand c = new SQLiteCommand(id, this.cx);
+                            int idHabil = Convert.ToInt32(c.ExecuteScalar());
+
+                            com.CommandText = "insert or ignore into Passer(matriculePompier, idHabilitation, dateObtention) " +
+                                $"values({matricule}, {idHabil}, '{DateTime.Now.ToString("yyyy-MM-dd")}')";
+                            com.ExecuteNonQuery();
+                        }
+                    }
+
 
                     changerInfoPopmier.Commit();
                     MessageBox.Show("Modifications effectuées !");
@@ -290,7 +316,7 @@ namespace UC_GestionPersonnel
                 catch (SQLiteException ex)
                 {
                     changerInfoPopmier.Rollback();
-                    MessageBox.Show("Erreur, modification non-effectuée !");
+                    MessageBox.Show("Erreur, modification non-effectuée !"+ex.Message);
 
                 }
             }
@@ -329,6 +355,24 @@ namespace UC_GestionPersonnel
             {
                 enconge = 0;
             }
+        }
+
+        private void btnAjtHabil_Click(object sender, EventArgs e)
+        {
+            cboHabil.Visible = true;
+        }
+
+        private void cboHabil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstHabilitations.Items.Contains(cboHabil.SelectedItem)){
+                MessageBox.Show("Ce pompier possède déja cette habilitation");
+            }
+            else
+            {
+                lstHabilitations.Items.Add(cboHabil.SelectedItem);
+            }
+            nbHabilajt++;
+            cboHabil.Visible=false;
         }
     }
 }
