@@ -434,3 +434,6 @@ C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.ValueTuple.xml
 C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\bin\Debug\de\PdfSharp.resources.dll
 C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\bin\Debug\de\PdfSharp.Charting.resources.dll
 C:\Users\raphi\SAE_A21D21_pompiers\UC_mission\obj\Debug\UC_mission.csproj.Up2Date
+C:\Users\abdou\cours\S2\A21\pomp\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.Data.SQLite.dll
+C:\Users\abdou\cours\S2\A21\pomp\SAE_A21D21_pompiers\UC_mission\bin\Debug\System.Data.SQLite.xml
+C:\Users\abdou\cours\S2\A21\pomp\SAE_A21D21_pompiers\UC_mission\obj\Debug\SAE_A21D21_pompiers1.frmCompteRendu.resources

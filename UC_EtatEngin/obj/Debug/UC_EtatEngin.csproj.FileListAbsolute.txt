@@ -47,3 +47,6 @@ C:\Users\raphi\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatEngin.csproj.Co
 C:\Users\raphi\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatE.3CCCF7D1.Up2Date
 C:\Users\raphi\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatEngin.dll
 C:\Users\raphi\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatEngin.pdb
+C:\Users\abdou\cours\S2\A21\pomp\SAE_A21D21_pompiers\UC_EtatEngin\bin\Debug\System.Data.SQLite.dll
+C:\Users\abdou\cours\S2\A21\pomp\SAE_A21D21_pompiers\UC_EtatEngin\bin\Debug\System.Data.SQLite.xml
+C:\Users\abdou\cours\S2\A21\pomp\SAE_A21D21_pompiers\UC_EtatEngin\obj\Debug\UC_EtatE.3CCCF7D1.Up2Date
