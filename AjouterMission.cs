@@ -150,6 +150,11 @@ namespace SAE_A21D21_pompiers1
                 MessageBox.Show("Aucun Pompier n'est disponible pour cette mission, veuillez chosir une autre caserne");
                 return;
             }
+            if(dgvEngin.Rows.Count == 0)
+            {
+                MessageBox.Show("Aucun Engin n'est disponible pour cette mission, tout les engins de ce type soint en mission ou en panne !");
+                return;
+            }
             DataRow nouvelleMission = dtMission.NewRow();
             nouvelleMission["motifAppel"] = txtMotif.Text;
             nouvelleMission["adresse"] = txtRue.Text;
