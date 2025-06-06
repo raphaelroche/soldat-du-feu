@@ -23,8 +23,6 @@ namespace SAE_A21D21_pompiers1
         private DataTable dtMission;
         private DataTable dtPartirAvec;
         private DataTable dtMobiliser;
-        private DataTable dtPasser;
-        private DataTable dtAffectation;
         private DataTable dtPompier;
         private DataTable dtNatureSinistre;
         private DataTable dtEngin;
@@ -46,8 +44,6 @@ namespace SAE_A21D21_pompiers1
             dtMission = MesDatas.DsGlobal.Tables["Mission"];
             dtPartirAvec = MesDatas.DsGlobal.Tables["PartirAvec"];
             dtMobiliser = MesDatas.DsGlobal.Tables["Mobiliser"];
-            dtPasser = MesDatas.DsGlobal.Tables["Passer"];
-            dtAffectation = MesDatas.DsGlobal.Tables["Affectation"];
             dtPompier = MesDatas.DsGlobal.Tables["Pompier"];
             dtNatureSinistre = MesDatas.DsGlobal.Tables["NatureSinistre"];
             dtEngin = MesDatas.DsGlobal.Tables["Engin"];
@@ -147,12 +143,12 @@ namespace SAE_A21D21_pompiers1
         {
             if (dgvPompiers.Rows.Count == 0)
             {
-                MessageBox.Show("Aucun Pompier n'est disponible pour cette mission, veuillez chosir une autre caserne");
+                MessageBox.Show("Aucun Pompier n'est disponible pour cette mission, veuillez chosir une autre caserne", "caserne vide", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if(dgvEngin.Rows.Count == 0)
             {
-                MessageBox.Show("Aucun Engin n'est disponible pour cette mission, tout les engins de ce type soint en mission ou en panne !");
+                MessageBox.Show("Aucun Engin n'est disponible pour cette mission, tout les engins de ce type soint en mission ou en panne !", "Engin Indisponible", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             DataRow nouvelleMission = dtMission.NewRow();
@@ -237,6 +233,30 @@ namespace SAE_A21D21_pompiers1
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+        private List<DataRow> TrouverEnginsAUtiliser(string type, int nb, int idCaserne)
+        {
+            DataRow[] tousEnginsDispo = MesDatas.DsGlobal.Tables["Engin"].Select(
+                $"codeTypeEngin = '{type}' AND enMission = 0 AND enPanne = 0"
+            );
+
+            List<DataRow> enginsDansCaserne = tousEnginsDispo
+                .Where(f => Convert.ToInt32(f["idCaserne"]) == idCaserne)
+                .ToList();
+
+            List<DataRow> enginsHorsCaserne = tousEnginsDispo
+                .Where(f => Convert.ToInt32(f["idCaserne"]) != idCaserne)
+                .ToList();
+
+            List<DataRow> enginsAUtiliser = new List<DataRow>();
+            enginsAUtiliser.AddRange(enginsDansCaserne.Take(nb));
+
+            if (enginsAUtiliser.Count < nb)
+            {
+                enginsAUtiliser.AddRange(enginsHorsCaserne.Take(nb - enginsAUtiliser.Count));
+            }
+
+            return enginsAUtiliser;
+        }
 
         private void btnEquipe_Click(object sender, EventArgs e)
         {
@@ -251,31 +271,12 @@ namespace SAE_A21D21_pompiers1
                 int idNatureSinistre = Convert.ToInt32(cboNatureSinistre.SelectedValue);
                 int idCaserne = Convert.ToInt32(cboCaserne.SelectedValue);
 
-                // 1. Identifier les engins nécessaires
+                // identifier les engins nécessaires
                 foreach (DataRow row in dtNecessiter.Select("idNatureSinistre = " + idNatureSinistre))
                 {
                     string type = row["codeTypeEngin"].ToString();
                     int nb = Convert.ToInt32(row["nombre"]);
-
-                    DataRow[] tousEnginsDispo = MesDatas.DsGlobal.Tables["Engin"].Select(
-                        $"codeTypeEngin = '{type}' AND enMission = 0 AND enPanne = 0"
-                    );
-
-                    List<DataRow> enginsDansCaserne = tousEnginsDispo 
-                        .Where(f => Convert.ToInt32(f["idCaserne"]) == idCaserne)
-                        .ToList();
-
-                    List<DataRow> enginsHorsCaserne = tousEnginsDispo
-                        .Where(f => Convert.ToInt32(f["idCaserne"]) != idCaserne)
-                        .ToList();
-
-                    List<DataRow> enginsAUtiliser = new List<DataRow>();
-                    enginsAUtiliser.AddRange(enginsDansCaserne.Take(nb));
-
-                    if (enginsAUtiliser.Count < nb)
-                    {
-                        enginsAUtiliser.AddRange(enginsHorsCaserne.Take(nb - enginsAUtiliser.Count));
-                    }
+                    var enginsAUtiliser = TrouverEnginsAUtiliser(type, nb, idCaserne);
 
                     if (enginsAUtiliser.Count == nb)
                     {
@@ -303,25 +304,7 @@ namespace SAE_A21D21_pompiers1
                         equipage = Convert.ToInt32(typeEnginRow[0]["equipage"]);
                     }
 
-                    DataRow[] tousEnginsDispo = MesDatas.DsGlobal.Tables["Engin"].Select(
-                        $"codeTypeEngin = '{type}' AND enMission = 0 AND enPanne = 0"
-                    );
-
-                    List<DataRow> enginsDansCaserne = tousEnginsDispo
-                        .Where(f => Convert.ToInt32(f["idCaserne"]) == idCaserne)
-                        .ToList();
-
-                    List<DataRow> enginsHorsCaserne = tousEnginsDispo
-                        .Where(f => Convert.ToInt32(f["idCaserne"]) != idCaserne)
-                        .ToList();
-
-                    List<DataRow> enginsAUtiliser = new List<DataRow>();
-                    enginsAUtiliser.AddRange(enginsDansCaserne.Take(nb));
-
-                    if (enginsAUtiliser.Count < nb)
-                    {
-                        enginsAUtiliser.AddRange(enginsHorsCaserne.Take(nb - enginsAUtiliser.Count));
-                    }
+                    var enginsAUtiliser = TrouverEnginsAUtiliser(type, nb, idCaserne);
 
                     foreach (DataRow engin in enginsAUtiliser)
                     {
@@ -331,6 +314,7 @@ namespace SAE_A21D21_pompiers1
                         dgvEngin.Rows.Add(codeTypeEngin, 1, equipage, numero, idCaserneEngin);
                     }
                 }
+            
 
                 // 3. Affichage des pompiers
                 dgvPompiers.Rows.Clear();
