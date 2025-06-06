@@ -210,6 +210,13 @@ namespace SAE_A21D21_pompiers1
                     {
                         engin["enMission"] = 1;
                     }
+                    DataRow nouveauPartirAvec = dtPartirAvec.NewRow();
+                    nouveauPartirAvec["idCaserne"] = Convert.ToInt32(cboCaserne.SelectedIndex + 1);
+                    nouveauPartirAvec["codeTypeEngin"] = codeTypeEngin;
+                    nouveauPartirAvec["numeroEngin"] = numero;
+                    nouveauPartirAvec["idMission"] = numeroMission;
+                    nouveauPartirAvec["reparationsEventuelles"] = DBNull.Value;
+                    dtPartirAvec.Rows.Add(nouveauPartirAvec);
                 }
             }
 
