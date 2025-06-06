@@ -255,6 +255,7 @@ namespace UC_mission
                 }
               
                 DataRow[] Mobiliser = m_ds.Tables["Mobiliser"].Select($"idMission = {m_idMission}");
+                DataRow[] PartirAvec = m_ds.Tables["PartirAvec"].Select($"idMission = {m_idMission}");
 
 
 
@@ -272,13 +273,18 @@ namespace UC_mission
 
                     int idCaserne = Convert.ToInt32(a.ExecuteScalar());
                     int idNatureSinistre = Convert.ToInt32(b.ExecuteScalar());
-                    if (m_idMission > 8)
+                    
+                    
+                    com.CommandText = "insert or ignore into mission(id,dateHeureDepart,dateHeureRetour,motifAppel, adresse,cp,ville,terminee, compteRendu,idNatureSinistre,idCaserne)" +
+                    $"values ({m_idMission},'{m_dateDepart}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}', \"{m_motif}\",\"{m_adresse}\",{m_cp},\"{m_ville}\",1,\"{compteR}\",{idNatureSinistre},{idCaserne})";
+                    int fait = com.ExecuteNonQuery();
+                    if (fait == 0)
                     {
-                        com.CommandText = "insert or ignore into mission(id,dateHeureDepart,dateHeureRetour,motifAppel, adresse,cp,ville,terminee, compteRendu,idNatureSinistre,idCaserne)" +
-                        $"values ({m_idMission},'{m_dateDepart}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}', \"{m_motif}\",\"{m_adresse}\",{m_cp},\"{m_ville}\",1,\"{compteR}\",{idNatureSinistre},{idCaserne})";
-                        int fait = com.ExecuteNonQuery();
-                        if (fait == 0)
+                        com.CommandText = $"UPDATE or ignore Mission SET terminee = 1, compteRendu = \"{compteR}\", dateHeureRetour ='{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}' WHERE id = {m_idMission} and terminee = 0;";
+                        int fonctionne = com.ExecuteNonQuery();
+                        if (fonctionne == 0)
                         {
+
                             MessageBox.Show("Vous ne pouvez pas fermer une mission deja fermé !");
                         }
                         else
@@ -290,41 +296,41 @@ namespace UC_mission
                                 lignes[0]["compteRendu"] = compteR;
                                 lignes[0]["dateHeureRetour"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
                             }
-                            foreach (DataRow dr in Mobiliser)
-                            {
-                                int idPompier = Convert.ToInt32(dr["matriculePompier"]);
-                                int idMission = Convert.ToInt32(dr["idMission"]);
-                                int idHabilitation = Convert.ToInt32(dr["idHabilitation"]);
-                                com.CommandText = "insert into Mobiliser(matriculePompier, idMission,idHabilitation) " +
-                                    $"values ({idPompier},{idMission},{idHabilitation})";
-                                com.ExecuteNonQuery();
-                                
-                            }
-                            MessageBox.Show("Mission fermée !");
                         }
                     }
                     else
                     {
-                        com.CommandText = $"UPDATE Mission SET terminee = 1, compteRendu = \"{compteR}\", dateHeureRetour ='{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}' WHERE id = {m_idMission} and terminee = 0;";
-                        int fonctionne = com.ExecuteNonQuery();
-                        if( fonctionne == 0)
+                        DataRow[] lignes = m_ds.Tables["Mission"].Select($"id = {m_idMission}");
+                        if (lignes.Length > 0)
                         {
-                            
-                            MessageBox.Show("Mission deja fermé !");
+                            lignes[0]["terminee"] = 1;
+                            lignes[0]["compteRendu"] = compteR;
+                            lignes[0]["dateHeureRetour"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
                         }
-                        else
+                        foreach (DataRow dr in Mobiliser)
                         {
-                            DataRow[] lignes = m_ds.Tables["Mission"].Select($"id = {m_idMission}");
-                            if (lignes.Length > 0)
-                            {
-                                lignes[0]["terminee"] = 1;
-                                lignes[0]["compteRendu"] = compteR;
-                                lignes[0]["dateHeureRetour"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                            }
-                            MessageBox.Show("Vous ne pouvez pas fermer une mission deja fermé !");
-                        }
-                    }
+                            int idPompier = Convert.ToInt32(dr["matriculePompier"]);
+                            int idMission = Convert.ToInt32(dr["idMission"]);
+                            int idHabilitation = Convert.ToInt32(dr["idHabilitation"]);
+                            com.CommandText = "insert into Mobiliser(matriculePompier, idMission,idHabilitation) " +
+                                $"values ({idPompier},{idMission},{idHabilitation})";
+                            com.ExecuteNonQuery();
 
+                        }
+                        foreach (DataRow dr in PartirAvec)
+                        {
+                            int id = Convert.ToInt32(dr["idCaserne"]);
+                            string codeType = dr["codeTypeEngin"].ToString();
+                            int numerongin = Convert.ToInt32(dr["numeroEngin"]);
+                            int idMission = Convert.ToInt32(dr["idMission"]);
+                            string reparationsEventuelles = "NULL";
+                            com.CommandText = "insert into PartirAvec(idCaserne, codeTypeEngin,numeroEngin,idMission, reparationsEventuelles) " +
+                               $"values ({id},'{codeType}',{numerongin},{idMission},{reparationsEventuelles})";
+                            com.ExecuteNonQuery();
+
+                        }
+                        MessageBox.Show("Mission fermée !");
+                    }
                     FermerMission.Commit();
                     
 
