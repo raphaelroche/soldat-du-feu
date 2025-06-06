@@ -145,6 +145,11 @@ namespace SAE_A21D21_pompiers1
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            if (dgvPompiers.Rows.Count == 0)
+            {
+                MessageBox.Show("Aucun Pompier n'est disponible pour cette mission, veuillez chosir une autre caserne");
+                return;
+            }
             DataRow nouvelleMission = dtMission.NewRow();
             nouvelleMission["motifAppel"] = txtMotif.Text;
             nouvelleMission["adresse"] = txtRue.Text;
@@ -238,28 +243,42 @@ namespace SAE_A21D21_pompiers1
 
                 List<(string codeTypeEngin, int nombre)> enginsNecessaires = new List<(string, int)>();
 
-                // 1. Récupération des valeurs depuis les ComboBox
                 int idNatureSinistre = Convert.ToInt32(cboNatureSinistre.SelectedValue);
                 int idCaserne = Convert.ToInt32(cboCaserne.SelectedValue);
 
-
-                // 2. Recherche des engins nécessaires pour ce type de sinistre
-                foreach (DataRow row in MesDatas.DsGlobal.Tables["Necessiter"].Select("idNatureSinistre = " + idNatureSinistre))
+                // 1. Identifier les engins nécessaires
+                foreach (DataRow row in dtNecessiter.Select("idNatureSinistre = " + idNatureSinistre))
                 {
                     string type = row["codeTypeEngin"].ToString();
                     int nb = Convert.ToInt32(row["nombre"]);
 
-                    DataRow[] enginsDispoDansCaserne = MesDatas.DsGlobal.Tables["Engin"].Select(
-                        $"codeTypeEngin = '{type}' AND idCaserne = {idCaserne} AND enMission = 0 AND enPanne = 0"
+                    DataRow[] tousEnginsDispo = MesDatas.DsGlobal.Tables["Engin"].Select(
+                        $"codeTypeEngin = '{type}' AND enMission = 0 AND enPanne = 0"
                     );
 
-                    if (enginsDispoDansCaserne.Length >= nb)
+                    List<DataRow> enginsDansCaserne = tousEnginsDispo 
+                        .Where(f => Convert.ToInt32(f["idCaserne"]) == idCaserne)
+                        .ToList();
+
+                    List<DataRow> enginsHorsCaserne = tousEnginsDispo
+                        .Where(f => Convert.ToInt32(f["idCaserne"]) != idCaserne)
+                        .ToList();
+
+                    List<DataRow> enginsAUtiliser = new List<DataRow>();
+                    enginsAUtiliser.AddRange(enginsDansCaserne.Take(nb));
+
+                    if (enginsAUtiliser.Count < nb)
+                    {
+                        enginsAUtiliser.AddRange(enginsHorsCaserne.Take(nb - enginsAUtiliser.Count));
+                    }
+
+                    if (enginsAUtiliser.Count == nb)
                     {
                         enginsNecessaires.Add((type, nb));
                     }
                 }
 
-                // 3. Affichage dans le DataGridView des engins
+                // 2. Affichage dans dgvEngin
                 dgvEngin.Rows.Clear();
                 if (dgvEngin.Columns.Count == 0)
                 {
@@ -272,32 +291,43 @@ namespace SAE_A21D21_pompiers1
 
                 foreach ((string type, int nb) in enginsNecessaires)
                 {
-                    // Récupérer l’équipage depuis la table TypeEngin
                     int equipage = 0;
-                    DataRow[] typeEnginRow = MesDatas.DsGlobal.Tables["TypeEngin"]
-                        .Select($"code = '{type}'");
+                    DataRow[] typeEnginRow = dtTypeEngin.Select($"code = '{type}'");
                     if (typeEnginRow.Length > 0)
                     {
                         equipage = Convert.ToInt32(typeEnginRow[0]["equipage"]);
                     }
 
-                    DataRow[] enginsDispoDansCaserne = MesDatas.DsGlobal.Tables["Engin"].Select(
-                        $"codeTypeEngin = '{type}' AND idCaserne = {idCaserne} AND enMission = 0 AND enPanne = 0"
+                    DataRow[] tousEnginsDispo = MesDatas.DsGlobal.Tables["Engin"].Select(
+                        $"codeTypeEngin = '{type}' AND enMission = 0 AND enPanne = 0"
                     );
 
-                    // On ne garde que le nombre demandé
-                    for (int f = 0; f < nb && f < enginsDispoDansCaserne.Length; f++)
+                    List<DataRow> enginsDansCaserne = tousEnginsDispo
+                        .Where(f => Convert.ToInt32(f["idCaserne"]) == idCaserne)
+                        .ToList();
+
+                    List<DataRow> enginsHorsCaserne = tousEnginsDispo
+                        .Where(f => Convert.ToInt32(f["idCaserne"]) != idCaserne)
+                        .ToList();
+
+                    List<DataRow> enginsAUtiliser = new List<DataRow>();
+                    enginsAUtiliser.AddRange(enginsDansCaserne.Take(nb));
+
+                    if (enginsAUtiliser.Count < nb)
                     {
-                        DataRow engin = enginsDispoDansCaserne[f];
+                        enginsAUtiliser.AddRange(enginsHorsCaserne.Take(nb - enginsAUtiliser.Count));
+                    }
+
+                    foreach (DataRow engin in enginsAUtiliser)
+                    {
                         string codeTypeEngin = engin["codeTypeEngin"].ToString();
                         int numero = Convert.ToInt32(engin["numero"]);
                         int idCaserneEngin = Convert.ToInt32(engin["idCaserne"]);
-
                         dgvEngin.Rows.Add(codeTypeEngin, 1, equipage, numero, idCaserneEngin);
                     }
                 }
 
-                // 4. Affichage des pompiers
+                // 3. Affichage des pompiers
                 dgvPompiers.Rows.Clear();
                 if (dgvPompiers.Columns.Count == 0)
                 {
@@ -322,7 +352,6 @@ namespace SAE_A21D21_pompiers1
                     {
                         DataRow[] rowsPasser = MesDatas.DsGlobal.Tables["Passer"]
                             .Select($"idHabilitation = {idHab}");
-                        
 
                         foreach (DataRow passerRow in rowsPasser)
                         {
@@ -334,42 +363,34 @@ namespace SAE_A21D21_pompiers1
                             DataRow affectation = MesDatas.DsGlobal.Tables["Affectation"]
                                 .Select($"matriculePompier = {matricule} and idCaserne = {idCaserne}")
                                 .FirstOrDefault();
-                            if (affectation != null)
+
+                            if (affectation != null && pompier != null)
                             {
                                 bool enMission = Convert.ToInt32(pompier["enMission"]) == 1;
                                 bool enConge = Convert.ToInt32(pompier["enConge"]) == 1;
 
-
-                                if (!enMission && !enConge)
+                                if (!enMission && !enConge && !pompiersEligibles.Contains(pompier))
                                 {
-                                    if (!pompiersEligibles.Contains(pompier))
-                                    {
-                                        pompiersEligibles.Add(pompier);
-                                        idHabilitation[i] = idHab;
-                                        i++;
-                                    }
-                                       
-
+                                    pompiersEligibles.Add(pompier);
+                                    idHabilitation[i] = idHab;
+                                    i++;
                                 }
                             }
                         }
                     }
 
-                    // Récupérer nombre d’équipiers requis pour cet engin
                     int equipage = 0;
-                    DataRow[] rowType = MesDatas.DsGlobal.Tables["TypeEngin"].Select($"code = '{typeEngin}'");
+                    DataRow[] rowType = dtTypeEngin.Select($"code = '{typeEngin}'");
                     if (rowType.Length > 0)
                     {
                         equipage = Convert.ToInt32(rowType[0]["equipage"]);
                     }
 
-                    // nombre total de pompiers à prendre = nombre d'engins * équipage
                     int totalPompiers = equipage * nombre;
-                    
-
                     List<DataRow> selection = pompiersEligibles.Take(totalPompiers).ToList();
-                    
-                    for (int j = 0; j < totalPompiers; j++) {
+
+                    for (int j = 0; j < selection.Count; j++)
+                    {
                         idHabi[j] = idHabilitation[j];
                     }
 
