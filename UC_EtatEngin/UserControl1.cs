@@ -24,7 +24,7 @@ namespace UC_EtatEngin
         {
             // Récupération des champs
             int idCaserne = Convert.ToInt32(engin["idCaserne"]);
-            string typeEngin = engin["codeTypeEngin"].ToString(); // ou "code" si c'est le nom de la colonne
+            string typeEngin = engin["codeTypeEngin"].ToString();
             int numeroOrdre = Convert.ToInt32(engin["numero"]);
 
             // Construction de l'affichage : exemple 1-BRS-2
@@ -47,7 +47,7 @@ namespace UC_EtatEngin
             lblDate.Text = "";
             cboMission.Checked = false;
             cboPanne.Checked = false;
-            // Vider l’image si tu en as une
+            
         }
 
         private void cboMission_Click(object sender, EventArgs e)
