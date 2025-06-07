@@ -245,6 +245,7 @@ namespace UC_mission
 
         private void btnCloture_Click(object sender, EventArgs e)
         {
+            //on doit faire les changement dans le dataset et dans la base pour que les page en mode connécté et déconnecté soit toutes a jours
            frmCompteRendu compteRendu = new frmCompteRendu();
            if(compteRendu.ShowDialog() == DialogResult.OK)
            {
@@ -256,6 +257,8 @@ namespace UC_mission
               
                 DataRow[] Mobiliser = m_ds.Tables["Mobiliser"].Select($"idMission = {m_idMission}");
                 DataRow[] PartirAvec = m_ds.Tables["PartirAvec"].Select($"idMission = {m_idMission}");
+             
+                
 
 
 
@@ -273,9 +276,36 @@ namespace UC_mission
 
                     int idCaserne = Convert.ToInt32(a.ExecuteScalar());
                     int idNatureSinistre = Convert.ToInt32(b.ExecuteScalar());
-                    
-                    
-                    com.CommandText = "insert or ignore into mission(id,dateHeureDepart,dateHeureRetour,motifAppel, adresse,cp,ville,terminee, compteRendu,idNatureSinistre,idCaserne)" +
+                    com.CommandText = "UPDATE or ignore Engin " +
+                        "SET enMission = 0 " +
+                        "WHERE EXISTS (SELECT 1 " +
+                        "FROM PartirAvec    " +
+                        "WHERE PartirAvec.idCaserne = Engin.idCaserne " +
+                        "AND PartirAvec.codeTypeEngin = Engin.codeTypeEngin " +
+                        "AND PartirAvec.numeroEngin = Engin.numero " +
+                        $"AND PartirAvec.idMission ={m_idMission} ) ";
+                    com.ExecuteNonQuery();
+
+                    foreach (DataRow row in m_ds.Tables["PartirAvec"].Rows)
+                    {
+                        if (row["idMission"] != DBNull.Value && Convert.ToInt32(row["idMission"]) == m_idMission)
+                        {
+                            int idC = Convert.ToInt32(row["idCaserne"]);
+                            string codeTypeEngin = row["codeTypeEngin"].ToString();
+                            int numeroEngin = Convert.ToInt32(row["numeroEngin"]);
+
+                            DataRow[] enginRows = m_ds.Tables["Engin"].Select(
+                                $"idCaserne = {idC} AND codeTypeEngin = '{codeTypeEngin.Replace("'", "''")}' AND numero = {numeroEngin}"
+                            );
+
+
+                            foreach (DataRow engin in enginRows)
+                            {
+                                engin["enMission"] = 0;
+                            }
+                        }
+                    }
+                        com.CommandText = "insert or ignore into mission(id,dateHeureDepart,dateHeureRetour,motifAppel, adresse,cp,ville,terminee, compteRendu,idNatureSinistre,idCaserne)" +
                     $"values ({m_idMission},'{m_dateDepart}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm")}', \"{m_motif}\",\"{m_adresse}\",{m_cp},\"{m_ville}\",1,\"{compteR}\",{idNatureSinistre},{idCaserne})";
                     int fait = com.ExecuteNonQuery();
                     if (fait == 0)
@@ -328,6 +358,23 @@ namespace UC_mission
                                $"values ({id},'{codeType}',{numerongin},{idMission},{reparationsEventuelles})";
                             com.ExecuteNonQuery();
 
+                        }
+                        foreach (DataRow mobiliserRow in m_ds.Tables["Mobiliser"].Rows)
+                        {
+                            
+                            if (mobiliserRow["idMission"] != DBNull.Value &&
+                                Convert.ToInt32(mobiliserRow["idMission"]) == m_idMission)
+                            {
+                                
+                                int matricule = Convert.ToInt32(mobiliserRow["matriculePompier"]);
+
+                                DataRow[] pompierRows = m_ds.Tables["Pompier"].Select($"matricule = {matricule}");
+
+                                foreach (DataRow pompierRow in pompierRows)
+                                {
+                                    pompierRow["enMission"] = 0;
+                                }
+                            }
                         }
                         MessageBox.Show("Mission fermée !");
                     }

@@ -35,7 +35,7 @@ namespace SAE_A21D21_pompiers1
         {
             if (cboCaserne.SelectedItem == null) return;
 
-            var drv = cboCaserne.SelectedItem as DataRowView;
+            DataRowView drv = cboCaserne.SelectedItem as DataRowView;
             if (drv == null) return;
 
             int idCaserne = Convert.ToInt32(drv["id"]);
