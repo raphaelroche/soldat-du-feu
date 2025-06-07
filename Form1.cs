@@ -264,5 +264,11 @@ namespace SAE_A21D21_pompiers
         {
             Application.Exit();
         }
+
+        private void btn_Stats_Click(object sender, EventArgs e)
+        {
+            frm_Stats stats = new frm_Stats(this.cx);
+            stats.ShowDialog();
+        }
     }
 }
