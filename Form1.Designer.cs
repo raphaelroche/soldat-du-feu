@@ -35,6 +35,7 @@
             this.cbEnCours = new System.Windows.Forms.CheckBox();
             this.lblTDB = new System.Windows.Forms.Label();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lblStats = new System.Windows.Forms.Label();
             this.btn_Exit = new System.Windows.Forms.Button();
             this.lblGestionPersonnel = new System.Windows.Forms.Label();
             this.lblEtatEngin = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.btn_Stats = new System.Windows.Forms.Button();
             this.btnEngin = new System.Windows.Forms.Button();
             this.btnTDB = new System.Windows.Forms.Button();
-            this.lblStats = new System.Windows.Forms.Label();
             this.pnlTableauDeBord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenu.SuspendLayout();
@@ -134,6 +134,21 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(328, 805);
             this.pnlMenu.TabIndex = 1;
+            // 
+            // lblStats
+            // 
+            this.lblStats.AutoSize = true;
+            this.lblStats.BackColor = System.Drawing.Color.Transparent;
+            this.lblStats.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStats.ForeColor = System.Drawing.Color.White;
+            this.lblStats.Location = new System.Drawing.Point(165, 512);
+            this.lblStats.Name = "lblStats";
+            this.lblStats.Size = new System.Drawing.Size(113, 25);
+            this.lblStats.TabIndex = 12;
+            this.lblStats.Text = "Statistiques";
+            this.lblStats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStats.Click += new System.EventHandler(this.btn_Stats_Click);
             // 
             // btn_Exit
             // 
@@ -269,21 +284,6 @@
             this.btnTDB.Size = new System.Drawing.Size(109, 109);
             this.btnTDB.TabIndex = 0;
             this.btnTDB.UseVisualStyleBackColor = true;
-            // 
-            // lblStats
-            // 
-            this.lblStats.AutoSize = true;
-            this.lblStats.BackColor = System.Drawing.Color.Transparent;
-            this.lblStats.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStats.ForeColor = System.Drawing.Color.White;
-            this.lblStats.Location = new System.Drawing.Point(165, 512);
-            this.lblStats.Name = "lblStats";
-            this.lblStats.Size = new System.Drawing.Size(113, 25);
-            this.lblStats.TabIndex = 12;
-            this.lblStats.Text = "Statistiques";
-            this.lblStats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblStats.Click += new System.EventHandler(this.btn_Stats_Click);
             // 
             // Form1
             // 
