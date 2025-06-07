@@ -18,7 +18,9 @@ namespace SAE_A21D21_pompiers
 {
     public partial class Form1 : Form
     {
+        private Frm_Engin Etatengin = null;
         private SQLiteConnection cx;
+        private frm_Stats stats = null; 
         
         public Form1()
         {
@@ -230,8 +232,16 @@ namespace SAE_A21D21_pompiers
 
         private void btnEngin_Click(object sender, EventArgs e)
         {
-            Frm_Engin engin = new Frm_Engin();
-            engin.Show();
+            if (Etatengin == null || Etatengin.IsDisposed)
+            {
+                Etatengin = new Frm_Engin();
+                Etatengin.Show();
+            }
+            else
+            {
+                Etatengin.BringToFront(); // Met au premier plan
+                Etatengin.Focus();        // Donne le focus
+            }
         }
 
         private void cbEnCours_CheckedChanged(object sender, EventArgs e)
@@ -268,8 +278,16 @@ namespace SAE_A21D21_pompiers
 
         private void btn_Stats_Click(object sender, EventArgs e)
         {
-            frm_Stats stats = new frm_Stats(this.cx);
-            stats.Show();
+            if (stats == null || stats.IsDisposed)
+            {
+                stats = new frm_Stats(this.cx);
+                stats.Show();
+            }
+            else
+            {
+                stats.BringToFront(); // Met au premier plan
+                stats.Focus();        // Donne le focus
+            }
         }
     }
 }

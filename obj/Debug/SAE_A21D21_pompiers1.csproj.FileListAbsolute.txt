@@ -335,3 +335,4 @@ C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\bin\Debug\Micro
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\sacha\OneDrive\Documents\BUT\S2\SAE\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.frm_Stats.resources
+C:\Users\raphi\SAE_A21D21_pompiers\obj\Debug\SAE_A21D21_pompiers1.frm_Stats.resources
