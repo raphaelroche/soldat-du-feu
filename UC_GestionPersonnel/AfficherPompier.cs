@@ -217,11 +217,6 @@ namespace UC_GestionPersonnel
             }
         }
 
-        private void pnlFichePompier_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void cboGrade_SelectedIndexChanged(object sender, EventArgs e)
         {
 

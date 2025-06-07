@@ -31,6 +31,8 @@
             this.btnInfo = new System.Windows.Forms.Button();
             this.pnlInformations = new System.Windows.Forms.Panel();
             this.grpInfoCarriere = new System.Windows.Forms.GroupBox();
+            this.cboHabil = new System.Windows.Forms.ComboBox();
+            this.btnAjtHabil = new System.Windows.Forms.Button();
             this.lstAffectations = new System.Windows.Forms.ListBox();
             this.lstHabilitations = new System.Windows.Forms.ListBox();
             this.cboCaserne = new System.Windows.Forms.ComboBox();
@@ -57,8 +59,6 @@
             this.lblBip = new System.Windows.Forms.Label();
             this.pbGrade = new System.Windows.Forms.PictureBox();
             this.pnlFichePompier = new System.Windows.Forms.Panel();
-            this.btnAjtHabil = new System.Windows.Forms.Button();
-            this.cboHabil = new System.Windows.Forms.ComboBox();
             this.pnlInformations.SuspendLayout();
             this.grpInfoCarriere.SuspendLayout();
             this.grpCarriere.SuspendLayout();
@@ -68,9 +68,10 @@
             // 
             // btnInfo
             // 
-            this.btnInfo.Location = new System.Drawing.Point(417, 446);
+            this.btnInfo.Location = new System.Drawing.Point(556, 549);
+            this.btnInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(115, 23);
+            this.btnInfo.Size = new System.Drawing.Size(153, 28);
             this.btnInfo.TabIndex = 12;
             this.btnInfo.Text = "Plus d\'informations";
             this.btnInfo.UseVisualStyleBackColor = true;
@@ -82,9 +83,10 @@
             this.pnlInformations.Controls.Add(this.btnMaj);
             this.pnlInformations.Controls.Add(this.chkConge);
             this.pnlInformations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.pnlInformations.Location = new System.Drawing.Point(3, 361);
+            this.pnlInformations.Location = new System.Drawing.Point(4, 444);
+            this.pnlInformations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlInformations.Name = "pnlInformations";
-            this.pnlInformations.Size = new System.Drawing.Size(623, 363);
+            this.pnlInformations.Size = new System.Drawing.Size(831, 447);
             this.pnlInformations.TabIndex = 13;
             // 
             // grpInfoCarriere
@@ -98,82 +100,115 @@
             this.grpInfoCarriere.Controls.Add(this.label3);
             this.grpInfoCarriere.Controls.Add(this.lblHabilitations);
             this.grpInfoCarriere.Controls.Add(this.lblcaserne);
-            this.grpInfoCarriere.Location = new System.Drawing.Point(3, 3);
+            this.grpInfoCarriere.Location = new System.Drawing.Point(4, 4);
+            this.grpInfoCarriere.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpInfoCarriere.Name = "grpInfoCarriere";
-            this.grpInfoCarriere.Size = new System.Drawing.Size(617, 306);
+            this.grpInfoCarriere.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpInfoCarriere.Size = new System.Drawing.Size(823, 377);
             this.grpInfoCarriere.TabIndex = 2;
             this.grpInfoCarriere.TabStop = false;
             this.grpInfoCarriere.Text = "Informations Carriere";
             // 
+            // cboHabil
+            // 
+            this.cboHabil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHabil.FormattingEnabled = true;
+            this.cboHabil.Location = new System.Drawing.Point(580, 215);
+            this.cboHabil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboHabil.Name = "cboHabil";
+            this.cboHabil.Size = new System.Drawing.Size(233, 28);
+            this.cboHabil.TabIndex = 7;
+            this.cboHabil.Visible = false;
+            this.cboHabil.SelectedIndexChanged += new System.EventHandler(this.cboHabil_SelectedIndexChanged);
+            // 
+            // btnAjtHabil
+            // 
+            this.btnAjtHabil.Location = new System.Drawing.Point(671, 144);
+            this.btnAjtHabil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAjtHabil.Name = "btnAjtHabil";
+            this.btnAjtHabil.Size = new System.Drawing.Size(121, 64);
+            this.btnAjtHabil.TabIndex = 3;
+            this.btnAjtHabil.Text = "Ajouter\r\nHabilitation\r\n";
+            this.btnAjtHabil.UseVisualStyleBackColor = true;
+            this.btnAjtHabil.Click += new System.EventHandler(this.btnAjtHabil_Click);
+            // 
             // lstAffectations
             // 
             this.lstAffectations.FormattingEnabled = true;
-            this.lstAffectations.ItemHeight = 16;
-            this.lstAffectations.Location = new System.Drawing.Point(41, 230);
+            this.lstAffectations.ItemHeight = 20;
+            this.lstAffectations.Location = new System.Drawing.Point(55, 283);
+            this.lstAffectations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstAffectations.Name = "lstAffectations";
-            this.lstAffectations.Size = new System.Drawing.Size(442, 36);
+            this.lstAffectations.Size = new System.Drawing.Size(588, 24);
             this.lstAffectations.TabIndex = 6;
             // 
             // lstHabilitations
             // 
             this.lstHabilitations.FormattingEnabled = true;
-            this.lstHabilitations.ItemHeight = 16;
-            this.lstHabilitations.Location = new System.Drawing.Point(41, 117);
+            this.lstHabilitations.ItemHeight = 20;
+            this.lstHabilitations.Location = new System.Drawing.Point(55, 144);
+            this.lstHabilitations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstHabilitations.Name = "lstHabilitations";
-            this.lstHabilitations.Size = new System.Drawing.Size(442, 52);
+            this.lstHabilitations.Size = new System.Drawing.Size(588, 44);
             this.lstHabilitations.TabIndex = 5;
             // 
             // cboCaserne
             // 
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(220, 47);
+            this.cboCaserne.Location = new System.Drawing.Point(293, 58);
+            this.cboCaserne.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(263, 24);
+            this.cboCaserne.Size = new System.Drawing.Size(349, 28);
             this.cboCaserne.TabIndex = 4;
             this.cboCaserne.SelectedIndexChanged += new System.EventHandler(this.cboCaserne_SelectedIndexChanged_1);
             // 
             // lblAffectations
             // 
             this.lblAffectations.AutoSize = true;
-            this.lblAffectations.Location = new System.Drawing.Point(38, 200);
+            this.lblAffectations.Location = new System.Drawing.Point(51, 246);
+            this.lblAffectations.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAffectations.Name = "lblAffectations";
-            this.lblAffectations.Size = new System.Drawing.Size(139, 17);
+            this.lblAffectations.Size = new System.Drawing.Size(166, 20);
             this.lblAffectations.TabIndex = 3;
             this.lblAffectations.Text = "Affectations passées";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(-332, -422);
+            this.label3.Location = new System.Drawing.Point(-443, -519);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
             // lblHabilitations
             // 
             this.lblHabilitations.AutoSize = true;
-            this.lblHabilitations.Location = new System.Drawing.Point(38, 85);
+            this.lblHabilitations.Location = new System.Drawing.Point(51, 105);
+            this.lblHabilitations.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHabilitations.Name = "lblHabilitations";
-            this.lblHabilitations.Size = new System.Drawing.Size(85, 17);
+            this.lblHabilitations.Size = new System.Drawing.Size(102, 20);
             this.lblHabilitations.TabIndex = 1;
             this.lblHabilitations.Text = "Habilitations";
             // 
             // lblcaserne
             // 
             this.lblcaserne.AutoSize = true;
-            this.lblcaserne.Location = new System.Drawing.Point(34, 50);
+            this.lblcaserne.Location = new System.Drawing.Point(45, 62);
+            this.lblcaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcaserne.Name = "lblcaserne";
-            this.lblcaserne.Size = new System.Drawing.Size(180, 17);
+            this.lblcaserne.Size = new System.Drawing.Size(213, 20);
             this.lblcaserne.TabIndex = 0;
             this.lblcaserne.Text = "Caserne de rattachement : ";
             // 
             // btnMaj
             // 
-            this.btnMaj.Location = new System.Drawing.Point(411, 315);
+            this.btnMaj.Location = new System.Drawing.Point(548, 388);
+            this.btnMaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMaj.Name = "btnMaj";
-            this.btnMaj.Size = new System.Drawing.Size(130, 23);
+            this.btnMaj.Size = new System.Drawing.Size(173, 28);
             this.btnMaj.TabIndex = 1;
             this.btnMaj.Text = "Mettre a jour";
             this.btnMaj.UseVisualStyleBackColor = true;
@@ -182,9 +217,10 @@
             // chkConge
             // 
             this.chkConge.AutoSize = true;
-            this.chkConge.Location = new System.Drawing.Point(75, 315);
+            this.chkConge.Location = new System.Drawing.Point(100, 388);
+            this.chkConge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkConge.Name = "chkConge";
-            this.chkConge.Size = new System.Drawing.Size(87, 21);
+            this.chkConge.Size = new System.Drawing.Size(101, 24);
             this.chkConge.TabIndex = 0;
             this.chkConge.Text = "En congé";
             this.chkConge.UseVisualStyleBackColor = true;
@@ -194,63 +230,70 @@
             // 
             this.lblMatricule.AutoSize = true;
             this.lblMatricule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblMatricule.Location = new System.Drawing.Point(263, 27);
+            this.lblMatricule.Location = new System.Drawing.Point(351, 33);
+            this.lblMatricule.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMatricule.Name = "lblMatricule";
-            this.lblMatricule.Size = new System.Drawing.Size(85, 20);
+            this.lblMatricule.Size = new System.Drawing.Size(107, 25);
             this.lblMatricule.TabIndex = 0;
             this.lblMatricule.Text = "Matricule : ";
             // 
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(30, 32);
+            this.lblNom.Location = new System.Drawing.Point(40, 39);
+            this.lblNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(49, 17);
+            this.lblNom.Size = new System.Drawing.Size(59, 20);
             this.lblNom.TabIndex = 1;
             this.lblNom.Text = "Nom : ";
             // 
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(30, 60);
+            this.lblPrenom.Location = new System.Drawing.Point(40, 74);
+            this.lblPrenom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(69, 17);
+            this.lblPrenom.Size = new System.Drawing.Size(82, 20);
             this.lblPrenom.TabIndex = 2;
             this.lblPrenom.Text = "Prenom : ";
             // 
             // lblNaissance
             // 
             this.lblNaissance.AutoSize = true;
-            this.lblNaissance.Location = new System.Drawing.Point(30, 86);
+            this.lblNaissance.Location = new System.Drawing.Point(40, 106);
+            this.lblNaissance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNaissance.Name = "lblNaissance";
-            this.lblNaissance.Size = new System.Drawing.Size(134, 17);
+            this.lblNaissance.Size = new System.Drawing.Size(159, 20);
             this.lblNaissance.TabIndex = 3;
             this.lblNaissance.Text = "Date de naissance :";
             // 
             // lblSexe
             // 
             this.lblSexe.AutoSize = true;
-            this.lblSexe.Location = new System.Drawing.Point(30, 116);
+            this.lblSexe.Location = new System.Drawing.Point(40, 143);
+            this.lblSexe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSexe.Name = "lblSexe";
-            this.lblSexe.Size = new System.Drawing.Size(47, 17);
+            this.lblSexe.Size = new System.Drawing.Size(56, 20);
             this.lblSexe.TabIndex = 4;
             this.lblSexe.Text = "Sexe :";
             // 
             // lblEmbauche
             // 
             this.lblEmbauche.AutoSize = true;
-            this.lblEmbauche.Location = new System.Drawing.Point(33, 175);
+            this.lblEmbauche.Location = new System.Drawing.Point(44, 215);
+            this.lblEmbauche.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmbauche.Name = "lblEmbauche";
-            this.lblEmbauche.Size = new System.Drawing.Size(131, 17);
+            this.lblEmbauche.Size = new System.Drawing.Size(155, 20);
             this.lblEmbauche.TabIndex = 7;
             this.lblEmbauche.Text = "Date d\'embauche : ";
             // 
             // rdbProfessionnel
             // 
             this.rdbProfessionnel.AutoSize = true;
-            this.rdbProfessionnel.Location = new System.Drawing.Point(33, 136);
+            this.rdbProfessionnel.Location = new System.Drawing.Point(44, 167);
+            this.rdbProfessionnel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdbProfessionnel.Name = "rdbProfessionnel";
-            this.rdbProfessionnel.Size = new System.Drawing.Size(112, 21);
+            this.rdbProfessionnel.Size = new System.Drawing.Size(132, 24);
             this.rdbProfessionnel.TabIndex = 9;
             this.rdbProfessionnel.TabStop = true;
             this.rdbProfessionnel.Text = "Professionnel";
@@ -260,9 +303,10 @@
             // rdbVolontaire
             // 
             this.rdbVolontaire.AutoSize = true;
-            this.rdbVolontaire.Location = new System.Drawing.Point(151, 136);
+            this.rdbVolontaire.Location = new System.Drawing.Point(201, 167);
+            this.rdbVolontaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdbVolontaire.Name = "rdbVolontaire";
-            this.rdbVolontaire.Size = new System.Drawing.Size(90, 21);
+            this.rdbVolontaire.Size = new System.Drawing.Size(105, 24);
             this.rdbVolontaire.TabIndex = 10;
             this.rdbVolontaire.TabStop = true;
             this.rdbVolontaire.Text = "Volontaire";
@@ -277,9 +321,11 @@
             this.grpCarriere.Controls.Add(this.lblTelephone);
             this.grpCarriere.Controls.Add(this.lblGrade);
             this.grpCarriere.Controls.Add(this.lblBip);
-            this.grpCarriere.Location = new System.Drawing.Point(36, 232);
+            this.grpCarriere.Location = new System.Drawing.Point(48, 286);
+            this.grpCarriere.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpCarriere.Name = "grpCarriere";
-            this.grpCarriere.Size = new System.Drawing.Size(492, 104);
+            this.grpCarriere.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpCarriere.Size = new System.Drawing.Size(656, 128);
             this.grpCarriere.TabIndex = 11;
             this.grpCarriere.TabStop = false;
             this.grpCarriere.Text = "Carriere";
@@ -287,17 +333,17 @@
             // lblAbrev
             // 
             this.lblAbrev.AutoSize = true;
-            this.lblAbrev.Location = new System.Drawing.Point(94, 43);
-            this.lblAbrev.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAbrev.Location = new System.Drawing.Point(125, 53);
             this.lblAbrev.Name = "lblAbrev";
-            this.lblAbrev.Size = new System.Drawing.Size(0, 17);
+            this.lblAbrev.Size = new System.Drawing.Size(0, 20);
             this.lblAbrev.TabIndex = 12;
             // 
             // btnChanger
             // 
-            this.btnChanger.Location = new System.Drawing.Point(375, 41);
+            this.btnChanger.Location = new System.Drawing.Point(500, 50);
+            this.btnChanger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChanger.Name = "btnChanger";
-            this.btnChanger.Size = new System.Drawing.Size(75, 23);
+            this.btnChanger.Size = new System.Drawing.Size(100, 28);
             this.btnChanger.TabIndex = 11;
             this.btnChanger.Text = "Changer";
             this.btnChanger.UseVisualStyleBackColor = true;
@@ -308,44 +354,49 @@
             this.cboGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGrade.Enabled = false;
             this.cboGrade.FormattingEnabled = true;
-            this.cboGrade.Location = new System.Drawing.Point(147, 41);
+            this.cboGrade.Location = new System.Drawing.Point(196, 50);
+            this.cboGrade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboGrade.Name = "cboGrade";
-            this.cboGrade.Size = new System.Drawing.Size(82, 24);
+            this.cboGrade.Size = new System.Drawing.Size(108, 28);
             this.cboGrade.TabIndex = 10;
             this.cboGrade.SelectedIndexChanged += new System.EventHandler(this.cboGrade_SelectedIndexChanged);
             // 
             // lblTelephone
             // 
             this.lblTelephone.AutoSize = true;
-            this.lblTelephone.Location = new System.Drawing.Point(36, 77);
+            this.lblTelephone.Location = new System.Drawing.Point(48, 95);
+            this.lblTelephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelephone.Name = "lblTelephone";
-            this.lblTelephone.Size = new System.Drawing.Size(88, 17);
+            this.lblTelephone.Size = new System.Drawing.Size(101, 20);
             this.lblTelephone.TabIndex = 6;
             this.lblTelephone.Text = "Telephone : ";
             // 
             // lblGrade
             // 
             this.lblGrade.AutoSize = true;
-            this.lblGrade.Location = new System.Drawing.Point(36, 41);
+            this.lblGrade.Location = new System.Drawing.Point(48, 50);
+            this.lblGrade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGrade.Name = "lblGrade";
-            this.lblGrade.Size = new System.Drawing.Size(60, 17);
+            this.lblGrade.Size = new System.Drawing.Size(70, 20);
             this.lblGrade.TabIndex = 5;
             this.lblGrade.Text = "Grade : ";
             // 
             // lblBip
             // 
             this.lblBip.AutoSize = true;
-            this.lblBip.Location = new System.Drawing.Point(372, 77);
+            this.lblBip.Location = new System.Drawing.Point(496, 95);
+            this.lblBip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBip.Name = "lblBip";
-            this.lblBip.Size = new System.Drawing.Size(40, 17);
+            this.lblBip.Size = new System.Drawing.Size(49, 20);
             this.lblBip.TabIndex = 8;
             this.lblBip.Text = "Bip : ";
             // 
             // pbGrade
             // 
-            this.pbGrade.Location = new System.Drawing.Point(428, 54);
+            this.pbGrade.Location = new System.Drawing.Point(571, 66);
+            this.pbGrade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbGrade.Name = "pbGrade";
-            this.pbGrade.Size = new System.Drawing.Size(100, 80);
+            this.pbGrade.Size = new System.Drawing.Size(133, 98);
             this.pbGrade.TabIndex = 12;
             this.pbGrade.TabStop = false;
             // 
@@ -362,42 +413,22 @@
             this.pnlFichePompier.Controls.Add(this.lblNom);
             this.pnlFichePompier.Controls.Add(this.lblMatricule);
             this.pnlFichePompier.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.pnlFichePompier.Location = new System.Drawing.Point(4, 4);
+            this.pnlFichePompier.Location = new System.Drawing.Point(5, 5);
+            this.pnlFichePompier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlFichePompier.Name = "pnlFichePompier";
-            this.pnlFichePompier.Size = new System.Drawing.Size(623, 350);
+            this.pnlFichePompier.Size = new System.Drawing.Size(831, 431);
             this.pnlFichePompier.TabIndex = 0;
-            this.pnlFichePompier.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlFichePompier_Paint);
-            // 
-            // btnAjtHabil
-            // 
-            this.btnAjtHabil.Location = new System.Drawing.Point(503, 117);
-            this.btnAjtHabil.Name = "btnAjtHabil";
-            this.btnAjtHabil.Size = new System.Drawing.Size(91, 52);
-            this.btnAjtHabil.TabIndex = 3;
-            this.btnAjtHabil.Text = "Ajouter\r\nHabilitation\r\n";
-            this.btnAjtHabil.UseVisualStyleBackColor = true;
-            this.btnAjtHabil.Click += new System.EventHandler(this.btnAjtHabil_Click);
-            // 
-            // cboHabil
-            // 
-            this.cboHabil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboHabil.FormattingEnabled = true;
-            this.cboHabil.Location = new System.Drawing.Point(435, 175);
-            this.cboHabil.Name = "cboHabil";
-            this.cboHabil.Size = new System.Drawing.Size(176, 24);
-            this.cboHabil.TabIndex = 7;
-            this.cboHabil.Visible = false;
-            this.cboHabil.SelectedIndexChanged += new System.EventHandler(this.cboHabil_SelectedIndexChanged);
             // 
             // AfficherPompier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlInformations);
             this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.pnlFichePompier);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AfficherPompier";
-            this.Size = new System.Drawing.Size(630, 726);
+            this.Size = new System.Drawing.Size(840, 894);
             this.Load += new System.EventHandler(this.UserControl1_Load);
             this.pnlInformations.ResumeLayout(false);
             this.pnlInformations.PerformLayout();
