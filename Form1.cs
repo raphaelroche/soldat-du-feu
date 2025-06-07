@@ -70,6 +70,10 @@ namespace SAE_A21D21_pompiers
             btnEngin.BackgroundImage = new Bitmap(imgEngin, new Size(btnGestionPersonnel.Width, btnGestionPersonnel.Height)); // redimensionne l'image à la taille du bouton btnGestionPersonnel
             btnEngin.BackgroundImageLayout = ImageLayout.Stretch;
 
+            Image imgStats = Image.FromFile("divers/stats.png");
+            btn_Stats.BackgroundImage = new Bitmap(imgStats, new Size(btn_Stats.Width, btn_Stats.Height)); // redimensionne l'image à la taille du bouton btnGestionPersonnel
+            btn_Stats.BackgroundImageLayout = ImageLayout.Stretch;
+
             afficherMission();
       
         }
@@ -227,10 +231,7 @@ namespace SAE_A21D21_pompiers
         private void btnEngin_Click(object sender, EventArgs e)
         {
             Frm_Engin engin = new Frm_Engin();
-            if (engin.ShowDialog() == DialogResult.OK)
-            {
-                
-            }
+            engin.Show();
         }
 
         private void cbEnCours_CheckedChanged(object sender, EventArgs e)
@@ -268,7 +269,7 @@ namespace SAE_A21D21_pompiers
         private void btn_Stats_Click(object sender, EventArgs e)
         {
             frm_Stats stats = new frm_Stats(this.cx);
-            stats.ShowDialog();
+            stats.Show();
         }
     }
 }
