@@ -236,11 +236,21 @@ namespace UC_mission
                 }
             }
 
-            // sauvegarder le document  
-            string filename = "Rapports/mission" + this.m_idMission + ".pdf";
-            document.Save(filename);
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                //demande ou enregistrer le projet
+                Filter = "Fichier PDF (*.pdf)|*.pdf",
+                Title = "Enregistrer le rapport PDF",
+                FileName = "rapport_mission_n" + m_idMission + ".pdf"
+            };
 
-            MessageBox.Show("Rapport crée", "Rapport PDF");
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // sauvegarder le document  
+                string filePath = saveFileDialog.FileName;
+                document.Save(filePath);
+                MessageBox.Show("Rapport crée", "Rapport PDF");
+            }
         }
 
         private void btnCloture_Click(object sender, EventArgs e)

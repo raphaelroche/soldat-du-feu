@@ -189,6 +189,7 @@
             this.lblEtatEngin.TabIndex = 9;
             this.lblEtatEngin.Text = "Voir l\'état\r\ndes\r\nengins";
             this.lblEtatEngin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEtatEngin.Click += new System.EventHandler(this.btnEngin_Click);
             // 
             // lblAjtMission
             // 
@@ -203,6 +204,7 @@
             this.lblAjtMission.TabIndex = 8;
             this.lblAjtMission.Text = "Ajouter une\r\nmission";
             this.lblAjtMission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAjtMission.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // lblTabDB
             // 
@@ -277,7 +279,7 @@
             // 
             // btnTDB
             // 
-            this.btnTDB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTDB.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnTDB.Location = new System.Drawing.Point(30, 30);
             this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTDB.Name = "btnTDB";
